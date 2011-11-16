@@ -1,0 +1,20 @@
+{
+  "author": "Joshua Holbrook <josh@nodejitsu.com> (http://jesusabdullah.net)",
+  "name": "ecstatic",
+  "description": "A simple static file server middleware that works with both Express and Flatiron",
+  "version": "0.0.0",
+  "homepage": "https://github.com/jesusabdullah/node-ecstatic",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:jesusabdullah/node-ecstatic.git"
+  },
+  "main": "./ecstatic.js",
+  "scripts": {
+    "test": "node example.js"
+  },
+  "engines": {
+    "node": "*"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
