@@ -16,11 +16,11 @@ var files = {
     body : 'B!!!\n',
   },
   'c.js' : {
-    type : 'text/javascript',
+    type : 'application/javascript',
     body : 'console.log(\'C!!!\');\n',
   },
   'd.js' : {
-    type : 'text/javascript',
+    type : 'application/javascript',
     body : 'console.log(\'C!!!\');\n',
   },
   'subdir/e.html' : {
@@ -39,7 +39,7 @@ var files = {
 
 test('express', function (t) {
   var filenames = Object.keys(files);
-  t.plan(filenames.length);
+  t.plan(filenames.length * 2);
   var port = Math.floor(Math.random() * ((1<<16) - 1e4) + 1e4);
   
   var app = express.createServer();
@@ -51,10 +51,10 @@ test('express', function (t) {
       request.get(uri, function (err, res, body) {
         if (err) t.fail(err);
         t.equal(
-          files[file].type, res.headers['content-type'],
-          'content-type differs for ' + file
+          res.headers['content-type'], files[file].type,
+          'content-type for ' + file
         );
-        t.equal(files[file].body, body, 'body differs for ' + file);
+        t.equal(body, files[file].body, 'body for ' + file);
         
         if (--pending === 0) {
           app.close();

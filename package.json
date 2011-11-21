@@ -10,7 +10,7 @@
   },
   "main": "./ecstatic.js",
   "scripts": {
-    "test": "node example.js"
+    "test": "tap test/*.js"
   },
   "keywords" : [
     "static",
@@ -23,7 +23,8 @@
     "node": "*"
   },
   "dependencies": {
-    "mime" : "1.2.x"
+    "mime" : "1.2.x",
+    "ent" : "0.0.x"
   },
   "devDependencies": {
     "tap" : "0.0.x",
