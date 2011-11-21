@@ -2,29 +2,37 @@ var path = require("path"),
     mime = require("mime"),
     fs = require("fs");
 
-module.exports = function (p) {
-
+module.exports = function (dir) {
+  var root = path.resolve(dir) + '/';
+  
   return function (req, res, next) {
-
     // If there's a file, serve it up.
-    if (path.existsSync(p + req.url) && !fs.statSync(p + req.url).isDirectory()) {
-      fs.readFile(p + req.url, function (err, buff) {
-        if (err) {
-          console.log(err);
-          res.writeHead(500);
-          res.end();
-          return;
+    var file = path.normalize(path.join(root, req.url));
+    if (file.slice(0, root.length) !== root) {
+      if (next) next()
+      else {
+        res.statusCode = 403;
+        if (res.writable) res.end('ACCESS DENIED')
+      }
+    }
+    
+    path.exists(file, function (ex) {
+      if (!ex) {
+        if (typeof next === 'function') next()
+        else {
+          res.statusCode = 404;
+          res.end('not found');
         }
-
-        res.writeHead(200, { "Content-Type": mime.lookup(p + req.url) });
-        res.end(buff);
-      });
-    }
-    else {
-      // There's no file to return; Keep digging.
-      // Style decision here: calling 'next()' keeps backwards compat. with
-      // connect.
-      next();
-    }
+      }
+      else {
+        res.setHeader('content-type', mime.lookup(file));
+        var s = fs.createReadStream(file);
+        s.pipe(res);
+        s.on('error', function (err) {
+          res.statusCode = 500;
+          if (res.writable) res.end(err && err.stack || err.toString());
+        });
+      }
+    });
   };
-}
+};
