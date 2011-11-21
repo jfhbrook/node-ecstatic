@@ -22,8 +22,15 @@
   "engines": {
     "node": "*"
   },
-  "dependencies": {},
-  "devDependencies": {},
+  "dependencies": {
+    "mime" : "1.2.x"
+  },
+  "devDependencies": {
+    "tap" : "0.0.x",
+    "request" : "2.2.x",
+    "express" : "2.5.x",
+    "union" : "0.1.x"
+  },
   "directories" : {
     "test" : "test",
     "example" : "example",
