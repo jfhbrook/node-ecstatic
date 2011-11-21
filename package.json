@@ -12,9 +12,21 @@
   "scripts": {
     "test": "node example.js"
   },
+  "keywords" : [
+    "static",
+    "web",
+    "server",
+    "files",
+    "mime"
+  ],
   "engines": {
     "node": "*"
   },
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {},
+  "directories" : {
+    "test" : "test",
+    "example" : "example",
+    "lib" : "."
+  }
 }
