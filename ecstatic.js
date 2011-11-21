@@ -1,6 +1,8 @@
 var path = require('path');
-var mime = require('mime');
 var fs = require('fs');
+var url = require('url');
+
+var mime = require('mime');
 var showDir = require('./lib/showdir');
 
 module.exports = function (dir) {
@@ -8,7 +10,9 @@ module.exports = function (dir) {
   
   return function handler (req, res, next) {
     // If there's a file, serve it up.
-    var file = path.normalize(path.join(root, req.url));
+    var u = url.parse(req.url);
+    var file = path.normalize(path.join(root, u.pathname));
+    
     if (file.slice(0, root.length) !== root) {
       if (next) next()
       else {
@@ -37,8 +41,9 @@ module.exports = function (dir) {
         res.end(err && err.stack || err.toString());
       }
       else if (s.isDirectory()) {
-        handler({ url : req.url + '/index.html' }, res, function () {
-          showDir(file, res);
+        var req_ = { url : path.join(u.pathname, '/index.html') };
+        handler(req_, res, function () {
+          showDir(file, u.pathname, res);
         });
       }
       else {
