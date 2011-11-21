@@ -18,6 +18,7 @@ module.exports = function (dir) {
           res.end('ACCESS DENIED');
         }
       }
+      return;
     }
     
     fs.stat(file, function (err, s) {
@@ -39,7 +40,6 @@ module.exports = function (dir) {
         handler({ url : req.url + '/index.html' }, res, function () {
           showDir(file, res);
         });
-        res.end();
       }
       else {
         res.setHeader('content-type', mime.lookup(file));
