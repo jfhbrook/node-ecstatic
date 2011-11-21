@@ -52,7 +52,9 @@ This works more or less as you'd expect.
 
 # Contributing:
 
-This project's current implementation is extremely simplistic. If you find that it's not cutting the mustard: Please! Send a pull request! Or, at least, file an issue.
+This project's implementation is pretty much g2g (thanks @substack) but currently does not work in Union. This is because Union's response piping is currently broken.
+
+Once Union is fixed, this will work there as well.
 
 # License:
 
