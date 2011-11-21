@@ -1,14 +1,31 @@
 # Ecstatic
 
-*A simple static file server middleware that works with both Express and Flatiron*
+A simple static file server middleware that works with both Express and Flatiron
 
-# Example:
+* simple directory listings
+* show index.html files at directory roots when they exist
+* use it with a raw http server, connect/express, or flatiron/union
 
-```js
-var union = require("union"),
-    express = require("express"),
-    expressStatic = express.static(__dirname + '/public'),
-    ecstatic = require("./ecstatic")(__dirname + '/public');
+# Examples:
+
+## express
+
+``` js
+var express = require('express');
+var ecstatic = require('../')(__dirname + '/public');
+
+var app = express.createServer();
+app.use(ecstatic);
+app.listen(8080);
+
+console.log('Listening on :8080');
+```
+
+## union
+
+``` js
+var union = require('union');
+var ecstatic = require('../')(__dirname + '/public');
 
 union.createServer({
   before: [
@@ -16,39 +33,27 @@ union.createServer({
   ]
 }).listen(8080);
 
-express.createServer(ecstatic).listen(8081);
-
-console.log("union: localhost:8080");
-console.log("express: localhost:8081");
+console.log('Listening on :8080');
 ```
 
-## API:
+# API:
 
-### ecstatic(folder);
+## ecstatic(folder);
 
 Pass ecstatic a folder, and it will return your middleware!
 
-### middleware(req, res, next);
+## middleware(req, res, next);
 
 This works more or less as you'd expect.
 
-## Tests:
-
-Currently, the "test" consists of an example. You can run it with:
+# Tests:
 
     npm test
 
-If you can successfully hit the following urls it's working:
-
-* <http://localhost:8080/turtle.png>
-* <http://localhost:8080/hello.txt>
-* <http://localhost:8081/turtle.png>
-* <http://localhost:8081/hello.txt>
-
-## Contributing:
+# Contributing:
 
 This project's current implementation is extremely simplistic. If you find that it's not cutting the mustard: Please! Send a pull request! Or, at least, file an issue.
 
-## License:
+# License:
 
 MIT/X11.

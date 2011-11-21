@@ -1,30 +1,60 @@
-var path = require("path"),
-    mime = require("mime"),
-    fs = require("fs");
+var path = require('path');
+var fs = require('fs');
+var url = require('url');
 
-module.exports = function (p) {
+var mime = require('mime');
+var showDir = require('./lib/showdir');
 
-  return function (req, res, next) {
-
+module.exports = function (dir) {
+  var root = path.resolve(dir) + '/';
+  
+  return function handler (req, res, next) {
     // If there's a file, serve it up.
-    if (path.existsSync(p + req.url) && !fs.statSync(p + req.url).isDirectory()) {
-      fs.readFile(p + req.url, function (err, buff) {
-        if (err) {
-          console.log(err);
-          res.writeHead(500);
-          res.end();
-          return;
+    var u = url.parse(req.url);
+    var file = path.normalize(path.join(root, u.pathname));
+    
+    if (file.slice(0, root.length) !== root) {
+      if (next) next()
+      else {
+        res.statusCode = 403;
+        if (res.writable) {
+          res.setHeader('content-type', 'text/plain');
+          res.end('ACCESS DENIED');
         }
-
-        res.writeHead(200, { "Content-Type": mime.lookup(p + req.url) });
-        res.end(buff);
-      });
+      }
+      return;
     }
-    else {
-      // There's no file to return; Keep digging.
-      // Style decision here: calling 'next()' keeps backwards compat. with
-      // connect.
-      next();
-    }
+    
+    fs.stat(file, function (err, s) {
+      if (err && err.code === 'ENOENT') {
+        if (typeof next === 'function') next()
+        else {
+          res.statusCode = 404;
+          if (res.writable) {
+            res.setHeader('content-type', 'text/plain');
+            res.end('not found');
+          }
+        }
+      }
+      else if (err) {
+        res.statusCode = 500;
+        res.end(err && err.stack || err.toString());
+      }
+      else if (s.isDirectory()) {
+        var req_ = { url : path.join(u.pathname, '/index.html') };
+        handler(req_, res, function () {
+          showDir(file, u.pathname, res);
+        });
+      }
+      else {
+        res.setHeader('content-type', mime.lookup(file));
+        var s = fs.createReadStream(file);
+        s.pipe(res);
+        s.on('error', function (err) {
+          res.statusCode = 500;
+          if (res.writable) res.end(err && err.stack || err.toString());
+        });
+      }
+    });
   };
-}
+};
