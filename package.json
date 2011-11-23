@@ -31,10 +31,5 @@
     "request" : "2.2.x",
     "express" : "2.5.x",
     "union" : "0.1.x"
-  },
-  "directories" : {
-    "test" : "test",
-    "example" : "example",
-    "lib" : "."
   }
 }
