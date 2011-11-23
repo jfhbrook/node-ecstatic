@@ -8,7 +8,7 @@
     "type": "git",
     "url": "git@github.com:jesusabdullah/node-ecstatic.git"
   },
-  "main": "./ecstatic.js",
+  "main": "./lib/ecstatic.js",
   "scripts": {
     "test": "tap test/*.js"
   },
