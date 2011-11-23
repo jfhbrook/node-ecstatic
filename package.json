@@ -17,7 +17,8 @@
     "web",
     "server",
     "files",
-    "mime"
+    "mime",
+    "middleware"
   ],
   "engines": {
     "node": "*"
