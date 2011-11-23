@@ -1,5 +1,5 @@
 var test = require('tap').test;
-var ecstatic = require('../');
+var ecstatic = require('../lib/ecstatic');
 var express = require('express');
 var request = require('request');
 
