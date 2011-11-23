@@ -2,9 +2,9 @@
 
 A simple static file server middleware that works with both Express and Flatiron
 
-* simple directory listings
-* show index.html files at directory roots when they exist
-* use it with a raw http server, connect/express, or flatiron/union
+* Built-in simple directory listings
+* Shows index.html files at directory roots when they exist
+* Use it with a raw http server, express/connect, or flatiron/union!
 
 # Examples:
 
@@ -52,9 +52,7 @@ This works more or less as you'd expect.
 
 # Contributing:
 
-This project's implementation is pretty much g2g (thanks @substack) but currently does not work in Union. This is because Union's response piping is currently broken.
-
-Once Union is fixed, this will work there as well.
+This is still "beta" quality, and you may find bugs. Please give me a heads-up if you find any! Pull requests encouraged.
 
 # License:
 
