@@ -1,8 +1,9 @@
 var express = require('express');
-var ecstatic = require('../')(__dirname + '/public');
+var ecstatic = require('../lib/ecstatic');
 
 var app = express.createServer();
-app.use(ecstatic);
+app.use(ecstatic(__dirname + '/public'));
+app.use(ecstatic.showDir(__dirname + '/public'));
 app.listen(8080);
 
 console.log('Listening on :8080');

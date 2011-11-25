@@ -1,9 +1,10 @@
 var union = require('union');
-var ecstatic = require('../')(__dirname + '/public');
+var ecstatic = require('../');
 
 union.createServer({
   before: [
-    ecstatic
+    ecstatic(__dirname + '/public'),
+    ecstatic.showDir(__dirname + '/public')
   ]
 }).listen(8080);
 
