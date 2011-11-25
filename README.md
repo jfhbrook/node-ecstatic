@@ -12,10 +12,11 @@ A simple static file server middleware that works with both Express and Flatiron
 
 ``` js
 var express = require('express');
-var ecstatic = require('../')(__dirname + '/public');
+var ecstatic = require('../');;
 
 var app = express.createServer();
-app.use(ecstatic);
+app.use(ecstatic(__dirname + '/public'));
+app.use(ecstatic.showdir(__dirname + '/public'));
 app.listen(8080);
 
 console.log('Listening on :8080');
@@ -25,11 +26,12 @@ console.log('Listening on :8080');
 
 ``` js
 var union = require('union');
-var ecstatic = require('../')(__dirname + '/public');
+var ecstatic = require('../');
 
 union.createServer({
   before: [
-    ecstatic
+    ecstatic(__dirname + '/public'),
+    ecstatic.showdir(__dirname + '/public')
   ]
 }).listen(8080);
 
@@ -42,9 +44,13 @@ console.log('Listening on :8080');
 
 Pass ecstatic a folder, and it will return your middleware!
 
-## middleware(req, res, next);
+### middleware(req, res, next);
 
 This works more or less as you'd expect.
+
+## ecstatic.showdir(folder);
+
+This returns another middleware which will attempt to show a directory view. At the moment, you must add this explicitly for union and connect middleware stacks, so that one may chose actions other than showing a directory view if desired.
 
 # Tests:
 
