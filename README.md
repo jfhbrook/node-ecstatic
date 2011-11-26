@@ -52,7 +52,7 @@ This works more or less as you'd expect.
 
 ## ecstatic.showdir(folder);
 
-This returns another middleware which will attempt to show a directory view. At the moment, you must add this explicitly for union and connect middleware stacks, so that one may chose actions other than showing a directory view if desired.
+This returns another middleware which will attempt to show a directory view.
 
 # Tests:
 
