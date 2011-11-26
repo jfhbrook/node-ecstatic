@@ -40,9 +40,13 @@ console.log('Listening on :8080');
 
 # API:
 
-## ecstatic(folder);
+## ecstatic(folder, opts={});
 
 Pass ecstatic a folder, and it will return your middleware!
+
+Turn on cache-control with `opts.cache`, in seconds.
+
+Turn on directory listings from `ecstatic.showdir` with `opts.showdir === true`.
 
 ### middleware(req, res, next);
 
