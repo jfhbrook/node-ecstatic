@@ -16,7 +16,6 @@ var ecstatic = require('../');;
 
 var app = express.createServer();
 app.use(ecstatic(__dirname + '/public'));
-app.use(ecstatic.showdir(__dirname + '/public'));
 app.listen(8080);
 
 console.log('Listening on :8080');
@@ -31,7 +30,6 @@ var ecstatic = require('../');
 union.createServer({
   before: [
     ecstatic(__dirname + '/public'),
-    ecstatic.showdir(__dirname + '/public')
   ]
 }).listen(8080);
 
