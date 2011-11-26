@@ -44,7 +44,7 @@ Pass ecstatic a folder, and it will return your middleware!
 
 Turn on cache-control with `opts.cache`, in seconds.
 
-Turn on directory listings from `ecstatic.showdir` with `opts.autoIndex === true`.
+Turn on directory listings from `ecstatic.showDir` with `opts.autoIndex === true`.
 
 ### middleware(req, res, next);
 
@@ -57,10 +57,6 @@ This returns another middleware which will attempt to show a directory view.
 # Tests:
 
     npm test
-
-# Contributing:
-
-This is still "beta" quality, and you may find bugs. Please give me a heads-up if you find any! Pull requests encouraged.
 
 # License:
 
