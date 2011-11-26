@@ -44,15 +44,15 @@ Pass ecstatic a folder, and it will return your middleware!
 
 Turn on cache-control with `opts.cache`, in seconds.
 
-Turn on directory listings from `ecstatic.showDir` with `opts.autoIndex === true`.
+Turn off directory listings with `opts.autoIndex === false`.
 
 ### middleware(req, res, next);
 
 This works more or less as you'd expect.
 
-## ecstatic.showdir(folder);
+## ecstatic.showDir(folder);
 
-This returns another middleware which will attempt to show a directory view.
+This returns another middleware which will attempt to show a directory view. Turning on auto-indexing is roughly equivalent to adding this middleware after an ecstatic middleware with autoindexing disabled.
 
 # Tests:
 
