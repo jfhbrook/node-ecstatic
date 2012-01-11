@@ -36,6 +36,24 @@ union.createServer({
 console.log('Listening on :8080');
 ```
 
+## flatiron
+
+``` js
+var flatiron = require('flatiron');
+var ecstatic = require('ecstatic');
+
+app = new flatiron.App();
+app.use(flatiron.plugins.http);
+
+app.http.before = [
+  ecstatic(__dirname + '/public')
+];
+
+app.start(8080);
+
+console.log('Listening on :8080');
+```
+
 # API:
 
 ## ecstatic(folder, opts={});
