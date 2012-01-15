@@ -12,7 +12,7 @@ A simple static file server middleware that works with both Express and Flatiron
 
 ``` js
 var express = require('express');
-var ecstatic = require('../');;
+var ecstatic = require('ecstatic');
 
 var app = express.createServer();
 app.use(ecstatic(__dirname + '/public'));
@@ -25,7 +25,7 @@ console.log('Listening on :8080');
 
 ``` js
 var union = require('union');
-var ecstatic = require('../');
+var ecstatic = require('ecstatic');
 
 union.createServer({
   before: [
@@ -39,6 +39,7 @@ console.log('Listening on :8080');
 ## flatiron
 
 ``` js
+var union = require('union');
 var flatiron = require('flatiron');
 var ecstatic = require('ecstatic');
 
