@@ -3,7 +3,7 @@ var ecstatic = require('../lib/ecstatic');
 var express = require('express');
 var request = require('request');
 
-var root = __dirname + '/express';
+var root = __dirname + '/public';
 
 var fs = require('fs');
 var files = {
