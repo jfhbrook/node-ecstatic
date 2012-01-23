@@ -42,14 +42,20 @@ var files = {
     type : 'text/html',
     body : 'index!!!\n',
   },
-  '404' : {
-    code : 404
+  'thisIsA404.txt' : {
+    code : 404,
+    body: '<h1>404\'d!</h1>\n'
   }
+  /*, 'emptyDir': { // This one seems to time out.
+    code: 200
+  }*/
 };
 
 test('express', function (t) {
   var filenames = Object.keys(files);
-  t.plan(filenames.length * 3 - 2);
+
+  t.plan(filenames.length * 3 - 1);
+
   var port = Math.floor(Math.random() * ((1<<16) - 1e4) + 1e4);
   
   var app = express.createServer();
@@ -58,11 +64,12 @@ test('express', function (t) {
     var pending = filenames.length;
     filenames.forEach(function (file) {
       var uri = 'http://localhost:' + port + '/' + file;
+
       request.get(uri, function (err, res, body) {
         if (err) t.fail(err);
         var r = files[file];
         
-        t.equal(r.code, res.statusCode, 'code for ' + file);
+        t.equal( res.statusCode, r.code, 'code for ' + file);
         
         if (r.type !== undefined) {
           t.equal(
