@@ -4,16 +4,14 @@ var assert = require('assert');
 
 exports.type = 'express';
 
-exports.startServer = function (opts, cb) {
-
-  console.log(opts);
+exports.startServer = function (dir, cb) {
 
   // Just a randomized port
   var port = Math.floor(Math.random() * ((1<<16) - 1e4) + 1e4);
 
   var app = express.createServer();
 
-  app.use(ecstatic(opts));
+  app.use(ecstatic(dir));
 
   app.listen(port, function () {
     cb(port, app);

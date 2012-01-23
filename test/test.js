@@ -8,9 +8,7 @@ var fs = require('fs');
 var clientTests = require('./client');
 
 test('express', function (t) {
-  require('./express').startServer({
-    root: root
-  }, function (port, app) {
+  require('./express').startServer( root, function (port, app) {
     clientTests('localhost', port, t, function () {
       app.close();
       t.end();
