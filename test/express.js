@@ -11,7 +11,13 @@ exports.startServer = function (dir, cb) {
 
   var app = express.createServer();
 
-  app.use(ecstatic(dir));
+  app.use(ecstatic(dir, {
+    logger: console.error
+  }));
+
+  app.use(function (req, res) {
+    res.end('Request fell through ecstatic.');
+  });
 
   app.listen(port, function () {
     cb(port, app);
