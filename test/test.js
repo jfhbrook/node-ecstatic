@@ -1,17 +1,17 @@
-var test = require('tap').test;
+var vows = require('vows'),
+    assert = require('assert'),
+    utile = require('utile'),
+    util = require('util');
 
 var root = __dirname + '/public';
 
-console.log(root);
-
 var fs = require('fs');
-var clientTests = require('./client');
+var basic = require('./basic');
 
-test('express', function (t) {
-  require('./express').startServer( root, function (port, app) {
-    clientTests('localhost', port, t, function () {
-      app.close();
-      t.end();
-    });
-  });
-});
+var tests = basic(root, require('./union'));
+
+vows.describe('Ecstatic tests').addBatch(
+  basic(root, require('./express'))
+).addBatch(
+  basic(root, require('./union'))
+).export(module);

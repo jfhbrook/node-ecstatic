@@ -1,10 +1,10 @@
 var express = require('express');
 var ecstatic = require('../lib/ecstatic');
-var assert = require('assert');
 
 exports.type = 'express';
 
 exports.startServer = function (dir, cb) {
+  var host = 'localhost';
 
   // Just a randomized port
   var port = Math.floor(Math.random() * ((1<<16) - 1e4) + 1e4);
@@ -19,8 +19,8 @@ exports.startServer = function (dir, cb) {
     res.end('Request fell through ecstatic.');
   });
 
-  app.listen(port, function () {
-    cb(port, app);
-  });
+  app.listen(host, port);
+
+  cb(host, port, app);
 
 }
