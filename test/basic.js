@@ -53,9 +53,9 @@ module.exports = function (root, srv) {
       res = {};
 
   tests.topic = function () {
-    var self = this;
+    var cb = this.callback.bind(this);
 
-    srv.startServer(root, self.callback);
+    srv.startServer(root, cb);
   };
 
   Object.keys(files).forEach(function (f) {
@@ -64,40 +64,36 @@ module.exports = function (root, srv) {
         expected = files[f];
 
     test.topic = function (host, port, app) {
-      var cb = this.callback;
+      var cb = this.callback.bind(this);
       var uri = 'http://'+host+':' + port + '/' + f;
 
       request.get(uri, cb);
     };
 
-    test['does not throw'] = function (err, res, body) {
-      assert.doesNotThrow(function () { return err; });
-    }
-
     if (typeof(expected.code) !== undefined) {
-      test['returns status '+expected.code] = function (err, res, body) {
+      test['returns status '+expected.code] = function (res, body) {
         assert.equal(res.statusCode, expected.code);
       };
     }
 
     if (typeof(expected.type) !== undefined) {
-      test['content-type set to '+expected.type] = function (err, res, body) {
-        assert.equal(res.headers['content-type'], r.type);
+      test['content-type set to '+expected.type] = function (res, body) {
+        assert.equal(res.headers['content-type'], expected.type);
       }
     }
 
     if (typeof(expected.body) !== undefined) {
-      test['Contents of body are: '+expected.body] = function (err, res, body) {
-        assert.equal(body, r.body);
+      test['Contents of body are: '+expected.body] = function (res, body) {
+        assert.equal(body, expected.body);
       };
     }
 
-    tests['When requesting /'+f] = test;
+    tests['to request /'+f] = test;
 
   });
 
   if (srv.type) {
-    res['When using '+srv.type] = tests;
+    res['When using "'+srv.type+'"'] = tests;
   }
   else {
 

@@ -21,6 +21,6 @@ exports.startServer = function (dir, cb) {
 
   app.listen(host, port);
 
-  cb(host, port, app);
+  cb(null, host, port, app);
 
 }
