@@ -32,6 +32,9 @@ var files = {
     body : 'index!!!\n',
   },
   'subdir' : {
+    code : 301
+  },
+  'subdir/' : {
     code : 200,
     type : 'text/html',
     body : 'index!!!\n',
