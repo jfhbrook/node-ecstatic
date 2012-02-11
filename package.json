@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "mime" : "1.2.x",
+    "winston" : "0.5.9",
     "ent" : "0.0.x"
   },
   "devDependencies": {

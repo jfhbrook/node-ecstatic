@@ -64,7 +64,11 @@ module.exports = function (host, port, t, cb) {
       }
 
       var r = files[file];
-        
+
+      if (!res) {
+        t.fail(new Error('`res` is undefined.'));
+      }
+
       t.equal( res.statusCode, r.code, 'code for ' + file);
         
       if (r.type !== undefined) {
