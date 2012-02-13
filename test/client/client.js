@@ -60,8 +60,9 @@ module.exports = function (host, port, t, cb) {
 
     request.get(uri, function (err, res, body) {
       if (err) {
-        t.fail(err);
+        console.error(err.stack);
       }
+      t.notOk(err, 'should not have a request error');
 
       var r = files[file];
 
