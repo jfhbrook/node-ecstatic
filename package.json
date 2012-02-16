@@ -25,7 +25,8 @@
   },
   "dependencies": {
     "winston" : "0.5.9",
-    "ent" : "0.0.x"
+    "ent" : "0.0.x",
+    "utile": "0.4.10"
   },
   "bundledDependencies": [
     "mime"
