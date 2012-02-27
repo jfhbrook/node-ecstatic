@@ -31,8 +31,10 @@ var files = {
     type : 'text/html',
     body : 'index!!!\n',
   },
-  'subdir' : {
-    code : 301
+  'subdir' : { //no 301 here because request will redirect
+    code : 200,
+    type : 'text/html',
+    body : 'index!!!\n',
   },
   'subdir/' : {
     code : 200,
@@ -53,7 +55,7 @@ module.exports = function (host, port, t, cb) {
   var filenames = Object.keys(files),
       pending = filenames.length;
 
-  t.plan(filenames.length * 3 - 1);
+  t.plan(filenames.length * 4 - 1);
 
   filenames.forEach(function (file) {
     var uri = 'http://localhost:' + port + '/' + file;
@@ -71,18 +73,18 @@ module.exports = function (host, port, t, cb) {
       }
 
       t.equal( res.statusCode, r.code, 'code for ' + file);
-        
+
       if (r.type !== undefined) {
         t.equal(
           res.headers['content-type'], r.type,
           'content-type for ' + file
         );
       }
-        
+
       if (r.body !== undefined) {
         t.equal(body, r.body, 'body for ' + file);
       } else { console.error('BODY: '+body); }
-        
+
       if (--pending === 0) {
         cb();
       }
