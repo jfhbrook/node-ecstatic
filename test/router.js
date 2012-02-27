@@ -35,8 +35,8 @@ var files = {
     file: 'subdir/index.html'
   },
   'subdir' : {
-    statusCode : 200,
-    file: 'subdir/index.html'
+    statusCode : 301,
+    file: 'subdir' //just so it passes
   },
   'thisIsA404.txt' : {
     statusCode : 404,
