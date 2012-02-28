@@ -26,11 +26,9 @@
   "dependencies": {
     "winston" : "0.5.9",
     "ent" : "0.0.x",
-    "utile": "0.0.10"
+    "utile": "0.0.10",
+    "mime": "1.2.5"
   },
-  "bundledDependencies": [
-    "mime"
-  ],
   "devDependencies": {
     "tap" : "0.0.x",
     "request" : "2.2.x",
