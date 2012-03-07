@@ -38,6 +38,15 @@ var files = {
     statusCode : 301,
     file: 'subdir' //just so it passes
   },
+  'compress/foo.js' : {
+    statusCode : 200,
+    file: 'compress/foo.js.gz',
+    headers: {'accept-encoding': 'compress, gzip'}
+  },  
+  'compress/foo.js' : {
+    statusCode : 200,
+    file: 'compress/foo.js'
+  },
   'thisIsA404.txt' : {
     statusCode : 404,
     file: 'thisIsA404.txt'
@@ -47,12 +56,15 @@ var files = {
 var router = require('../lib/ecstatic/router');
 
 test('router', function (t) {
-  t.plan(19);
+  t.plan(21);
 
   Object.keys(files).forEach(function(f) {
+    var headers = files[f].headers || {};
+
     router({
       req: {
-        url: f
+        url: f,
+        headers: headers
       },
       res: {},
       root: path.resolve(__dirname, './public'),
