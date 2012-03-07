@@ -38,6 +38,15 @@ var files = {
     statusCode : 301,
     file: 'subdir' //just so it passes
   },
+  'compress/foo.js' : {
+    statusCode : 200,
+    file: 'compress/foo.js.gz',
+    headers: {'accept-encoding': 'compress, gzip'}
+  },
+  'compress/foo_2.js' : { // no accept-encoding of gzip, so serv regular file
+    statusCode : 200,
+    file: 'compress/foo_2.js' 
+  },
   'thisIsA404.txt' : {
     statusCode : 404,
     file: 'thisIsA404.txt'
@@ -47,18 +56,22 @@ var files = {
 var router = require('../lib/ecstatic/router');
 
 test('router', function (t) {
-  t.plan(19);
+  t.plan(23);
 
   Object.keys(files).forEach(function(f) {
+    var headers = files[f].headers || {};
+
     router({
       req: {
-        url: f
+        url: f,
+        headers: headers
       },
       res: {},
       root: path.resolve(__dirname, './public'),
       baseDir: '/',
       autoIndex: true,
-      showDir: true
+      showDir: true,
+      gzip : true
     }, function (err, received) {
       var expected = files[f];
 
