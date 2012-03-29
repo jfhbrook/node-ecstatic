@@ -44,10 +44,10 @@ var files = {
   'thisIsA404.txt' : {
     code : 404,
     body: '<h1>404\'d!</h1>\n'
-  }
-  /*, 'emptyDir': { // This one seems to time out.
+  },
+  'emptyDir': {
     code: 200
-  }*/
+  }
 };
 
 module.exports = function (host, port, t, cb) {
@@ -55,7 +55,7 @@ module.exports = function (host, port, t, cb) {
   var filenames = Object.keys(files),
       pending = filenames.length;
 
-  t.plan(filenames.length * 4 - 1);
+  t.plan(filenames.length * 4 - 3);
 
   filenames.forEach(function (file) {
     var uri = 'http://localhost:' + port + '/' + file;
