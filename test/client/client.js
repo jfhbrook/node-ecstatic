@@ -83,7 +83,7 @@ module.exports = function (host, port, t, cb) {
 
       if (r.body !== undefined) {
         t.equal(body, r.body, 'body for ' + file);
-      } else { console.error('BODY: '+body); }
+      }
 
       if (--pending === 0) {
         cb();

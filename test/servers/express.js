@@ -13,6 +13,7 @@ exports.startServer = function (dir, cb) {
 
   app.use(ecstatic({
     root: path.resolve(__dirname, '../public'),
+    log: console.error
   }));
 
   app.use(function (req, res) {
