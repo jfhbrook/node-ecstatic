@@ -5,11 +5,11 @@ var fs = require('fs'),
 
 var clientTests = require('./client/client');
 
-test('express', function (t) {
-  require('./servers/express').startServer(path.resolve(__dirname, 'public'),
+test('flatiron', function (t) {
+  require('./servers/flatiron').startServer(path.resolve(__dirname, 'public'),
   function (port, app) {
     clientTests('localhost', port, t, function () {
-      app.close();
+      app.server.close();
       t.end();
     });
   });

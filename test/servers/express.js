@@ -4,7 +4,7 @@ var path = require('path');
 
 exports.type = 'express';
 
-exports.startServer = function (dir, cb) {
+exports.startServer = function (root, cb) {
 
   // Just a randomized port
   var port = Math.floor(Math.random() * ((1<<16) - 1e4) + 1e4);
@@ -12,7 +12,7 @@ exports.startServer = function (dir, cb) {
   var app = express.createServer();
 
   app.use(ecstatic({
-    root: path.resolve(__dirname, '../public'),
+    root: root,
     log: console.error
   }));
 

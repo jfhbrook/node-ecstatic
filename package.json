@@ -24,15 +24,16 @@
     "node": "*"
   },
   "dependencies": {
-    "winston" : "0.5.9",
     "ent" : "0.0.x",
     "utile": "0.0.10",
-    "mime": "1.2.5"
+    "mime": "1.2.5",
+    "equip": "0.1.0"
   },
   "devDependencies": {
-    "tap" : "0.0.x",
+    "tap" : "0.2.x",
     "request" : "2.2.x",
     "express" : "2.5.x",
-    "union" : "0.1.x"
+    "union": "0.1.x",
+    "flatiron" : "0.1.x"
   }
 }
