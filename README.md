@@ -52,7 +52,7 @@ app.start(8080, function (err) {
 
 Pass ecstatic a hash of options, and it will return a middleware! Use ecstatic as a flatiron plugin, and it works similarly. The only required option is `root`.
 
-ecstatic was written as a middleware configuration function wrapped with [`equip.configurable`], and as such has the same api.
+ecstatic was written as a middleware configuration function wrapped with [`equip.configurable`](https://github.com/jesusabdullah/node-equip), and as such has the same api.
 
 ## options
 
