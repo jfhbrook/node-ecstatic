@@ -6,10 +6,10 @@ var path = require('path');
 
 app.use(flatiron.plugins.http);
 
-app.use(ecstatic, {
+app.http.before.push(ecstatic({
   root: path.join(__dirname, 'public'),
   log: app.log
-});
+}));
 
 app.start(8080, function (err) {
   if (err) {
