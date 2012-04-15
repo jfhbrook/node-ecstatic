@@ -1,5 +1,7 @@
 var request = require('request');
 
+// With autoindexing, showDir and error handling all turned off, each of these
+// should pass through our middleware no sweat...right?
 var files = {
   'subdir/index.html' : {
     code : 500,
