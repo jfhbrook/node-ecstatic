@@ -27,7 +27,7 @@
     "ent" : "0.0.x",
     "utile": "0.0.10",
     "mime": "1.2.5",
-    "equip": "0.1.0"
+    "equip": "0.1.1"
   },
   "devDependencies": {
     "tap" : "0.2.x",
