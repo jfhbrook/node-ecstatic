@@ -65,6 +65,8 @@ Turn on cache-control with `opts.cache`, in seconds.
 
 Turn off directory listings with `opts.autoIndex === false`.
 
+Turn on default file extensions with `opts.defaultExt`. If `opts.defaultExt` is true, it will default to `html`. For example if you want a request to /a-file to server /root/a-file.html set this to `true`. If you want to serve /root/a-file.json set `opts.defaultExt` to `json`.
+
 ### middleware(req, res, next);
 
 This works more or less as you'd expect.
