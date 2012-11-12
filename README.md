@@ -54,6 +54,12 @@ app.start(8080);
 
 console.log('Listening on :8080');
 ```
+### fall through
+To allow fall through to your custom routes:
+
+```js
+ecstatic(__dirname + '/public', {handleError: false})
+```
 
 # API:
 
