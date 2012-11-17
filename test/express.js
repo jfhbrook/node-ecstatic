@@ -53,7 +53,7 @@ test('express', function (t) {
   var port = Math.floor(Math.random() * ((1<<16) - 1e4) + 1e4);
   
   var app = express.createServer();
-  app.use(ecstatic(root));
+  app.use(ecstatic({ root: root }));
   app.listen(port, function () {
     var pending = filenames.length;
     filenames.forEach(function (file) {
