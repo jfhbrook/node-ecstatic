@@ -38,6 +38,9 @@ var files = {
     body : 'index!!!\n',
   },
   'subdir' : {
+    code : 302
+  },
+  'subdir/' : {
     code : 200,
     type : 'text/html',
     body : 'index!!!\n',
@@ -49,7 +52,7 @@ var files = {
 
 test('express', function (t) {
   var filenames = Object.keys(files);
-  t.plan(filenames.length * 3 - 2);
+  t.plan(filenames.length * 3 - 4);
   var port = Math.floor(Math.random() * ((1<<16) - 1e4) + 1e4);
   
   var app = express.createServer();
@@ -58,10 +61,12 @@ test('express', function (t) {
     var pending = filenames.length;
     filenames.forEach(function (file) {
       var uri = 'http://localhost:' + port + '/' + file;
-      request.get(uri, function (err, res, body) {
+      request.get({
+        uri: uri,
+        followRedirect: false
+      }, function (err, res, body) {
         if (err) t.fail(err);
         var r = files[file];
-        
         t.equal(r.code, res.statusCode, 'code for ' + file);
         
         if (r.type !== undefined) {
