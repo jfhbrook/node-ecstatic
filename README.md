@@ -1,5 +1,4 @@
-[![build status](https://secure.travis-ci.org/jesusabdullah/node-ecstatic.png)](http://travis-ci.org/jesusabdullah/node-ecstatic)
-# Ecstatic
+# Ecstatic [![build status](https://secure.travis-ci.org/jesusabdullah/node-ecstatic.png)](http://travis-ci.org/jesusabdullah/node-ecstatic)
 
 A simple static file server middleware that works with both Express and Flatiron
 
@@ -16,7 +15,7 @@ var express = require('express');
 var ecstatic = require('ecstatic');
 
 var app = express.createServer();
-app.use(ecstatic(__dirname + '/public'));
+app.use(ecstatic({ root: __dirname + '/public' }));
 app.listen(8080);
 
 console.log('Listening on :8080');
@@ -30,7 +29,7 @@ var ecstatic = require('ecstatic');
 
 union.createServer({
   before: [
-    ecstatic(__dirname + '/public'),
+    ecstatic({ root: __dirname + '/public' }),
   ]
 }).listen(8080);
 
@@ -48,7 +47,7 @@ app = new flatiron.App();
 app.use(flatiron.plugins.http);
 
 app.http.before = [
-  ecstatic(__dirname + '/public')
+  ecstatic({ root: __dirname + '/public' })
 ];
 
 app.start(8080);
@@ -59,14 +58,16 @@ console.log('Listening on :8080');
 To allow fall through to your custom routes:
 
 ```js
-ecstatic(__dirname + '/public', {handleError: false})
+ecstatic({ root: __dirname + '/public', handleError: false })
 ```
 
 # API:
 
-## ecstatic(folder, opts={});
+## ecstatic(opts);
 
-Pass ecstatic a folder, and it will return your middleware!
+Pass ecstatic an options hash, and it will return your middleware!
+
+`opts.root` is the directory you want to serve up.
 
 Turn on cache-control with `opts.cache`, in seconds.
 
