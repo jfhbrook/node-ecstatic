@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/jesusabdullah/node-ecstatic.png)](http://travis-ci.org/jesusabdullah/node-ecstatic)
 # Ecstatic
 
 A simple static file server middleware that works with both Express and Flatiron
