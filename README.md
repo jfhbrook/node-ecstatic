@@ -36,21 +36,15 @@ union.createServer({
 console.log('Listening on :8080');
 ```
 
-## flatiron
+## stock http server
 
 ``` js
-var union = require('union');
-var flatiron = require('flatiron');
+var http = require('http');
 var ecstatic = require('ecstatic');
 
-app = new flatiron.App();
-app.use(flatiron.plugins.http);
-
-app.http.before = [
+http.createServer(
   ecstatic({ root: __dirname + '/public' })
-];
-
-app.start(8080);
+).listen(8080);
 
 console.log('Listening on :8080');
 ```
