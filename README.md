@@ -2,11 +2,8 @@
 
 ![](http://imgur.com/vhub5.png)
 
-A simple static file server middleware.
-
-* Built-in simple directory listings
-* Shows index.html files at directory roots when they exist
-* Use it with a raw http server, express/connect, or flatiron/union!
+A simple static file server middleware. Use it with a raw http server,
+express/connect, or flatiron/union!
 
 # Examples:
 
