@@ -74,11 +74,18 @@ resolve to `./public/index.html`.
 Customize cache control with `opts.cache`, in seconds. Time defaults to 3600 s
 (ie, 1 hour).
 
-Turn **on** directory listings with `opts.showDir === true`. Turn **on** autoIndexing
-with `opts.autoIndex === true`. Defaults to **false**.
+Turn **on** directory listings with `opts.showDir === true`. Turn **on**
+autoIndexing with `opts.autoIndex === true`. Defaults to **false**.
 
 Turn on default file extensions with `opts.defaultExt`. If `opts.defaultExt` is
-true, it will default to `html`. For example if you want a request to /a-file to server /root/a-file.html set this to `true`. If you want to serve /root/a-file.json set `opts.defaultExt` to `json`.
+true, it will default to `html`. For example if you want a request to `/a-file`
+to resolve to `./public/a-file.html`, set this to `true`. If you want
+`/a-file` to resolve to `./public/a-file.json` instead, set `opts.defaultExt` to
+`json`.
+
+Set `opts.gzip === true` in order to turn on "gzip mode," wherein ecstatic will
+serve `./public/some-file.js.gz` in place of `./public/some-file.js` when the
+gzipped version exists and ecstatic determines that the behavior is appropriate.
 
 ### middleware(req, res, next);
 
