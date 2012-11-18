@@ -50,7 +50,16 @@ var files = {
   },
   '404' : {
     code : 404
-  }
+  },
+  'compress/foo.js' : {
+    code : 200,
+    file: 'compress/foo.js.gz',
+    headers: {'accept-encoding': 'compress, gzip'}
+  },
+  'compress/foo_2.js' : { // no accept-encoding of gzip, so serve regular file
+    code : 200,
+    file: 'compress/foo_2.js' 
+  },
 };
 
 test('express', function (t) {
@@ -62,14 +71,17 @@ test('express', function (t) {
   app.listen(port, function () {
     var pending = filenames.length;
     filenames.forEach(function (file) {
-      var uri = 'http://localhost:' + port + '/' + file;
+      var uri = 'http://localhost:' + port + '/' + file,
+          headers = files[file].headers || {};
+
       request.get({
         uri: uri,
-        followRedirect: false
+        followRedirect: false,
+        headers: headers
       }, function (err, res, body) {
         if (err) t.fail(err);
         var r = files[file];
-        t.equal(r.code, res.statusCode, 'code for ' + file);
+        t.equal(res.statusCode, r.code, 'code for ' + file);
         
         if (r.type !== undefined) {
           t.equal(
