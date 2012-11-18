@@ -1,6 +1,6 @@
 # Ecstatic [![build status](https://secure.travis-ci.org/jesusabdullah/node-ecstatic.png)](http://travis-ci.org/jesusabdullah/node-ecstatic)
 
-A simple static file server middleware that works with both Express and Flatiron
+A simple static file server middleware.
 
 * Built-in simple directory listings
 * Shows index.html files at directory roots when they exist
