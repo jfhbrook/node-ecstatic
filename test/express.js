@@ -1,11 +1,14 @@
-var test = require('tap').test;
-var ecstatic = require('../lib/ecstatic');
-var express = require('express');
-var request = require('request');
+var test = require('tap').test,
+    ecstatic = require('../lib/ecstatic'),
+    express = require('express'),
+    request = require('request'),
+    mkdirp = require('mkdirp'),
+    fs = require('fs');
 
 var root = __dirname + '/public';
 
-var fs = require('fs');
+mkdirp.sync(root + '/emptyDir');
+
 var files = {
   'a.txt' : {
     code : 200,
