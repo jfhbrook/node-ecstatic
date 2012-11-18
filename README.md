@@ -1,5 +1,7 @@
 # Ecstatic [![build status](https://secure.travis-ci.org/jesusabdullah/node-ecstatic.png)](http://travis-ci.org/jesusabdullah/node-ecstatic)
 
+![](http://imgur.com/vhub5.png)
+
 A simple static file server middleware.
 
 * Built-in simple directory listings
