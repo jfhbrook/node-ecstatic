@@ -8,15 +8,16 @@ A simple static file server middleware that works with both Express and Flatiron
 
 # Examples:
 
-## express
+## express 3.0.x
 
 ``` js
+var http = require('http');
 var express = require('express');
 var ecstatic = require('ecstatic');
 
-var app = express.createServer();
+var app = express();
 app.use(ecstatic({ root: __dirname + '/public' }));
-app.listen(8080);
+http.createServer(app).listen(8080);
 
 console.log('Listening on :8080');
 ```

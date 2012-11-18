@@ -1,5 +1,6 @@
 var test = require('tap').test,
     ecstatic = require('../lib/ecstatic'),
+    http = require('http'),
     express = require('express'),
     request = require('request'),
     mkdirp = require('mkdirp'),
@@ -72,7 +73,7 @@ test('express', function (t) {
   var filenames = Object.keys(files);
   var port = Math.floor(Math.random() * ((1<<16) - 1e4) + 1e4);
   
-  var app = express.createServer();
+  var app = express();
 
   app.use(ecstatic({
     root: root,
@@ -80,7 +81,9 @@ test('express', function (t) {
     baseDir: baseDir
   }));
 
-  app.listen(port, function () {
+  var server = http.createServer(app);
+
+  server.listen(port, function () {
     var pending = filenames.length;
     filenames.forEach(function (file) {
       var uri = 'http://localhost:' + port + path.join('/', baseDir, file),
@@ -107,7 +110,7 @@ test('express', function (t) {
         }
         
         if (--pending === 0) {
-          app.close();
+          server.close();
           t.end();
         }
       });
