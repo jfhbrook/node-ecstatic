@@ -99,7 +99,7 @@ test('union', function (t) {
         
         if (r.type !== undefined) {
           t.equal(
-            res.headers['content-type'], r.type,
+            res.headers['content-type'].split(';')[0], r.type,
             'content-type for `' + file + '`'
           );
         }
