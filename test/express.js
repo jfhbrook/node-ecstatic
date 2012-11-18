@@ -3,9 +3,11 @@ var test = require('tap').test,
     express = require('express'),
     request = require('request'),
     mkdirp = require('mkdirp'),
-    fs = require('fs');
+    fs = require('fs'),
+    path = require('path');
 
-var root = __dirname + '/public';
+var root = __dirname + '/public',
+    baseDir = 'base';
 
 mkdirp.sync(root + '/emptyDir');
 
@@ -56,10 +58,14 @@ var files = {
     file: 'compress/foo.js.gz',
     headers: {'accept-encoding': 'compress, gzip'}
   },
-  'compress/foo_2.js' : { // no accept-encoding of gzip, so serve regular file
+  // no accept-encoding of gzip, so serve regular file
+  'compress/foo_2.js' : {
     code : 200,
     file: 'compress/foo_2.js' 
   },
+  'emptyDir/': {
+    code: 404 // showDir is off
+  }
 };
 
 test('express', function (t) {
@@ -67,11 +73,17 @@ test('express', function (t) {
   var port = Math.floor(Math.random() * ((1<<16) - 1e4) + 1e4);
   
   var app = express.createServer();
-  app.use(ecstatic({ root: root, gzip: true }));
+
+  app.use(ecstatic({
+    root: root,
+    gzip: true,
+    baseDir: baseDir
+  }));
+
   app.listen(port, function () {
     var pending = filenames.length;
     filenames.forEach(function (file) {
-      var uri = 'http://localhost:' + port + '/' + file,
+      var uri = 'http://localhost:' + port + path.join('/', baseDir, file),
           headers = files[file].headers || {};
 
       request.get({
@@ -81,17 +93,17 @@ test('express', function (t) {
       }, function (err, res, body) {
         if (err) t.fail(err);
         var r = files[file];
-        t.equal(res.statusCode, r.code, 'code for ' + file);
+        t.equal(res.statusCode, r.code, 'status code for `' + file + '`');
         
         if (r.type !== undefined) {
           t.equal(
             res.headers['content-type'], r.type,
-            'content-type for ' + file
+            'content-type for `' + file + '`'
           );
         }
         
         if (r.body !== undefined) {
-          t.equal(body, r.body, 'body for ' + file);
+          t.equal(body, r.body, 'body for `' + file + '`');
         }
         
         if (--pending === 0) {
