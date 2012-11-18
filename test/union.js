@@ -64,7 +64,7 @@ var files = {
     file: 'compress/foo_2.js' 
   },
   'emptyDir/': {
-    code: 404 // showDir is off
+    code: 200
   }
 };
 
@@ -77,7 +77,9 @@ test('union', function (t) {
       ecstatic({
         root: root,
         gzip: true,
-        baseDir: baseDir
+        baseDir: baseDir,
+        autoIndex: true,
+        showDir: true
       })
     ]
   });

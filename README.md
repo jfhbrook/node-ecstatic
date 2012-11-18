@@ -74,7 +74,8 @@ resolve to `./public/index.html`.
 Customize cache control with `opts.cache`, in seconds. Time defaults to 3600 s
 (ie, 1 hour).
 
-Turn off directory listings with `opts.autoIndex === false`.
+Turn **on** directory listings with `opts.showDir === true`. Turn **on** autoIndexing
+with `opts.autoIndex === true`. Defaults to **false**.
 
 Turn on default file extensions with `opts.defaultExt`. If `opts.defaultExt` is
 true, it will default to `html`. For example if you want a request to /a-file to server /root/a-file.html set this to `true`. If you want to serve /root/a-file.json set `opts.defaultExt` to `json`.
