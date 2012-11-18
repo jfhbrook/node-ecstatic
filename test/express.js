@@ -3,7 +3,7 @@ var ecstatic = require('../lib/ecstatic');
 var express = require('express');
 var request = require('request');
 
-var root = __dirname + '/express';
+var root = __dirname + '/public';
 
 var fs = require('fs');
 var files = {
@@ -52,11 +52,10 @@ var files = {
 
 test('express', function (t) {
   var filenames = Object.keys(files);
-  t.plan(filenames.length * 3 - 4);
   var port = Math.floor(Math.random() * ((1<<16) - 1e4) + 1e4);
   
   var app = express.createServer();
-  app.use(ecstatic({ root: root }));
+  app.use(ecstatic({ root: root, gzip: true }));
   app.listen(port, function () {
     var pending = filenames.length;
     filenames.forEach(function (file) {
