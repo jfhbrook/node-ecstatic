@@ -64,11 +64,18 @@ Pass ecstatic an options hash, and it will return your middleware!
 
 `opts.root` is the directory you want to serve up.
 
-Turn on cache-control with `opts.cache`, in seconds.
+`opts.baseDir` is `/` by default, but can be changed to allow your static files
+to be served off a specific route. For example, if `opts.baseDir === "blog"`
+and `opts.root = "./public"`, requests for `localhost:8080/blog/index.html` will
+resolve to `./public/index.html`.
+
+Customize cache control with `opts.cache`, in seconds. Time defaults to 3600 s
+(ie, 1 hour).
 
 Turn off directory listings with `opts.autoIndex === false`.
 
-Turn on default file extensions with `opts.defaultExt`. If `opts.defaultExt` is true, it will default to `html`. For example if you want a request to /a-file to server /root/a-file.html set this to `true`. If you want to serve /root/a-file.json set `opts.defaultExt` to `json`.
+Turn on default file extensions with `opts.defaultExt`. If `opts.defaultExt` is
+true, it will default to `html`. For example if you want a request to /a-file to server /root/a-file.html set this to `true`. If you want to serve /root/a-file.json set `opts.defaultExt` to `json`.
 
 ### middleware(req, res, next);
 
