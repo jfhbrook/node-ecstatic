@@ -68,7 +68,7 @@ var files = {
   }
 };
 
-test('union', function (t) {
+test('http', function (t) {
   var filenames = Object.keys(files);
   var port = Math.floor(Math.random() * ((1<<16) - 1e4) + 1e4);
   
