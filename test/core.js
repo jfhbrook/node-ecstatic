@@ -68,7 +68,7 @@ var files = {
   }
 };
 
-test('http', function (t) {
+test('core', function (t) {
   var filenames = Object.keys(files);
   var port = Math.floor(Math.random() * ((1<<16) - 1e4) + 1e4);
   
