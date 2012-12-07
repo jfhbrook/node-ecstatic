@@ -8,7 +8,7 @@ express/connect, or flatiron/union!
 # Examples:
 
 ## express 3.0.x
-
+<a href="https://runnable.com/#jesusabdullah/ecstatic-express/server.js/launch" target="_blank"><img src="https://runnable.com/external/styles/assets/runnablebtn.png" style="width:67px;height:25px;"></a>
 ``` js
 var http = require('http');
 var express = require('express');
@@ -22,7 +22,7 @@ console.log('Listening on :8080');
 ```
 
 ## union
-
+<a href="https://runnable.com/#jesusabdullah/ecstatic-union/server.js/launch" target="_blank"><img src="https://runnable.com/external/styles/assets/runnablebtn.png" style="width:67px;height:25px;"></a>
 ``` js
 var union = require('union');
 var ecstatic = require('ecstatic');
@@ -37,7 +37,7 @@ console.log('Listening on :8080');
 ```
 
 ## stock http server
-
+<a href="https://runnable.com/#jesusabdullah/ecstatic-http/server.js/launch" target="_blank"><img src="https://runnable.com/external/styles/assets/runnablebtn.png" style="width:67px;height:25px;"></a>
 ``` js
 var http = require('http');
 var ecstatic = require('ecstatic');
