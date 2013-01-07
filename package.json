@@ -12,7 +12,8 @@
   "scripts": {
     "test": "tap test/*.js"
   },
-  "keywords" : [
+  "bin": "./lib/ecstatic.js",
+  "keywords": [
     "static",
     "web",
     "server",
@@ -24,14 +25,15 @@
     "node": "*"
   },
   "dependencies": {
-    "mime" : "1.2.7",
-    "ent" : "0.0.x"
+    "mime": "1.2.7",
+    "ent": "0.0.x",
+    "optimist": "~0.3.5"
   },
   "devDependencies": {
-    "tap" : "0.3.x",
-    "request" : "2.12.x",
-    "express" : "3.0.x",
-    "union" : "0.3.x",
+    "tap": "0.3.x",
+    "request": "2.12.x",
+    "express": "3.0.x",
+    "union": "0.3.x",
     "mkdirp": "0.3.x"
   }
 }
