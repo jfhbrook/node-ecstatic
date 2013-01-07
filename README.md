@@ -119,6 +119,14 @@ This works more or less as you'd expect.
 
 This returns another middleware which will attempt to show a directory view. Turning on auto-indexing is roughly equivalent to adding this middleware after an ecstatic middleware with autoindexing disabled.
 
+### `ecstatic` command
+
+to start a standalone static http server,
+run `npm install -g ecstatic` and then run `ecstatic [dir?] [options] --port PORT`
+all options work as above, passed in [optimist](https://github.com/substack/optimist) style.
+`port` defaults to `8000`. If a `dir` or `--root dir` argument is not passed, ecsatic will
+serve the current dir.
+
 # Tests:
 
     npm test
