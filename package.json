@@ -21,9 +21,6 @@
     "mime",
     "middleware"
   ],
-  "engines": {
-    "node": "*"
-  },
   "dependencies": {
     "mime": "1.2.7",
     "ent": "0.0.x",
