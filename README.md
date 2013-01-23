@@ -73,6 +73,9 @@ var opts = {
            }
 ```
 
+If `opts` is a string, the string is assigned to the root folder and all other
+options are set to their defaults.
+
 ### `opts.root` 
 
 `opts.root` is the directory you want to serve up.
