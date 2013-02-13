@@ -94,12 +94,12 @@ Customize cache control with `opts.cache`, in seconds. Time defaults to 3600 s
 
 ### `opts.showDir`
 
-Turn **on** directory listings with `opts.showDir === true`. 
+Turn **on** directory listings with `opts.showDir === true`. Defaults to **false**.
 
 ### `opts.autoIndex`
 
 Serve `/path/index.html` when `/path/` is requested.
-Turn **on** autoIndexing with `opts.autoIndex === true`. Defaults to **false**.
+Turn **off** autoIndexing with `opts.autoIndex === true`. Defaults to **true**.
 
 ### `opts.defaultExt`
 
