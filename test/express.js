@@ -80,7 +80,8 @@ test('express', function (t) {
     gzip: true,
     baseDir: baseDir,
     autoIndex: true,
-    showDir: true
+    showDir: true,
+    cache: "no-cache"
   }));
 
   var server = http.createServer(app);
@@ -99,6 +100,10 @@ test('express', function (t) {
         if (err) t.fail(err);
         var r = files[file];
         t.equal(res.statusCode, r.code, 'status code for `' + file + '`');
+
+        if (r.code === 200) {
+            t.equal(res.headers['cache-control'], 'no-cache', 'cache control for `' + file + '`');
+        };
         
         if (r.type !== undefined) {
           t.equal(
