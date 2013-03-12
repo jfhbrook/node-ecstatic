@@ -89,8 +89,8 @@ resolve to `./public/index.html`.
 
 ### `opts.cache`
 
-Customize cache control with `opts.cache`, in seconds. Time defaults to 3600 s
-(ie, 1 hour).
+Customize cache control with `opts.cache` , if it is a number then it will set max-age in seconds.
+Other wise it will pass through directly to cache-control. Time defaults to 3600 s (ie, 1 hour).
 
 ### `opts.showDir`
 
