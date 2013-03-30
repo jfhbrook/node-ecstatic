@@ -99,7 +99,7 @@ Turn **on** directory listings with `opts.showDir === true`. Defaults to **false
 ### `opts.autoIndex`
 
 Serve `/path/index.html` when `/path/` is requested.
-Turn **off** autoIndexing with `opts.autoIndex === true`. Defaults to **true**.
+Turn **off** autoIndexing with `opts.autoIndex === false`. Defaults to **true**.
 
 ### `opts.defaultExt`
 
