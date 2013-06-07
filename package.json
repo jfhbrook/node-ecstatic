@@ -22,7 +22,7 @@
     "middleware"
   ],
   "dependencies": {
-    "mime": "1.2.7",
+    "mime": "1.2.x",
     "ent": "0.0.x",
     "optimist": "~0.3.5"
   },
