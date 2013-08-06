@@ -3,12 +3,10 @@ var test = require('tap').test,
     http = require('http')
 ;
 
+var server;
+
 test('malformed uri', function (t) {
-  t.plan(1);
-  var server = http.createServer(ecstatic(__dirname));
-  t.on('end', function () {
-    server.close();
-  });
+  server = http.createServer(ecstatic(__dirname));
   
   server.listen(0, function () {
     var r = http.get({
@@ -18,6 +16,17 @@ test('malformed uri', function (t) {
     });
     r.on('response', function (res) {
       t.equal(res.statusCode, 400);
+      t.end();
     });
   });
+});
+
+test('server teardown', function (t) {
+  server.close();
+
+  var to = setTimeout(function () {
+    process.stderr.write('# server not closing; slaughtering process.\n');
+    process.exit(0);
+  }, 5000);
+  t.end();
 });
