@@ -43,7 +43,12 @@ var files = {
     body : 'index!!!\n',
   },
   'subdir' : {
-    code : 302
+    code : 302,
+    location: 'subdir/'
+  },
+  'subdir?foo=bar': {
+    code: 302,
+    location: 'subdir/?foo=bar'
   },
   'subdir/' : {
     code : 200,
@@ -106,6 +111,10 @@ test('core', function (t) {
         
         if (r.body !== undefined) {
           t.equal(body, r.body, 'body for `' + file + '`');
+        }
+
+        if (r.location !== undefined) {
+          t.equal(res.headers.location, path.join('/', baseDir, r.location), 'location for `' + file + '`');
         }
         
         if (--pending === 0) {
