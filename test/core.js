@@ -70,6 +70,15 @@ var files = {
   },
   'emptyDir/': {
     code: 200
+  },
+  'subdir_with space' : {
+    code: 302,
+    location: 'subdir_with space/'
+  },
+  'subdir_with space/index.html' : {
+    code: 200,
+    type: 'text/html',
+    body: 'index :)\n'
   }
 };
 
