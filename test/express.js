@@ -52,7 +52,14 @@ var files = {
     body : 'index!!!\n',
   },
   '404' : {
-    code : 404
+    code : 200,
+    type : 'text/html',
+    body : '<h1>404</h1>\n'
+  },
+  'something-non-existant' : {
+    code : 200,
+    type : 'text/html',
+    body : '<h1>404</h1>\n'
   },
   'compress/foo.js' : {
     code : 200,
@@ -81,7 +88,8 @@ test('express', function (t) {
     baseDir: baseDir,
     autoIndex: true,
     showDir: true,
-    cache: "no-cache"
+    cache: "no-cache",
+    handleError: true
   }));
 
   var server = http.createServer(app);
