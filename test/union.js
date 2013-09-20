@@ -51,7 +51,14 @@ var files = {
     body : 'index!!!\n',
   },
   '404' : {
-    code : 404
+    code : 200,
+    type: 'text/html',
+    body: '<h1>404</h1>\n'
+  },
+  'something-non-existant' : {
+    code : 200,
+    type: 'text/html',
+    body: '<h1>404</h1>\n'
   },
   'compress/foo.js' : {
     code : 200,
@@ -79,7 +86,8 @@ test('union', function (t) {
         gzip: true,
         baseDir: baseDir,
         autoIndex: true,
-        showDir: true
+        showDir: true,
+        handleError: true
       })
     ]
   });
