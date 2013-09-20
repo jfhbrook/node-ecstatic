@@ -115,6 +115,10 @@ Set `opts.gzip === true` in order to turn on "gzip mode," wherein ecstatic will
 serve `./public/some-file.js.gz` in place of `./public/some-file.js` when the
 gzipped version exists and ecstatic determines that the behavior is appropriate.
 
+### `opts.handleError`
+
+Turn **off** handleErrors to allow fall-through with `opts.handleError === false`, Defaults to **true**.
+
 ## middleware(req, res, next);
 
 This works more or less as you'd expect.
