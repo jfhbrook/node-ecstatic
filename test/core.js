@@ -86,6 +86,11 @@ var files = {
     code: 200,
     type: 'text/html',
     body: 'index :)\n'
+  },
+  'something-non-existant%00.png': {
+    code: 200,
+    type: 'text/html',
+    body: '<h1>404</h1>\n'
   }
 };
 
