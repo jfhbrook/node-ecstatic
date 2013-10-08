@@ -141,4 +141,4 @@ serve the current dir.
 
 # License:
 
-MIT/X11.
+MIT.
