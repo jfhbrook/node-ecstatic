@@ -131,7 +131,7 @@ This returns another middleware which will attempt to show a directory view. Tur
 
 to start a standalone static http server,
 run `npm install -g ecstatic` and then run `ecstatic [dir?] [options] --port PORT`
-all options work as above, passed in [optimist](https://github.com/substack/optimist) style.
+all options work as above, passed in [optimist](https://github.com/substack/node-optimist) style.
 `port` defaults to `8000`. If a `dir` or `--root dir` argument is not passed, ecsatic will
 serve the current dir.
 
