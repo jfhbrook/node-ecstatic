@@ -37,6 +37,18 @@ var files = {
     type : 'text/html',
     body : '<b>e!!</b>\n',
   },
+  // test for defaultExt
+  'subdir/e?foo=bar' : {
+    code : 200,
+    type : 'text/html',
+    body : '<b>e!!</b>\n',
+  },
+  // test for defaultExt with noisy query param
+  'subdir/e?foo=bar.ext' : {
+    code : 200,
+    type : 'text/html',
+    body : '<b>e!!</b>\n',
+  },
   'subdir/index.html' : {
     code : 200,
     type : 'text/html',
@@ -50,6 +62,7 @@ var files = {
     code: 302,
     location: 'subdir/?foo=bar'
   },
+  // test for url-encoded paths
   '%E4%B8%AD%E6%96%87' : {  // '/中文'
     code : 302,
     location: '%E4%B8%AD%E6%96%87/'
@@ -113,6 +126,7 @@ test('core', function (t) {
       baseDir: baseDir,
       autoIndex: true,
       showDir: true,
+      defaultExt: 'html',
       handleError: true
     })
   );
