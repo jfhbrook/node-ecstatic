@@ -1,5 +1,9 @@
 var http = require('http');
-var ecstatic = require('../lib/ecstatic')(__dirname + '/public');
+var ecstatic = require('../lib/ecstatic')({
+  root: __dirname + '/public',
+  showDir: true,
+  autoIndex: true
+});
 
 http.createServer(ecstatic).listen(8080);
 
