@@ -11,74 +11,12 @@ var root = __dirname + '/public',
 
 mkdirp.sync(root + '/emptyDir');
 
-var files = {
-  'a.txt' : {
-    code : 200,
-    type : 'text/plain',
-    body : 'A!!!\n',
-  },
-  'b.txt' : {
-    code : 200,
-    type : 'text/plain',
-    body : 'B!!!\n',
-  },
-  'c.js' : {
-    code : 200,
-    type : 'application/javascript',
-    body : 'console.log(\'C!!!\');\n',
-  },
-  'd.js' : {
-    code : 200,
-    type : 'application/javascript',
-    body : 'console.log(\'C!!!\');\n',
-  },
-  'subdir/e.html' : {
-    code : 200,
-    type : 'text/html',
-    body : '<b>e!!</b>\n',
-  },
-  'subdir/index.html' : {
-    code : 200,
-    type : 'text/html',
-    body : 'index!!!\n',
-  },
-  'subdir' : {
-    code : 302
-  },
-  'subdir/' : {
-    code : 200,
-    type : 'text/html',
-    body : 'index!!!\n',
-  },
-  '404' : {
-    code : 200,
-    type: 'text/html',
-    body: '<h1>404</h1>\n'
-  },
-  'something-non-existant' : {
-    code : 200,
-    type: 'text/html',
-    body: '<h1>404</h1>\n'
-  },
-  'compress/foo.js' : {
-    code : 200,
-    file: 'compress/foo.js.gz',
-    headers: {'accept-encoding': 'compress, gzip'}
-  },
-  // no accept-encoding of gzip, so serve regular file
-  'compress/foo_2.js' : {
-    code : 200,
-    file: 'compress/foo_2.js' 
-  },
-  'emptyDir/': {
-    code: 200
-  }
-};
+var testCases = require('./common-testCases').testCases;
 
 test('union', function (t) {
-  var filenames = Object.keys(files);
+  var filenames = Object.keys(testCases);
   var port = Math.floor(Math.random() * ((1<<16) - 1e4) + 1e4);
-  
+
   var server = union.createServer({
     before: [
       ecstatic({
@@ -87,6 +25,7 @@ test('union', function (t) {
         baseDir: baseDir,
         autoIndex: true,
         showDir: true,
+        defaultExt: 'html',
         handleError: true
       })
     ]
@@ -96,7 +35,7 @@ test('union', function (t) {
     var pending = filenames.length;
     filenames.forEach(function (file) {
       var uri = 'http://localhost:' + port + path.join('/', baseDir, file),
-          headers = files[file].headers || {};
+          headers = testCases[file].headers || {};
 
       request.get({
         uri: uri,
@@ -104,20 +43,20 @@ test('union', function (t) {
         headers: headers
       }, function (err, res, body) {
         if (err) t.fail(err);
-        var r = files[file];
+        var r = testCases[file];
         t.equal(res.statusCode, r.code, 'status code for `' + file + '`');
-        
+
         if (r.type !== undefined) {
           t.equal(
             res.headers['content-type'].split(';')[0], r.type,
             'content-type for `' + file + '`'
           );
         }
-        
+
         if (r.body !== undefined) {
           t.equal(body, r.body, 'body for `' + file + '`');
         }
-        
+
         if (--pending === 0) {
           server.close();
           t.end();
