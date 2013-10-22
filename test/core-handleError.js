@@ -11,19 +11,12 @@ var root = __dirname + '/public',
 
 mkdirp.sync(root + '/emptyDir');
 
-var files = {
-  '404' : {
-    code : 404
-  },
-  'something-non-existant' : {
-    code : 404
-  }
-};
+var testCases = require('./common-testCases-error').testCases;
 
 test('core', function (t) {
-  var filenames = Object.keys(files);
+  var filenames = Object.keys(testCases);
   var port = Math.floor(Math.random() * ((1<<16) - 1e4) + 1e4);
-  
+
   var server = http.createServer(
     ecstatic({
       root: root,
@@ -39,7 +32,7 @@ test('core', function (t) {
     var pending = filenames.length;
     filenames.forEach(function (file) {
       var uri = 'http://localhost:' + port + path.join('/', baseDir, file),
-          headers = files[file].headers || {};
+          headers = testCases[file].headers || {};
 
       request.get({
         uri: uri,
@@ -47,16 +40,16 @@ test('core', function (t) {
         headers: headers
       }, function (err, res, body) {
         if (err) t.fail(err);
-        var r = files[file];
+        var r = testCases[file];
         t.equal(res.statusCode, r.code, 'status code for `' + file + '`');
-        
+
         if (r.type !== undefined) {
           t.equal(
             res.headers['content-type'].split(';')[0], r.type,
             'content-type for `' + file + '`'
           );
         }
-        
+
         if (r.body !== undefined) {
           t.equal(body, r.body, 'body for `' + file + '`');
         }
@@ -64,7 +57,7 @@ test('core', function (t) {
         if (r.location !== undefined) {
           t.equal(res.headers.location, path.join('/', baseDir, r.location), 'location for `' + file + '`');
         }
-        
+
         if (--pending === 0) {
           server.close();
           t.end();
