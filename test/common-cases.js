@@ -1,4 +1,4 @@
-exports.testCases = {
+module.exports = {
   'a.txt' : {
     code : 200,
     type : 'text/plain',

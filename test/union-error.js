@@ -11,10 +11,10 @@ var root = __dirname + '/public',
 
 mkdirp.sync(root + '/emptyDir');
 
-var testCases = require('./common-testCases-error').testCases;
+var cases = require('./common-cases-error');
 
 test('union', function (t) {
-  var filenames = Object.keys(testCases);
+  var filenames = Object.keys(cases);
   var port = Math.floor(Math.random() * ((1<<16) - 1e4) + 1e4);
 
   var server = union.createServer({
@@ -34,7 +34,7 @@ test('union', function (t) {
     var pending = filenames.length;
     filenames.forEach(function (file) {
       var uri = 'http://localhost:' + port + path.join('/', baseDir, file),
-          headers = testCases[file].headers || {};
+          headers = cases[file].headers || {};
 
       request.get({
         uri: uri,
@@ -42,7 +42,7 @@ test('union', function (t) {
         headers: headers
       }, function (err, res, body) {
         if (err) t.fail(err);
-        var r = testCases[file];
+        var r = cases[file];
         t.equal(res.statusCode, r.code, 'status code for `' + file + '`');
 
         if (r.type !== undefined) {

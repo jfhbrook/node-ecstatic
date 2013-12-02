@@ -1,4 +1,4 @@
-exports.testCases = {
+module.exports = {
   '404' : {
     code: 404
   },
