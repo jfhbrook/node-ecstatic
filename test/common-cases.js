@@ -19,6 +19,11 @@ module.exports = {
     type : 'application/javascript',
     body : 'console.log(\'C!!!\');\n',
   },
+  'e.js' : {
+    code : 200,
+    type : 'application/javascript',
+    body : 'console.log(\'π!!!\');\n',
+  },
   'subdir/e.html' : {
     code : 200,
     type : 'text/html',
