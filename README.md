@@ -98,21 +98,21 @@ Other wise it will pass through directly to cache-control. Time defaults to 3600
 
 Turn **on** directory listings with `opts.showDir === true`. Defaults to **false**.
 
-### `opts.autoIndex`
-
-Serve `/path/index.html` when `/path/` is requested.
-Turn **off** autoIndexing with `opts.autoIndex === false`. Defaults to **true**.
-
 ### `opts.humanReadable`
 
-If autoIndexing is enabled, add human-readable file sizes. Defaults to **true**.
+If showDir is enabled, add human-readable file sizes. Defaults to **true**.
 Aliases are `humanreadable` and `human-readable`.
 
 ### `opts.si`
 
-If autoIndexing and humanReadable are enabled, print file sizes with base 1000 instead
+If showDir and humanReadable are enabled, print file sizes with base 1000 instead
 of base 1024. Name is inferred from cli options for `ls`. Aliased to `index`, the
 equivalent option in Apache.
+
+### `opts.autoIndex`
+
+Serve `/path/index.html` when `/path/` is requested.
+Turn **off** autoIndexing with `opts.autoIndex === false`. Defaults to **true**.
 
 ### `opts.defaultExt`
 
