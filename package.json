@@ -24,7 +24,7 @@
   "dependencies": {
     "mime": "1.2.x",
     "ent": "0.0.x",
-    "optimist": "~0.3.5"
+    "minimist": "~0.0.5"
   },
   "devDependencies": {
     "tap": "0.3.x",
