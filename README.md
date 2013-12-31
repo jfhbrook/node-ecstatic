@@ -150,7 +150,17 @@ serve the current dir.
 
 # Tests:
 
-    npm test
+Ecstatic has a fairly extensive test suite. You can run it with:
+
+```sh
+$ npm test
+```
+
+# Contribute:
+
+Without outside contributions, ecstatic would wither and die! Before
+contributing, take a quick look at the contributing guidelines in
+./CONTRIBUTE.md . They're relatively painless, I promise.
 
 # License:
 
