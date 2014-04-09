@@ -4,9 +4,6 @@ module.exports = {
   },
   'something non-existant' : {
     code: 404
-  },
-  'stat-error/': {
-    code: 500
   }
 };
 
