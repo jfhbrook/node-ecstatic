@@ -22,8 +22,8 @@
     "middleware"
   ],
   "dependencies": {
+    "he": "~0.4.1",
     "mime": "1.2.x",
-    "ent": "0.0.x",
     "minimist": "~0.0.5"
   },
   "devDependencies": {
