@@ -1,6 +1,6 @@
 module.exports = {
   '404' : {
-    code: 404
+    code: 200
   },
   'something non-existant' : {
     code: 404
