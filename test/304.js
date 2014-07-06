@@ -24,7 +24,7 @@ test('304_not_modified', function (t) {
   );
 
   server.listen(port, function () {
-    var uri = 'http://localhost:' + port + path.join('/', baseDir, file),
+    var uri = 'http://localhost:' + port + path.join('/', 'base', 'a.txt'),
         now = (new Date()).toString();
 
     request.get({
@@ -43,8 +43,31 @@ test('304_not_modified', function (t) {
         if (err) t.fail(err);
 
         t.equal(res.statusCode, 304, 'second request should be a 304');
-        server.close();
-        t.end();
+
+        // Do this again with root and autoindexing
+        uri = 'http://localhost:' + port + path.join('/', 'base', 'subdir') + '/';
+
+        request.get({
+          uri: uri,
+          followRedirect: false
+        }, function (err, res, body) {
+          if (err) t.fail(err);
+
+          t.equal(res.statusCode, 200, 'first request of / should be a 200');
+
+          request.get({
+            uri: uri,
+            followRedirect: false,
+            headers: { 'if-modified-since': now }
+          }, function (err, res, body) {
+            if (err) t.fail(err);
+
+            t.equal(res.statusCode, 304, 'second request of / should be a 304');
+
+            server.close();
+            t.end();
+          });
+        });
       });
     });
   });
