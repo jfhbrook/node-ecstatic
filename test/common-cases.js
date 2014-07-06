@@ -108,6 +108,9 @@ module.exports = {
     code: 200,
     type: 'text/html',
     body: '<h1>404</h1>\n'
+  },
+  'containsSymlink/': {
+    code: 200
   }
 };
 
