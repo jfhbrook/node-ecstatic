@@ -27,10 +27,12 @@
     "minimist": "~0.0.5"
   },
   "devDependencies": {
-    "tap": "0.3.x",
-    "request": "2.12.x",
     "express": "3.0.x",
-    "union": "0.3.x",
-    "mkdirp": "0.3.x"
+    "hyperstream": "^1.1.0",
+    "mkdirp": "0.3.x",
+    "queuelib": "^1.0.1",
+    "request": "2.12.x",
+    "tap": "0.3.x",
+    "union": "0.3.x"
   }
 }
