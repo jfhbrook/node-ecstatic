@@ -66,7 +66,7 @@ var opts = {
              root          : __dirname + '/public',
              baseDir       : '/',
              cache         : 3600,
-             showDir       : false,
+             showDir       : true,
              autoIndex     : false,
              humanReadable : true,
              si            : false,
@@ -96,7 +96,7 @@ Other wise it will pass through directly to cache-control. Time defaults to 3600
 
 ### `opts.showDir`
 
-Turn **on** directory listings with `opts.showDir === true`. Defaults to **false**.
+Turn **off** directory listings with `opts.showDir === false`. Defaults to **true**.
 
 ### `opts.humanReadable`
 
@@ -160,7 +160,7 @@ $ npm test
 
 Without outside contributions, ecstatic would wither and die! Before
 contributing, take a quick look at the contributing guidelines in
-./CONTRIBUTE.md . They're relatively painless, I promise.
+./CONTRIBUTING.md . They're relatively painless, I promise.
 
 # License:
 

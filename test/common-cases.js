@@ -1,3 +1,6 @@
+var fs = require('fs'),
+    path = require('path');
+
 module.exports = {
   'a.txt' : {
     code : 200,
@@ -81,7 +84,8 @@ module.exports = {
   'compress/foo.js' : {
     code : 200,
     file: 'compress/foo.js.gz',
-    headers: {'accept-encoding': 'compress, gzip'}
+    headers: {'accept-encoding': 'compress, gzip'},
+    body: fs.readFileSync(path.join(__dirname, 'public', 'compress', 'foo.js.gz'), 'utf8')
   },
   // no accept-encoding of gzip, so serve regular file
   'compress/foo_2.js' : {
@@ -104,6 +108,9 @@ module.exports = {
     code: 200,
     type: 'text/html',
     body: '<h1>404</h1>\n'
+  },
+  'containsSymlink/': {
+    code: 200
   }
 };
 
