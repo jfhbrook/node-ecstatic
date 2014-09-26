@@ -3,11 +3,10 @@ var test = require('tap').test,
     http = require('http'),
     request = require('request');
 
+var server;
+
 test('escaping special characters', function (t) {
-  t.plan(3);
-  
-  var server = http.createServer(ecstatic(__dirname + "/public", { showDir: true }));
-  t.on('end', function () { server.close() })
+  server = http.createServer(ecstatic(__dirname + '/public'));
  
   server.listen(0, function () {
     var port = server.address().port;
@@ -15,6 +14,17 @@ test('escaping special characters', function (t) {
       t.ifError(err);
       t.equal(res.statusCode, 200);
       t.equal(body, 'index!!!\n');
+      t.end();
     });
   });
+});
+
+test('server teardown', function (t) {
+  server.close();
+
+  var to = setTimeout(function () {
+    process.stderr.write('# server not closing; slaughtering process.\n');
+    process.exit(0);
+  }, 5000);
+  t.end();
 });
