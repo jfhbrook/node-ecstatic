@@ -77,7 +77,7 @@ module.exports = {
     body : '<h1>404</h1>\n'
   },
   'something-non-existant' : {
-    code : 200,
+    code : 404,
     type : 'text/html',
     body : '<h1>404</h1>\n'
   },
