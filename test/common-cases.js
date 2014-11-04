@@ -93,7 +93,8 @@ module.exports = {
     file: 'compress/foo_2.js'
   },
   'emptyDir/': {
-    code: 200
+    code: 404,
+    body: '<h1>404</h1>\n'
   },
   'subdir_with space' : {
     code: 302,
@@ -105,12 +106,13 @@ module.exports = {
     body: 'index :)\n'
   },
   'something-non-existant%00.png': {
-    code: 200,
+    code: 404,
     type: 'text/html',
     body: '<h1>404</h1>\n'
   },
   'containsSymlink/': {
-    code: 200
+    code: 404,
+    body: '<h1>404</h1>\n'
   }
 };
 
