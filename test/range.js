@@ -42,3 +42,41 @@ test('range past the end', function (t) {
     });
   });
 });
+
+test('NaN range', function (t) {
+  t.plan(3);
+  var server = http.createServer(ecstatic(__dirname + '/public/subdir'));
+  t.on('end', function () { server.close() })
+ 
+  server.listen(0, function () {
+    var port = server.address().port;
+    var opts = {
+      uri: 'http://localhost:' + port + '/e.html',
+      headers: { range: 'abc-def' }
+    };
+    request.get(opts, function (err, res, body) {
+      t.ifError(err);
+      t.equal(res.statusCode, 416, 'range error status code');
+      t.equal(body, 'Requested range not satisfiable');
+    });
+  });
+});
+
+test('flipped range', function (t) {
+  t.plan(3);
+  var server = http.createServer(ecstatic(__dirname + '/public/subdir'));
+  t.on('end', function () { server.close() })
+ 
+  server.listen(0, function () {
+    var port = server.address().port;
+    var opts = {
+      uri: 'http://localhost:' + port + '/e.html',
+      headers: { range: '333-222' }
+    };
+    request.get(opts, function (err, res, body) {
+      t.ifError(err);
+      t.equal(res.statusCode, 416, 'range error status code');
+      t.equal(body, 'Requested range not satisfiable');
+    });
+  });
+});
