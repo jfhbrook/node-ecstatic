@@ -71,7 +71,8 @@ var opts = {
              humanReadable : true,
              si            : false,
              defaultExt    : 'html',
-             gzip          : false
+             gzip          : false,
+             serverHeader  : true
            }
 ```
 
@@ -127,6 +128,11 @@ to resolve to `./public/a-file.html`, set this to `true`. If you want
 Set `opts.gzip === true` in order to turn on "gzip mode," wherein ecstatic will
 serve `./public/some-file.js.gz` in place of `./public/some-file.js` when the
 gzipped version exists and ecstatic determines that the behavior is appropriate.
+
+### `opts.serverHeader`
+
+Set `opts.serverHeader` to false in order to turn off setting the `Server` header
+on all responses served by ecstatic.
 
 ### `opts.handleError`
 
