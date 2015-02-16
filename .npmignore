@@ -15,3 +15,6 @@ results
 
 node_modules
 npm-debug.log
+
+# NPM-specific (in git, but not downloaded with `npm install`)
+test
