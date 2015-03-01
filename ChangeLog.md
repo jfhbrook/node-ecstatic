@@ -1,3 +1,6 @@
+2015/03/01 Version 0.6.1
+- Fix handleError fall-through with directory listings
+
 2015/02/16 Version 0.6.0
 - Fix for pathname decoding in windows
 - Fix for hrefs in directory listings
