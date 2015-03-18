@@ -134,6 +134,11 @@ gzipped version exists and ecstatic determines that the behavior is appropriate.
 Set `opts.serverHeader` to false in order to turn off setting the `Server` header
 on all responses served by ecstatic.
 
+### `opts.contentType`
+
+Set `opts.contentType` in order to change default Content-Type header value.
+Defaults to **application/octet-stream**.
+
 ### `opts.handleError`
 
 Turn **off** handleErrors to allow fall-through with `opts.handleError === false`, Defaults to **true**.
