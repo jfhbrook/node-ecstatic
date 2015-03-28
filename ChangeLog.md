@@ -1,3 +1,6 @@
+2015/03/27 Version 0.7.1
+- Treat ENOTDIR as 404 (same as ENOENT)
+
 2015/03/18 Version 0.7.0
 - Add support for specifying default content-type (as an alternative to application/octet-stream)
 - Use url-join for autoIndex route, fixes windows problems
