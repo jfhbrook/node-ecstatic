@@ -7,7 +7,7 @@ var test = require('tap').test,
 var root = __dirname + '/public',
     baseDir = 'base';
 
-test('url encoding in href', function (t) {
+test('directory listing when directory name contains spaces', function (t) {
   var port = Math.floor(Math.random() * ((1<<16) - 1e4) + 1e4);
 
   var uri = 'http://localhost:' + port + path.join('/', baseDir, 'subdir_with%20space');
