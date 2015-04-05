@@ -1,3 +1,6 @@
+2015/04/05 Version 0.7.2
+- Correctly handle req.statusCode in recursive calls; do not inherit upstream res.statusCode
+
 2015/03/27 Version 0.7.1
 - Treat ENOTDIR as 404 (same as ENOENT)
 
