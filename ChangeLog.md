@@ -1,3 +1,6 @@
+2014/04/13 Version 0.7.3
+- Close fstream if/when res closes, fixes potential fd leak
+
 2015/04/05 Version 0.7.2
 - Correctly handle req.statusCode in recursive calls; do not inherit upstream res.statusCode
 
