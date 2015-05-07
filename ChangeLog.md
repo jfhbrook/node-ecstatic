@@ -1,4 +1,10 @@
-2014/04/13 Version 0.7.3
+2015/05/07 Version 0.7.5
+- Fix HTML reflection vulnerability in certain error handlers
+
+2015/04/17 Version 0.7.4
+- Fix sort ordering in directory listings
+
+2015/04/13 Version 0.7.3
 - Close fstream if/when res closes, fixes potential fd leak
 
 2015/04/05 Version 0.7.2
