@@ -1,3 +1,6 @@
+2015/05/09 Version 0.7.6
+- Fix double encoding in directory listings
+
 2015/05/07 Version 0.7.5
 - Fix HTML reflection vulnerability in certain error handlers
 
