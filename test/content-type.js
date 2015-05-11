@@ -1,3 +1,4 @@
+/// <reference path="../typings/node/node.d.ts"/>
 var test = require('tap').test,
     ecstatic = require('../'),
     http = require('http'),
@@ -26,7 +27,10 @@ test('default default contentType', function(t) {
 
 test('custom contentType', function(t) {
   var server = http.createServer(ecstatic({
-    root: __dirname + '/public/'
+    root: __dirname + '/public/',
+    mimetype: {
+      'application/xml': ['opml']
+    }
   }));
 
   t.plan(3);
@@ -38,7 +42,28 @@ test('custom contentType', function(t) {
     request.get('http://localhost:' + port + '/custom_mime_type.opml', function(err, res, body) {
       t.ifError(err);
       t.equal(res.statusCode, 200);
-      t.equal(res.headers['content-type'], 'application/xml; charset=UTF-8');
+      t.equal(res.headers['content-type'], 'application/xml; charset=utf-8');
+      t.end();
+    });
+  });
+});
+
+test('custom contentType', function(t) {
+  var server = http.createServer(ecstatic({
+    root: __dirname + '/public/',
+    'mime-types': 'custom_mime_type.types'
+  }));
+
+  t.plan(3);
+
+  t.on('end', function() { server.close(); });
+
+  server.listen(0, function() {
+    var port = server.address().port;
+    request.get('http://localhost:' + port + '/custom_mime_type.opml', function(err, res, body) {
+      t.ifError(err);
+      t.equal(res.statusCode, 200);
+      t.equal(res.headers['content-type'], 'application/xml; charset=utf-8');
       t.end();
     });
   });
