@@ -52,7 +52,7 @@ test('custom contentType', function(t) {
       t.ifError(err);
       t.equal(res.statusCode, 200);
       t.equal(res.headers['content-type'], 'application/xml; charset=utf-8');
-      teardown();
+      teardown(t);
     });
   });
 });
@@ -73,30 +73,20 @@ test('custom contentType via .types file', function(t) {
       t.ifError(err);
       t.equal(res.statusCode, 200);
       t.equal(res.headers['content-type'], 'application/xml; charset=utf-8');
-      teardown();
+      teardown(t);
     });
   });
 });
 
-/* NOT SURE HOW TO TEST THIS - SEE COMMENT IN PR
-test('warning when custom contentType .types file does not exist', function(t) {
-  var server = setup({
-    root: __dirname + '/public/',
-    'mime-types': 'this_file_does_not_exist.types'
-  });
+test('throws when custom contentType .types file does not exist', function(t) {
+  t.plan(1);
 
-  t.plan(3);
+  t.throws(
+    setup.bind(null, {
+      root: __dirname + '/public/',
+      'mime-types': 'this_file_does_not_exist.types'
+    })
+  );
 
-  t.on('end', function() { server.close(); });
-
-  server.listen(0, function() {
-    var port = server.address().port;
-    request.get('http://localhost:' + port + '/custom_mime_type.opml', function(err, res, body) {
-      t.ifError(err);
-      t.equal(res.statusCode, 200);
-      t.equal(res.headers['content-type'], 'application/xml; charset=utf-8');
-      teardown();
-    });
-  });
+  teardown(t);
 });
-*/
