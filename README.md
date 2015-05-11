@@ -72,7 +72,9 @@ var opts = {
              si            : false,
              defaultExt    : 'html',
              gzip          : false,
-             serverHeader  : true
+             serverHeader  : true,
+             contentType   : 'application/octet-stream',
+             mimeTypes     : undefined
            }
 ```
 
@@ -138,6 +140,13 @@ on all responses served by ecstatic.
 
 Set `opts.contentType` in order to change default Content-Type header value.
 Defaults to **application/octet-stream**.
+
+### `opts.mimeTypes`
+
+Add new or override one or more mime-types. This affects the HTTP Content-Type header.
+Can either be a path to a [`.types`](https://www.sympa.org/distribution/sympa-6.2b.9/default/mime.types) file or an object hash of type(s).
+    
+    ecstatic({ mimeType: { 'mime-type': ['file_extension', 'file_extension'] } })
 
 ### `opts.handleError`
 
