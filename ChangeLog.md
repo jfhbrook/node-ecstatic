@@ -1,3 +1,6 @@
+2015/05/11 Version 0.8.0
+- Add ability to define custom mime-types, inline or with Apache .types file.
+
 2015/05/09 Version 0.7.6
 - Fix double encoding in directory listings
 
