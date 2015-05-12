@@ -1,17 +1,7 @@
 var test = require('tap').test,
-	  mime;
-
-function setup() {
-  mime = require('mime');
-}
-function teardown(t) {
-  t && t.end();
-  mime = null;
-}
+	  mime = require('mime');
 
 test('mime package lookup', function(t) {
-  setup();
-
   t.plan(4);
 
   t.equal(mime.lookup('/path/to/file.txt'), 'text/plain');
@@ -19,12 +9,10 @@ test('mime package lookup', function(t) {
   t.equal(mime.lookup('.TXT'), 'text/plain');
   t.equal(mime.lookup('htm'), 'text/html');
 
-  teardown(t);
+  t.end();
 });
 
 test('custom definition of mime-type with the mime package', function(t) {
-  setup();
-
   t.plan(1);
 
   mime.define({
@@ -32,18 +20,22 @@ test('custom definition of mime-type with the mime package', function(t) {
   });
   t.equal(mime.lookup('.opml'), 'application/xml');
 
-  teardown(t);
+  t.end();
 });
 
 test('custom definition of mime-type with a .types file', function(t) {
-  setup();
-
   t.plan(2);
 
-  mime.load('public/custom_mime_type.types');
+  try {
+    mime.load('test/public/custom_mime_type.types');
+  } catch (e) {
+    t.fail(e.message);
+    t.end();
+  }
+
   t.equal(mime.lookup('.opml'), 'application/foo'); // see public/custom_mime_type.types
 
 	t.throws( mime.load.bind(mime, 'public/this_file_does_not_exist.types') );
 
-  teardown(t);
+  t.end();
 });

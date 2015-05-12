@@ -1,7 +1,8 @@
 var test = require('tap').test,
     ecstatic = require('../'),
     http = require('http'),
-    request = require('request');
+    request = require('request'),
+    eol = require('eol');
 
 test('range', function (t) {
   t.plan(4);
@@ -37,7 +38,7 @@ test('range past the end', function (t) {
     request.get(opts, function (err, res, body) {
       t.ifError(err);
       t.equal(res.statusCode, 206, 'partial content status code');
-      t.equal(body, 'e!!</b>\n');
+      t.equal(eol.lf(body), 'e!!</b>\n');
       t.equal(parseInt(res.headers['content-length']), body.length);
     });
   });
@@ -95,7 +96,7 @@ test('partial range', function (t) {
     request.get(opts, function (err, res, body) {
       t.ifError(err);
       t.equal(res.statusCode, 206, 'partial content status code');
-      t.equal(body, 'e!!</b>\n');
+      t.equal(eol.lf(body), 'e!!</b>\n');
       t.equal(parseInt(res.headers['content-length']), body.length);
       t.equal(res.headers['content-range'], 'bytes 3-10/11');
     });

@@ -4,7 +4,8 @@ var test = require('tap').test,
   request = require('request'),
   mkdirp = require('mkdirp'),
   fs = require('fs'),
-  path = require('path');
+  path = require('path'),
+  eol = require('eol');
 
 var subdir = __dirname + '/public/subdir',
   anotherSubdir = __dirname + '/public/another-subdir',
@@ -12,7 +13,7 @@ var subdir = __dirname + '/public/subdir',
 
 mkdirp.sync(root + '/emptyDir');
 
-var cases = require('./union-multiple-folders-cases');
+var cases = require('./secret/union-multiple-folders-cases');
 
 test('union', function(t) {
   var filenames = Object.keys(cases);
@@ -63,7 +64,7 @@ test('union', function(t) {
         }
 
         if (r.body !== undefined) {
-          t.equal(body, r.body, 'body for `' + file + '`');
+          t.equal(eol.lf(body), r.body, 'body for `' + file + '`');
         }
 
         if (--pending === 0) {

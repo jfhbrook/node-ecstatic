@@ -11,7 +11,7 @@ var root = __dirname + '/public',
 
 mkdirp.sync(root + '/emptyDir');
 
-var cases = require('./common-cases-error');
+var cases = require('./secret/common-cases-error');
 
 test('core', function (t) {
   var filenames = Object.keys(cases);

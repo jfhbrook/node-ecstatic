@@ -6,32 +6,6 @@ var test = require('tap').test,
 function setup(opts) {
   return http.createServer(ecstatic(opts));
 }
-function teardown(opts) {
-  opts = opts || {};
-  opts.server.close(function() {
-    opts.t && opts.t.end();
-    process.stderr.write('# server not closing; slaughtering process.\n');
-    process.exit(0);
-  });
-}
-
-test('custom contentType via .types file', function(t) {
-  var server = setup({
-    'mime-types': 'public/custom_mime_type.types'
-  });
-
-  t.plan(3)
-
-  server.listen(0, function() {
-    var port = server.address().port;
-    request.get('http://localhost:' + port + '/custom_mime_type.opml', function(err, res, body) {
-      t.ifError(err);
-      t.equal(res.statusCode, 200);
-      t.equal(res.headers['content-type'], 'application/foo; charset=utf-8');
-      teardown({ t:t, server:server });
-    });
-  });
-});
 
 test('throws when custom contentType .types file does not exist', function(t) {
   t.plan(1);
@@ -44,3 +18,37 @@ test('throws when custom contentType .types file does not exist', function(t) {
   );
 
 });
+
+test('custom contentType via .types file', function(t) {
+  try {
+    var server = setup({
+      root: __dirname + '/public',
+      'mime-types': __dirname + '/public/custom_mime_type.types'
+    });
+  } catch (e) {
+    t.fail(e.message);
+    t.end();
+  }
+
+  t.plan(3)
+
+  server.listen(0, function() {
+    var port = server.address().port;
+
+    request.get('http://localhost:' + port + '/custom_mime_type.opml', function(err, res, body) {
+      t.ifError(err);
+      t.equal(res.statusCode, 200, 'custom_mime_type.opml should be found');
+      t.equal(res.headers['content-type'], 'application/foo; charset=utf-8');
+      server.close(function() { t.end(); });
+    });
+  });
+});
+
+// test('server teardown', function (t) {
+//   server.close(function() { t.end(); });
+
+//   var to = setTimeout(function () {
+//     process.stderr.write('# server not closing; slaughtering process.\n');
+//     process.exit(0);
+//   }, 5000);
+// });
