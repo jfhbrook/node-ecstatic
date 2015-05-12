@@ -1,3 +1,6 @@
+2015/05/12 Version 0.8.1
+- Fixed an issue where .types file is in another directory that the root directory.
+
 2015/05/11 Version 0.8.0
 - Add ability to define custom mime-types, inline or with Apache .types file.
 
