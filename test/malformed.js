@@ -3,7 +3,9 @@ var test = require('tap').test,
     http = require('http');
 
 test('malformed uri', function (t) {
-  server = http.createServer(ecstatic(__dirname));
+  var server = http.createServer(ecstatic(__dirname));
+  
+  t.plan(1);
   
   server.listen(0, function () {
     var r = http.get({

@@ -5,6 +5,8 @@ var test = require('tap').test,
 test('malformed showdir uri', function (t) {
   var server = http.createServer(ecstatic(__dirname, { showDir: true }));
   
+  t.plan(1);
+  
   server.listen(0, function () {
     var r = http.get({
       host: 'localhost',
