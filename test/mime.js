@@ -41,7 +41,7 @@ test('custom definition of mime-type with a .types file', function(t) {
   t.plan(2);
 
   mime.load('public/custom_mime_type.types');
-  t.equal(mime.lookup('.opml'), 'application/xml');
+  t.equal(mime.lookup('.opml'), 'application/foo'); // see public/custom_mime_type.types
 
 	t.throws( mime.load.bind(mime, 'public/this_file_does_not_exist.types') );
 
