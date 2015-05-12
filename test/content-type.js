@@ -1,16 +1,10 @@
-/// <reference path="../typings/node/node.d.ts"/>
 var test = require('tap').test,
     http = require('http'),
     request = require('request'),
-    ecstatic;
+    ecstatic = require('../');
 
 function setup(opts) {
-  ecstatic = require('../');
   return http.createServer(ecstatic(opts));
-}
-function teardown(t) {
-  t && t.end();
-  ecstatic = null;
 }
 
 test('default default contentType', function(t) {
@@ -29,7 +23,6 @@ test('default default contentType', function(t) {
       t.ifError(err);
       t.equal(res.statusCode, 200);
       t.equal(res.headers['content-type'], 'text/plain; charset=UTF-8');
-      teardown(t);
     });
   });
 });
@@ -52,7 +45,6 @@ test('custom contentType', function(t) {
       t.ifError(err);
       t.equal(res.statusCode, 200);
       t.equal(res.headers['content-type'], 'application/xml; charset=utf-8');
-      teardown(t);
     });
   });
 });
@@ -73,7 +65,6 @@ test('custom contentType via .types file', function(t) {
       t.ifError(err);
       t.equal(res.statusCode, 200);
       t.equal(res.headers['content-type'], 'application/xml; charset=utf-8');
-      teardown(t);
     });
   });
 });
@@ -88,5 +79,4 @@ test('throws when custom contentType .types file does not exist', function(t) {
     })
   );
 
-  teardown(t);
 });
