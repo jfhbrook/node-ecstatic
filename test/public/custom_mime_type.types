@@ -1,4 +1,3 @@
-# This file is an example of the Apache .types file format
-# for descriping mime-types.
-# Other example: https://svn.apache.org/repos/asf/httpd/httpd/branches/1.3.x/conf/mime.types
+# This file is an example of the Apache .types file format for describing mime-types.
+# Other example: http://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types
 application/foo                 opml
