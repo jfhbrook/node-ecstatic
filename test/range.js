@@ -83,6 +83,7 @@ test('flipped range', function (t) {
 });
 
 test('partial range', function (t) {
+  // 1 test is platform depedent "res.headers['content-range']"
   t.plan(5);
   var server = http.createServer(ecstatic(__dirname + '/public/subdir'));
   t.on('end', function () { server.close() })
@@ -98,7 +99,12 @@ test('partial range', function (t) {
       t.equal(res.statusCode, 206, 'partial content status code');
       t.equal(eol.lf(body), 'e!!</b>\n');
       t.equal(parseInt(res.headers['content-length']), body.length);
-      t.equal(res.headers['content-range'], 'bytes 3-10/11');
+      
+      if (process.platform === 'win32') {
+        t.equal(res.headers['content-range'], 'bytes 3-11/12');
+      } else {
+        t.equal(res.headers['content-range'], 'bytes 3-10/11');
+      }
     });
   });
 });
