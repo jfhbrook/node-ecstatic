@@ -26,12 +26,3 @@ test('custom contentType via .types file', function(t) {
     });
   });
 });
-
-// test('server teardown', function (t) {
-//   server.close(function() { t.end(); });
-
-//   var to = setTimeout(function () {
-//     process.stderr.write('# server not closing; slaughtering process.\n');
-//     process.exit(0);
-//   }, 5000);
-// });
