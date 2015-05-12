@@ -15,20 +15,22 @@ function teardown(opts) {
   });
 }
 
-test('default default contentType', function(t) {
+test('custom contentType', function(t) {
   var server = setup({
     root: __dirname + '/public/',
-    contentType: 'text/plain'
+    mimetype: {
+      'application/jon': ['opml']
+    }
   });
 
   t.plan(3);
 
   server.listen(0, function() {
     var port = server.address().port;
-    request.get('http://localhost:' + port + '/f_f', function(err, res, body) {
+    request.get('http://localhost:' + port + '/custom_mime_type.opml', function(err, res, body) {
       t.ifError(err);
       t.equal(res.statusCode, 200);
-      t.equal(res.headers['content-type'], 'text/plain; charset=UTF-8');
+      t.equal(res.headers['content-type'], 'application/jon; charset=utf-8');
       teardown({ t:t, server:server });
     });
   });
