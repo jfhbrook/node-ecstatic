@@ -10,7 +10,7 @@
   },
   "main": "./lib/ecstatic.js",
   "scripts": {
-    "test": "tap test/*.js"
+    "test": "tap test"
   },
   "bin": "./lib/ecstatic.js",
   "keywords": [
