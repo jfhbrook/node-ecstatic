@@ -1,4 +1,4 @@
-# Ecstatic [![build status](https://secure.travis-ci.org/jfhbrook/node-ecstatic.png)](http://travis-ci.org/jfhbrook/node-ecstatic)
+# Ecstatic [![build status](https://secure.travis-ci.org/jfhbrook/node-ecstatic.png)](http://travis-ci.org/jfhbrook/node-ecstatic) [![dependencies status](https://david-dm.org/jfhbrook/node-ecstatic.svg)](https://david-dm.org/jfhbrook/node-ecstatic)
 
 ![](http://imgur.com/vhub5.png)
 
