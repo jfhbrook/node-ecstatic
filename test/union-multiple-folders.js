@@ -1,17 +1,15 @@
+'use strict';
+
 var test = require('tap').test,
   ecstatic = require('../lib/ecstatic'),
   union = require('union'),
   request = require('request'),
-  mkdirp = require('mkdirp'),
-  fs = require('fs'),
   path = require('path'),
   eol = require('eol');
 
 var subdir = __dirname + '/public/subdir',
-  anotherSubdir = __dirname + '/public/another-subdir',
-  baseDir = 'base';
-
-mkdirp.sync(root + '/emptyDir');
+    anotherSubdir = __dirname + '/public/another-subdir',
+    baseDir = 'base';
 
 var cases = require('./secret/union-multiple-folders-cases');
 
@@ -43,6 +41,9 @@ test('union', function(t) {
 
   server.listen(port, function() {
     var pending = filenames.length;
+
+    t.plan(pending * 3);
+
     filenames.forEach(function(file) {
       var uri = 'http://localhost:' + port + path.join('/', baseDir, file),
         headers = cases[file].headers || {};
