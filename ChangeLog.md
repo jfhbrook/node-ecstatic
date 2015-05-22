@@ -1,11 +1,8 @@
-2015/05/13 Version 0.8.2
-- Updated dev depedencies and fixed all failing tests
-
-2015/05/12 Version 0.8.1
-- Fixed an issue where .types file is in another directory that the root directory
-
-2015/05/11 Version 0.8.0
+2015/05/22 Version 0.8.0
 - Add ability to define custom mime-types, inline or with Apache .types file
+- Test against express ^4.12.3 and union ^0.4.4
+- Run tests with tap ^1.0.3
+- Fix newline asserts to work with windows
 
 2015/05/09 Version 0.7.6
 - Fix double encoding in directory listings
