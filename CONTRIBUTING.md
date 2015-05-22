@@ -42,6 +42,17 @@ that.
 
 We can refine this as the need arises.
 
+## A Few Other Minor Guidelines
+
+1. Keep your pull requests on-topic. A pull request purporting to tackle A
+shouldn't also have commits changing B and C. Feel free to make separate pull
+requests. For instance: A pull request should generally only update
+dependencies when doing so is required to add the feature or fix the bug. This
+feature can, of course, consist of updating dependencies.
+2. I prefer maintaining the changelog myself. :)
+3. In case you were wondering about dependencies, you may find this helpful:
+[![dependencies status](https://david-dm.org/jfhbrook/node-ecstatic.svg)](https://david-dm.org/jfhbrook/node-ecstatic)
+
 ## Pull Request
 
 Make a pull request against master with your new branch. Explain briefly what
