@@ -11,7 +11,7 @@ var subdir = __dirname + '/public/subdir',
     anotherSubdir = __dirname + '/public/another-subdir',
     baseDir = 'base';
 
-var cases = require('./secret/union-multiple-folders-cases');
+var cases = require('./fixtures/union-multiple-folders-cases');
 
 test('union', function(t) {
   var filenames = Object.keys(cases);

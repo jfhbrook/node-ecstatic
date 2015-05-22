@@ -12,7 +12,7 @@ var root = __dirname + '/public',
 
 mkdirp.sync(root + '/emptyDir');
 
-var cases = require('./secret/common-cases');
+var cases = require('./fixtures/common-cases');
 
 test('core', function (t) {
   var filenames = Object.keys(cases);

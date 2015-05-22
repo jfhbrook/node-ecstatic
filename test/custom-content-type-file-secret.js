@@ -7,7 +7,7 @@ test('custom contentType via .types file', function(t) {
   try {
     var server = http.createServer(ecstatic({
       root: __dirname + '/public/',
-      mimetypes: __dirname + '/secret/custom_mime_type.types'
+      mimetypes: __dirname + '/fixtures/custom_mime_type.types'
     }));
   } catch (e) {
     t.fail(e.message);
