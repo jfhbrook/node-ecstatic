@@ -20,7 +20,7 @@ module.exports = {
   'd.js' : {
     code : 200,
     type : 'application/javascript',
-    body : 'console.log(\'C!!!\');\n',
+    body : 'd.js\n',
   },
   'e.js' : {
     code : 200,
@@ -85,7 +85,7 @@ module.exports = {
     code : 200,
     file: 'compress/foo.js.gz',
     headers: {'accept-encoding': 'compress, gzip'},
-    body: fs.readFileSync(path.join(__dirname, 'public', 'compress', 'foo.js.gz'), 'utf8')
+    body: fs.readFileSync(path.join(__dirname, '../', 'public', 'compress', 'foo.js.gz'), 'utf8')
   },
   // no accept-encoding of gzip, so serve regular file
   'compress/foo_2.js' : {

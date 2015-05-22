@@ -1,32 +1,20 @@
 var test = require('tap').test,
     ecstatic = require('../lib/ecstatic'),
-    http = require('http')
-;
-
-var server;
+    http = require('http'),
+    request = require('request');
 
 test('malformed showdir uri', function (t) {
-  server = http.createServer(ecstatic(__dirname, { showDir: true }));
+  var server = http.createServer(ecstatic(__dirname, { showDir: true }));
+  
+  t.plan(2);
   
   server.listen(0, function () {
-    var r = http.get({
-      host: 'localhost',
-      port: server.address().port,
-      path: '/?%'
-    });
-    r.on('response', function (res) {
+    
+    request.get('http://localhost:' + server.address().port + '/?%', function (err, res, body) {
+      t.ifError(err);
       t.equal(res.statusCode, 400);
-      t.end();
+      server.close(function() { t.end(); });
     });
+
   });
-});
-
-test('server teardown', function (t) {
-  server.close();
-
-  var to = setTimeout(function () {
-    process.stderr.write('# server not closing; slaughtering process.\n');
-    process.exit(0);
-  }, 5000);
-  t.end();
 });

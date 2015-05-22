@@ -1,18 +1,17 @@
+'use strict';
+
 var test = require('tap').test,
   ecstatic = require('../lib/ecstatic'),
   union = require('union'),
   request = require('request'),
-  mkdirp = require('mkdirp'),
-  fs = require('fs'),
-  path = require('path');
+  path = require('path'),
+  eol = require('eol');
 
 var subdir = __dirname + '/public/subdir',
-  anotherSubdir = __dirname + '/public/another-subdir',
-  baseDir = 'base';
+    anotherSubdir = __dirname + '/public/another-subdir',
+    baseDir = 'base';
 
-mkdirp.sync(root + '/emptyDir');
-
-var cases = require('./union-multiple-folders-cases');
+var cases = require('./fixtures/union-multiple-folders-cases');
 
 test('union', function(t) {
   var filenames = Object.keys(cases);
@@ -42,6 +41,9 @@ test('union', function(t) {
 
   server.listen(port, function() {
     var pending = filenames.length;
+
+    t.plan(pending * 3);
+
     filenames.forEach(function(file) {
       var uri = 'http://localhost:' + port + path.join('/', baseDir, file),
         headers = cases[file].headers || {};
@@ -63,7 +65,7 @@ test('union', function(t) {
         }
 
         if (r.body !== undefined) {
-          t.equal(body, r.body, 'body for `' + file + '`');
+          t.equal(eol.lf(body), r.body, 'body for `' + file + '`');
         }
 
         if (--pending === 0) {

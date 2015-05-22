@@ -2,7 +2,7 @@
   "author": "Joshua Holbrook <josh@nodejitsu.com> (http://jesusabdullah.net)",
   "name": "ecstatic",
   "description": "A simple static file server middleware that works with both Express and Flatiron",
-  "version": "0.7.6",
+  "version": "0.8.0",
   "homepage": "https://github.com/jfhbrook/node-ecstatic",
   "repository": {
     "type": "git",
@@ -28,10 +28,11 @@
     "url-join": "0.0.1"
   },
   "devDependencies": {
-    "tap": "^0.4.13",
+    "eol": "^0.2.0",
+    "express": "^4.12.3",
+    "mkdirp": "^0.5.0",
     "request": "^2.49.0",
-    "express": "^3.0.6",
-    "union": "^0.3.8",
-    "mkdirp": "^0.5.0"
+    "tap": "^1.0.3",
+    "union": "^0.4.4"
   }
 }

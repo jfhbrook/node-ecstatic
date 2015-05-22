@@ -4,14 +4,15 @@ var test = require('tap').test,
     request = require('request'),
     mkdirp = require('mkdirp'),
     fs = require('fs'),
-    path = require('path');
+    path = require('path'),
+    eol = require('eol');
 
 var root = __dirname + '/public',
     baseDir = 'base';
 
 mkdirp.sync(root + '/emptyDir');
 
-var cases = require('./common-cases');
+var cases = require('./fixtures/common-cases');
 
 test('core', function (t) {
   var filenames = Object.keys(cases);
@@ -52,11 +53,11 @@ test('core', function (t) {
         }
 
         if (r.body !== undefined) {
-          t.equal(body, r.body, 'body for `' + file + '`');
+          t.equal(eol.lf(body), r.body, 'body for `' + file + '`');
         }
 
         if (r.location !== undefined) {
-          t.equal(res.headers.location, path.join('/', baseDir, r.location), 'location for `' + file + '`');
+          t.equal(path.normalize(res.headers.location), path.join('/', baseDir, r.location), 'location for `' + file + '`');
         }
 
         if (--pending === 0) {

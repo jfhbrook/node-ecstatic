@@ -1,7 +1,8 @@
 var test = require('tap').test,
     ecstatic = require('../'),
     http = require('http'),
-    request = require('request');
+    request = require('request'),
+    eol = require('eol');
 
 test('range', function (t) {
   t.plan(4);
@@ -37,7 +38,7 @@ test('range past the end', function (t) {
     request.get(opts, function (err, res, body) {
       t.ifError(err);
       t.equal(res.statusCode, 206, 'partial content status code');
-      t.equal(body, 'e!!</b>\n');
+      t.equal(eol.lf(body), 'e!!</b>\n');
       t.equal(parseInt(res.headers['content-length']), body.length);
     });
   });
@@ -82,6 +83,7 @@ test('flipped range', function (t) {
 });
 
 test('partial range', function (t) {
+  // 1 test is platform depedent "res.headers['content-range']"
   t.plan(5);
   var server = http.createServer(ecstatic(__dirname + '/public/subdir'));
   t.on('end', function () { server.close() })
@@ -95,9 +97,14 @@ test('partial range', function (t) {
     request.get(opts, function (err, res, body) {
       t.ifError(err);
       t.equal(res.statusCode, 206, 'partial content status code');
-      t.equal(body, 'e!!</b>\n');
+      t.equal(eol.lf(body), 'e!!</b>\n');
       t.equal(parseInt(res.headers['content-length']), body.length);
-      t.equal(res.headers['content-range'], 'bytes 3-10/11');
+      
+      if (process.platform === 'win32') {
+        t.equal(res.headers['content-range'], 'bytes 3-11/12');
+      } else {
+        t.equal(res.headers['content-range'], 'bytes 3-10/11');
+      }
     });
   });
 });
