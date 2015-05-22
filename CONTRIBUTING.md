@@ -49,7 +49,10 @@ shouldn't also have commits changing B and C. Feel free to make separate pull
 requests. For instance: A pull request should generally only update
 dependencies when doing so is required to add the feature or fix the bug. This
 feature can, of course, consist of updating dependencies.
-2. I prefer maintaining the changelog myself. :)
+2. I prefer maintaining the changelog and package.json version myself. This is
+because I try to make a single commit for a tagged release contain all
+changelog additions and the version bump, and this breaks down when there are
+interstitial commits making updates to either.
 3. In case you were wondering about dependencies, you may find this helpful:
 [![dependencies status](https://david-dm.org/jfhbrook/node-ecstatic.svg)](https://david-dm.org/jfhbrook/node-ecstatic)
 
