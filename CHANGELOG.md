@@ -3,6 +3,8 @@
 - Test against express ^4.12.3 and union ^0.4.4
 - Run tests with tap ^1.0.3
 - Fix newline asserts to work with windows
+- Add license attribute to package.json
+- Elaborate contribution guidelines
 
 2015/05/09 Version 0.7.6
 - Fix double encoding in directory listings
