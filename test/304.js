@@ -43,7 +43,7 @@ test('304_not_modified', function (t) {
         if (err) t.fail(err);
 
         t.equal(res.statusCode, 304, 'second request should be a 304');
-        t.equal(res.headers['etag'].indexOf('"'), 0, 'should return a string etag');
+        t.equal(res.headers['etag'].indexOf('"'), 0, 'should return a strong etag');
         server.close();
         t.end();
       });
