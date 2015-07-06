@@ -152,6 +152,10 @@ Can either be a path to a [`.types`](http://svn.apache.org/repos/asf/httpd/httpd
 
 Turn **off** handleErrors to allow fall-through with `opts.handleError === false`, Defaults to **true**.
 
+### `opts.weakEtags`
+
+Set `opts.weakEtags` to true in order to use weak etags instead of strong etags.
+
 ## middleware(req, res, next);
 
 This works more or less as you'd expect.
