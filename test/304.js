@@ -43,6 +43,50 @@ test('304_not_modified', function (t) {
         if (err) t.fail(err);
 
         t.equal(res.statusCode, 304, 'second request should be a 304');
+        t.equal(res.headers['etag'].indexOf('"'), 0, 'should return a string etag');
+        server.close();
+        t.end();
+      });
+    });
+  });
+});
+
+test('304_not_modified_weak', function (t) {
+  var port = Math.floor(Math.random() * ((1<<16) - 1e4) + 1e4),
+      file = 'b.txt';
+  
+  var server = http.createServer(
+    ecstatic({
+      root: root,
+      gzip: true,
+      baseDir: baseDir,
+      autoIndex: true,
+      showDir: true,
+      weakEtags: true,
+    })
+  );
+
+  server.listen(port, function () {
+    var uri = 'http://localhost:' + port + path.join('/', baseDir, file),
+        now = (new Date()).toString();
+
+    request.get({
+      uri: uri,
+      followRedirect: false,
+    }, function (err, res, body) {
+      if (err) t.fail(err);
+
+      t.equal(res.statusCode, 200, 'first request should be a 200');
+
+      request.get({
+        uri: uri,
+        followRedirect: false,
+        headers: { 'if-modified-since': now }
+      }, function (err, res, body) {
+        if (err) t.fail(err);
+
+        t.equal(res.statusCode, 304, 'second request should be a 304');
+        t.equal(res.headers['etag'].indexOf('W/'), 0, 'should return a weak etag');
         server.close();
         t.end();
       });
