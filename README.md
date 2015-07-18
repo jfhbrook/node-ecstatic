@@ -154,7 +154,12 @@ Turn **off** handleErrors to allow fall-through with `opts.handleError === false
 
 ### `opts.weakEtags`
 
-Set `opts.weakEtags` to true in order to use weak etags instead of strong etags.
+Set `opts.weakEtags` to true in order to generate weak etags instead of strong etags. Defaults to **false**. See `opts.weakCompare` as well.
+
+### `opts.weakCompare`
+
+Turn **on** weakCompare to allow the weak comparison function for etag validation. Defaults to **false**.
+See https://www.ietf.org/rfc/rfc2616.txt Section 13.3.3 for more details.
 
 ## middleware(req, res, next);
 
