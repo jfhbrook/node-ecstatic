@@ -55,6 +55,13 @@ To allow fall through to your custom routes:
 ecstatic({ root: __dirname + '/public', handleError: false })
 ```
 
+### fallback file
+To response with specified file:
+
+```js
+ecstatic({ root: __dirname + '/public', fallbackFile: 'index.html' })
+```
+
 # API:
 
 ## ecstatic(opts);
@@ -76,6 +83,7 @@ var opts = {
              serverHeader       : true,
              contentType        : 'application/octet-stream',
              mimeTypes          : undefined,
+             fallbackFile       : undefined
              handleOptionsMethod: false
            }
 ```
@@ -83,7 +91,7 @@ var opts = {
 If `opts` is a string, the string is assigned to the root folder and all other
 options are set to their defaults.
 
-### `opts.root` 
+### `opts.root`
 
 `opts.root` is the directory you want to serve up.
 
@@ -160,7 +168,7 @@ Defaults to **application/octet-stream**.
 
 Add new or override one or more mime-types. This affects the HTTP Content-Type header.
 Can either be a path to a [`.types`](http://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types) file or an object hash of type(s).
-    
+
     ecstatic({ mimeType: { 'mime-type': ['file_extension', 'file_extension'] } })
 
 ### `opts.handleError`

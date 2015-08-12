@@ -29,5 +29,10 @@
     "handleOptionsMethod",
     "handleoptionsmethod",
     "handle-options-method"
+  ],
+  "fallbackFile": [
+    "fallbackFile",
+    "fallbackfile",
+    "fallback-file"
   ]
 }
