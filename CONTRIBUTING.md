@@ -2,9 +2,17 @@
 
 ## Code of Conduct
 
-This is a pretty small project and it hasn't been a problem yet. However, to
-be clear: Everyone needs to be nice to each other. Sexist/racist/etc behavior
-won't be tolerated.
+This is probably way overkill, but this is by far my most active project in
+terms of contributions, and somewhere along the way I was convinced that it
+was a good idea to have this in place sooner rather than later:
+
+I want to provide a safe, healthy environment for all contributors/participants
+regardless of gender, sexual orientation, disability, race, religion, etc.
+As such, I don't tolerate harassment of participants in any form. In particular
+this applies to my issues tracker, but also to any other means of communication
+associated with this project that might come up. Anyone who violates these
+basic rules may be sanctioned/banned/have-their-comments-deleted/etc by my
+discretion.
 
 Glad we cleared that up.
 
