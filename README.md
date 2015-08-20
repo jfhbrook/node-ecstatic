@@ -74,7 +74,8 @@ var opts = {
              gzip          : false,
              serverHeader  : true,
              contentType   : 'application/octet-stream',
-             mimeTypes     : undefined
+             mimeTypes     : undefined,
+             icons         : false 
            }
 ```
 
@@ -151,6 +152,12 @@ Can either be a path to a [`.types`](http://svn.apache.org/repos/asf/httpd/httpd
 ### `opts.handleError`
 
 Turn **off** handleErrors to allow fall-through with `opts.handleError === false`, Defaults to **true**.
+
+### `opts.icons`
+
+Turn on `icons` to show file icons and folder icons in the directory listings.
+
+Icons are courtesy of [Mark James](http://www.famfamfam.com/lab/icons/silk/)
 
 ## middleware(req, res, next);
 

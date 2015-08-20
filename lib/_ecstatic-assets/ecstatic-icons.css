@@ -1,0 +1,131 @@
+.icon-parent{
+  height:16px;
+  width:16px;
+}
+i{
+  display:block;
+  width:100%;
+  height:100%;
+  background-repeat:no-repeat;
+  background-image:url('./icons/page_white.png');
+}
+i.__folder{
+  background-image:url('./icons/folder.png');
+}
+i.png,i.jpg,i.jpeg,i.bmp,i.svg,i.xcf,i.psd,i.gif,i.ico,i.tga{
+  background-image:url('./icons/page_white_paintbrush.png');
+}
+/*need to add more text files, definitely*/
+i.txt,i.log,i.rtf,i.text,i.md{
+  background-image:url('./icons/page_white_text.png');
+}
+i.aif,i.iff,i.m3u,i.m4a,i.mid,i.mp3,i.mpa,i.ra,i.wav,i.wma,i.asf,i.asx,i.avi,i.m4v,i.mov,i.mpg,i.rm,i.srt,i.vob,i.flac{
+  background-image:url('./icons/music.png');
+}
+
+i._3g2,i._3gp{
+  background-image:url('./icons/film.png');
+}
+i.avi,i.wmv,i.asf,i.divx,i.evo,i.mcf,i.mp4,i.mpeg,i.mpg,i.m2p,i.ts,i.m2ts,i.mov,i.qt,i.rmvb,i.vob,i.webm{
+  background-image:url('./icons/film.png');
+}
+
+i.xls,i.xlsx{
+  background-image:url('./icons/page_white_excel.png');
+}
+i.c{
+  background-image:url('./icons/page_white_c.png');
+}
+i.h{
+  background-image:url('./icons/page_white_h.png');
+}
+i.pdf{
+  background-image:url('./icons/page_white_acrobat.png');
+}
+i.iso{
+  background-image:url('./icons/page_white_cd.png');
+}
+i.zip.,i.gz,i.tar,i.rar{
+  background-image:url('./icons/page_white_compressed.png');
+}
+i._7z{
+  background-image:url('./icons/page_white_compressed.png');
+}
+i.cpp{
+  background-image:url('./icons/page_white_cplusplus.png');
+}
+i.cs,i.csharp{
+  background-image:url('./icons/page_white_csharp.png');
+}
+i.java,i.class,i.bean{
+  background-image:url('./icons/page_white_cup.png');
+}
+i.db,i.rdb,i.sql{
+  background-image:url('./icons/page_white_database.png');
+}
+i.flv,i.f4v,i.swf{
+  background-image:url('./icons/page_white_flash.png');
+}
+i.php{
+  background-image:url('./icons/page_white_php.png');
+}
+i.ppt,i.pptx{
+  background-image:url('./icons/page_white_powerpoint.png');
+}
+i.rb,i.gem,i.ruby{
+  background-image:url('./icons/page_white_ruby.png');
+}
+i.docx,i.doc{
+  background-image:url('./icons/page_white_word.png');
+}
+i.vs{
+  background-image:url('./icons/page_white_visualstudio.png');
+}
+i.rss{
+  background-image:url('./icons/feed.png');
+}
+i.sh{
+  background-image:url('./icons/application_osx_terminal.png');
+}
+i.exe{
+  background-image:url('./icons/application_xp.png');
+}
+i.xhtml{
+  background-image:url('./icons/xhtml.png');
+}
+i.html{
+  background-image:url('./icons/html.png');
+}
+i.css,i.less,i.scss{
+  background-image:url('./icons/css.png');
+}
+i.deb{
+  background-image:url('./icons/tux.png');
+}
+i.js{
+  background-image:url('./icons/script_code.png');
+}
+i.json{
+  background-image:url('./icons/script_code_red.png');
+}
+i.as2,i.as,i.as3{
+  background-image:url('./icons/page_white_actionscript.png');
+}
+i.cf{
+  background-image:url('./icons/page_white_coldfusion.png');
+}
+i.fh{
+  background-image:url('./icons/page_white_freehand.png');
+}
+i.svg,i.eps{
+  background-image:url('./icons/page_white_vector.png');
+}
+i.sln,i.vcproj,i.vcxproj,i.csproj,i.vs{
+  background-image:url('./icons/page_white_visualstudio.png');
+}
+i.dll{
+  background-image:url('./icons/page_white_gear.png');
+}
+i.lnk{
+  background-image:url('./icons/page_white_link.png');
+}
