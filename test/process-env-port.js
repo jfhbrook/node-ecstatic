@@ -6,43 +6,16 @@ var test = require('tap').test,
     insanePorts = [-Infinity, 1023, 65537, Infinity, 'wow', null, undefined]
 
 test('sane port', function (t) {
-  t.plan(2)
-  var ecstatic = spawn(process.execPath, [__dirname + '/../lib/ecstatic.js'], {
-    env: {
-      PORT: sanePort
-    }
-  })
-  ecstatic.stdout.on('data', function (data) {
-    t.pass('ecstatic should be started')
-    checkServerIsRunning('http://0.0.0.0:' + sanePort, ecstatic, t)
-  })
+  startServer('http://0.0.0.0:' + sanePort, sanePort, t)
 })
 
 test('floating point port', function (t) {
-  t.plan(2)
-  var ecstatic = spawn(process.execPath, [__dirname + '/../lib/ecstatic.js'], {
-    env: {
-      PORT: floatingPointPort
-    }
-  })
-  ecstatic.stdout.on('data', function (data) {
-    t.pass('ecstatic should be started')
-    checkServerIsRunning('http://0.0.0.0:9090', ecstatic, t)
-  })
+  startServer('http://0.0.0.0:9090', floatingPointPort, t)
 })
 
 insanePorts.forEach(function (port) {
   test('insane port: ' + port, function (t) {
-    t.plan(2)
-    var ecstatic = spawn(process.execPath, [__dirname + '/../lib/ecstatic.js'], {
-      env: {
-        PORT: port
-      }
-    })
-    ecstatic.stdout.on('data', function (data) {
-      t.pass('ecstatic should be started')
-      checkServerIsRunning('http://0.0.0.0:8000', ecstatic, t)
-    })
+    startServer('http://0.0.0.0:9090', floatingPointPort, t)
   })
 })
 
@@ -58,5 +31,18 @@ function checkServerIsRunning (url, ps, t) {
     } else {
       t.fail('the server could not be reached')
     }
+  })
+}
+
+function startServer (url, port, t) {
+  t.plan(2)
+  var ecstatic = spawn(process.execPath, [__dirname + '/../lib/ecstatic.js'], {
+    env: {
+      PORT: port
+    }
+  })
+  ecstatic.stdout.on('data', function (data) {
+    t.pass('ecstatic should be started')
+    checkServerIsRunning(url, ecstatic, t)
   })
 }
