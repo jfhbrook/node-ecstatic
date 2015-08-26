@@ -15,7 +15,7 @@ test('floating point port', function (t) {
 
 insanePorts.forEach(function (port) {
   test('insane port: ' + port, function (t) {
-    startServer('http://0.0.0.0:9090', floatingPointPort, t)
+    startServer('http://0.0.0.0:8000', port, t)
   })
 })
 
