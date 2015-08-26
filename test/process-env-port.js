@@ -2,6 +2,7 @@ var test = require('tap').test,
     request = require('request'),
     spawn = require('child_process').spawn,
     sanePort = getRandomInt(1025, 65536),
+    floatingPointPort = 9090.86,
     insanePorts = [-Infinity, 1023, 65537, Infinity, 'wow', null, undefined]
 
 test('sane port', function (t) {
@@ -14,6 +15,19 @@ test('sane port', function (t) {
   ecstatic.stdout.on('data', function (data) {
     t.pass('ecstatic should be started')
     checkServerIsRunning('http://0.0.0.0:' + sanePort, ecstatic, t)
+  })
+})
+
+test('floating point port', function (t) {
+  t.plan(2)
+  var ecstatic = spawn(process.execPath, [__dirname + '/../lib/ecstatic.js'], {
+    env: {
+      PORT: floatingPointPort
+    }
+  })
+  ecstatic.stdout.on('data', function (data) {
+    t.pass('ecstatic should be started')
+    checkServerIsRunning('http://0.0.0.0:9090', ecstatic, t)
   })
 })
 
