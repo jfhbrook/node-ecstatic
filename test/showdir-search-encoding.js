@@ -7,10 +7,10 @@ var test = require('tap').test,
 var root = __dirname + '/public',
     baseDir = 'base';
 
-test('url encoding in href', function (t) {
+test('directory listing with query string specified', function (t) {
   var port = Math.floor(Math.random() * ((1<<16) - 1e4) + 1e4);
 
-  var uri = 'http://localhost:' + port + path.join('/', baseDir, 'show-dir-href-encoding');
+  var uri = 'http://localhost:' + port + path.join('/', baseDir, '?a=1&b=2');
 
   var server = http.createServer(
     ecstatic({
@@ -25,7 +25,8 @@ test('url encoding in href', function (t) {
     request.get({
       uri: uri
     }, function(err, res, body) {
-      t.match(body, /href="\/base\/show\-dir\-href\-encoding\/aname\+aplus\.txt"/, 'We found the right href');
+      t.match(body, /href="\/base\/subdir\/\?a=1&#x26;b=2"/, 'We found the encoded href');
+      t.notMatch(body, /a=1&b=2/, 'We didn\'t find the unencoded query string value');
       server.close();
       t.end();
     });

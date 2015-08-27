@@ -7,10 +7,10 @@ var test = require('tap').test,
 var root = __dirname + '/public',
     baseDir = 'base';
 
-test('url encoding in href', function (t) {
+test('directory listing with pathname including HTML characters', function (t) {
   var port = Math.floor(Math.random() * ((1<<16) - 1e4) + 1e4);
 
-  var uri = 'http://localhost:' + port + path.join('/', baseDir, 'show-dir-href-encoding');
+  var uri = 'http://localhost:' + port + path.join('/', baseDir, '/%3Cdir%3E');
 
   var server = http.createServer(
     ecstatic({
@@ -25,7 +25,8 @@ test('url encoding in href', function (t) {
     request.get({
       uri: uri
     }, function(err, res, body) {
-      t.match(body, /href="\/base\/show\-dir\-href\-encoding\/aname\+aplus\.txt"/, 'We found the right href');
+      t.notMatch(body, /<dir>/, 'We didn\'t find the unencoded pathname');
+      t.match(body, /&#x3C;dir&#x3E;/, 'We found the encoded pathname');
       server.close();
       t.end();
     });
