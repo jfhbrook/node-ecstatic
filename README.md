@@ -175,7 +175,7 @@ to start a standalone static http server,
 run `npm install -g ecstatic` and then run `ecstatic [dir?] [options] --port PORT`
 all options work as above, passed in [optimist](https://github.com/substack/node-optimist) style.
 `port` defaults to `8000`. If a `dir` or `--root dir` argument is not passed, ecsatic will
-serve the current dir.
+serve the current dir. Ecstatic also respects the PORT environment variable.
 
 # Tests:
 
