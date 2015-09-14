@@ -5,6 +5,7 @@
 - As a bin, respects process.env.PORT when binding to a port
 - Directory listings encode pathnames, etc
 - Default status pages return html instead of text/plain
+- Contributors are listed in CONTRIBUTORS.md, referenced by LICENSE.txt
 
 2015/05/22 Version 0.8.0
 - Add ability to define custom mime-types, inline or with Apache .types file
