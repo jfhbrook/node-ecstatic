@@ -193,4 +193,4 @@ contributing, take a quick look at the contributing guidelines in
 
 # License:
 
-MIT.
+MIT. See LICENSE.txt. For contributors, see CONTRIBUTORS.md
