@@ -1,3 +1,11 @@
+2015/09/14 Version 1.0.0
+- Optional support for weak Etags and weak Etag *comparison*, useful for cases
+  where one is running ecstatic with gzip behind an nginx proxy (these will
+  likely be turned ON by default in a following major version)
+- As a bin, respects process.env.PORT when binding to a port
+- Directory listings encode pathnames, etc
+- Default status pages return html instead of text/plain
+
 2015/05/22 Version 0.8.0
 - Add ability to define custom mime-types, inline or with Apache .types file
 - Test against express ^4.12.3 and union ^0.4.4
