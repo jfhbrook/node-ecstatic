@@ -10,9 +10,8 @@ test('html reflection prevented', function (t) {
     var port = server.address().port;
     var attack = '<script>alert(\'xss\')</script>';
     request.get('http://localhost:' + port + '/more-problematic/' + attack, function (err, res, body) {
-      if ((!res.headers['content-type'] || res.headers['content-type'] == 'text/html') &&
-          body.indexOf(attack) != -1) {
-        t.fail('Unescaped HTML reflected with vulnerable or missing content-type.');
+      if (body.indexOf('<script>') != -1) {
+        t.fail('Unescaped HTML reflected.');
       }
       server.close(function() { t.end(); });
     });
