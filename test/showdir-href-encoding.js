@@ -10,7 +10,7 @@ var root = __dirname + '/public',
 test('url encoding in href', function (t) {
   var port = Math.floor(Math.random() * ((1<<16) - 1e4) + 1e4);
 
-  var uri = 'http://localhost:' + port + path.join('/', baseDir, 'show-dir-href-encoding');
+  var uri = 'http://localhost:' + port + path.join('/', baseDir, 'show-dir%24%24href_encoding%24%24');
 
   var server = http.createServer(
     ecstatic({
@@ -25,7 +25,7 @@ test('url encoding in href', function (t) {
     request.get({
       uri: uri
     }, function(err, res, body) {
-      t.match(body, /href="\/base\/show\-dir\-href\-encoding\/aname%2Baplus\.txt"/, 'We found the right href');
+      t.match(body, /href="\/base\/show-dir%24%24href_encoding%24%24\/aname%2Baplus.txt"/, 'We found the right href');
       server.close();
       t.end();
     });
