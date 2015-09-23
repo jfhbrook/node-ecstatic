@@ -51,4 +51,4 @@ Listed in no particular order:
 * D Scott Boyce @scobo
 * Zach Bruggerman @remixz <mail@bruggie.com>
 * Mathias Bynens @mathiasbynens
-
+* Chris Lee @clee <clee@mg8.org>
