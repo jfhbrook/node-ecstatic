@@ -1,3 +1,6 @@
+2015/09/22 Version 1.0.1
+- Use encodeURIComponent when creating links in showdir
+
 2015/09/14 Version 1.0.0
 - Optional support for weak Etags and weak Etag *comparison*, useful for cases
   where one is running ecstatic with gzip behind an nginx proxy (these will
