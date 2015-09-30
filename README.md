@@ -63,19 +63,20 @@ Pass ecstatic an options hash, and it will return your middleware!
 
 ```js
 var opts = {
-             root          : __dirname + '/public',
-             baseDir       : '/',
-             cache         : 3600,
-             showDir       : true,
-             autoIndex     : false,
-             humanReadable : true,
-             headers       : {},
-             si            : false,
-             defaultExt    : 'html',
-             gzip          : false,
-             serverHeader  : true,
-             contentType   : 'application/octet-stream',
-             mimeTypes     : undefined
+             root               : __dirname + '/public',
+             baseDir            : '/',
+             cache              : 3600,
+             showDir            : true,
+             autoIndex          : false,
+             humanReadable      : true,
+             headers            : {},
+             si                 : false,
+             defaultExt         : 'html',
+             gzip               : false,
+             serverHeader       : true,
+             contentType        : 'application/octet-stream',
+             mimeTypes          : undefined,
+             handleOptionsMethod: false
            }
 ```
 
@@ -174,6 +175,16 @@ Set `opts.weakEtags` to true in order to generate weak etags instead of strong e
 
 Turn **on** weakCompare to allow the weak comparison function for etag validation. Defaults to **false**.
 See https://www.ietf.org/rfc/rfc2616.txt Section 13.3.3 for more details.
+
+### `opts.handleOptionsMethod`
+
+Set handleOptionsMethod to true in order to respond to 'OPTIONS' calls with any standard/set headers. Defaults to **false**. Useful for hacking up CORS support.
+
+### `opts.cors`
+
+This is a **convenience** setting which turns on `handleOptionsMethod` and sets the headers **Access-Control-Allow-Origin: \*** and **Access-Control-Allow-Headers: Authorization, Content-Type, If-Match, If-Modified-Since, If-None-Match, If-Unmodified-Since**. This *should* be enough to quickly make cross-origin resource sharing work between development APIs. More advanced usage can come either from overriding these headers with the headers argument, or by using the `handleOptionsMethod` flag and then setting headers "manually." Alternately, just do it in your app using separate middlewares/abstractions.
+
+Defaults to **false**.
 
 ## middleware(req, res, next);
 
