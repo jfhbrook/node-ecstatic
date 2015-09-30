@@ -69,6 +69,7 @@ var opts = {
              showDir       : true,
              autoIndex     : false,
              humanReadable : true,
+             headers       : {},
              si            : false,
              defaultExt    : 'html',
              gzip          : false,
@@ -105,6 +106,19 @@ Turn **off** directory listings with `opts.showDir === false`. Defaults to **tru
 
 If showDir is enabled, add human-readable file sizes. Defaults to **true**.
 Aliases are `humanreadable` and `human-readable`.
+
+### `opts.headers`
+
+Set headers on every response. `opts.headers` can be an object mapping string
+header names to string header values, a colon (:) separated string, or an array
+of colon separated strings.
+
+`opts.H` and `opts.header` are aliased to `opts.headers` so that you can use
+`-H` and `--header` options to set headers on the command-line like curl:
+
+``` sh
+$ ecstatic ./public -p 5000 -H 'Access-Control-Allow-Origin: *'
+```
 
 ### `opts.si`
 
