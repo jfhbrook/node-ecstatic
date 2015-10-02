@@ -1,3 +1,6 @@
+2015/10/02 Version 1.1.1
+- Properly handle boolean CLI args
+
 2015/10/01 Version 1.1.0
 - Adds support for responding to OPTIONS headers
 - Adds support for setting custom headers
