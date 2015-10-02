@@ -1,3 +1,8 @@
+2015/10/01 Version 1.1.0
+- Adds support for responding to OPTIONS headers
+- Adds support for setting custom headers
+- Adds cors convenience setting
+
 2015/09/22 Version 1.0.1
 - Use encodeURIComponent when creating links in showdir
 
