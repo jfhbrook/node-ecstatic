@@ -1,3 +1,6 @@
+2015/10/02 Version 1.1.2
+- Properly handle defaults in CLI args
+
 2015/10/02 Version 1.1.1
 - Properly handle boolean CLI args
 
