@@ -4,6 +4,7 @@
   "humanReadable": true,
   "si": false,
   "cache": "max-age=3600",
+  "cors": false,
   "gzip": false,
   "defaultExt": ".html",
   "handleError": true,
