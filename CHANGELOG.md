@@ -1,3 +1,6 @@
+2015/10/03 Version 1.1.3
+- Add CORS=false to defaults
+
 2015/10/02 Version 1.1.2
 - Properly handle defaults in CLI args
 
