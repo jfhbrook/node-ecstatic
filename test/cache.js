@@ -3,7 +3,7 @@ var test = require('tap').test,
     request = require('request'),
     ecstatic = require('../');
 
-test('custom cache-content number', function(t) {
+test('custom cache option number', function(t) {
   try {
     var server = http.createServer(ecstatic({
       root: __dirname + '/public/',
@@ -27,7 +27,7 @@ test('custom cache-content number', function(t) {
   });
 });
 
-test('custom cache-content string', function(t) {
+test('custom cache option string', function(t) {
   try {
     var server = http.createServer(ecstatic({
       root: __dirname + '/public/',
@@ -51,7 +51,7 @@ test('custom cache-content string', function(t) {
   });
 });
 
-test('custom cache-content function returning a number', function(t) {
+test('custom cache option function returning a number', function(t) {
   var i = 0
   try {
     var server = http.createServer(ecstatic({
@@ -86,7 +86,7 @@ test('custom cache-content function returning a number', function(t) {
   });
 });
 
-test('custom cache-content function returning a string', function(t) {
+test('custom cache option function returning a string', function(t) {
   var i = 0
   try {
     var server = http.createServer(ecstatic({
