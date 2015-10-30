@@ -74,19 +74,14 @@ test('custom cache-content function returning a number', function(t) {
       t.ifError(err);
       t.equal(res.statusCode, 200, 'a.txt should be found');
       t.equal(res.headers['cache-control'], 'max-age=1');
-      server.close(function() {
 
-        server.listen(0, function() {
-          var port = server.address().port;
-          request.get('http://localhost:' + port + '/a.txt', function(err, res, body) {
-            t.ifError(err);
-            t.equal(res.statusCode, 200, 'a.txt should be found');
-            t.equal(res.headers['cache-control'], 'max-age=2');
-            server.close(function() { t.end(); });
-          });
-        });
-
+      request.get('http://localhost:' + port + '/a.txt', function(err, res, body) {
+        t.ifError(err);
+        t.equal(res.statusCode, 200, 'a.txt should be found');
+        t.equal(res.headers['cache-control'], 'max-age=2');
+        server.close(function() { t.end(); });
       });
+
     });
   });
 });
@@ -114,19 +109,14 @@ test('custom cache-content function returning a string', function(t) {
       t.ifError(err);
       t.equal(res.statusCode, 200, 'a.txt should be found');
       t.equal(res.headers['cache-control'], 'max-meh=1');
-      server.close(function() {
 
-        server.listen(0, function() {
-          var port = server.address().port;
-          request.get('http://localhost:' + port + '/a.txt', function(err, res, body) {
-            t.ifError(err);
-            t.equal(res.statusCode, 200, 'a.txt should be found');
-            t.equal(res.headers['cache-control'], 'max-meh=2');
-            server.close(function() { t.end(); });
-          });
-        });
-
+      request.get('http://localhost:' + port + '/a.txt', function(err, res, body) {
+        t.ifError(err);
+        t.equal(res.statusCode, 200, 'a.txt should be found');
+        t.equal(res.headers['cache-control'], 'max-meh=2');
+        server.close(function() { t.end(); });
       });
+
     });
   });
 });
