@@ -52,13 +52,13 @@ test('custom cache option string', function(t) {
 });
 
 test('custom cache option function returning a number', function(t) {
-  var i = 0
+  var i = 0;
   try {
     var server = http.createServer(ecstatic({
       root: __dirname + '/public/',
       cache: function() {
-        i++
-        return i
+        i++;
+        return i;
       }
     }));
   } catch (e) {
@@ -87,13 +87,13 @@ test('custom cache option function returning a number', function(t) {
 });
 
 test('custom cache option function returning a string', function(t) {
-  var i = 0
+  var i = 0;
   try {
     var server = http.createServer(ecstatic({
       root: __dirname + '/public/',
       cache: function() {
-        i++
-        return 'max-meh=' + i
+        i++;
+        return 'max-meh=' + i;
       }
     }));
   } catch (e) {
