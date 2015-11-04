@@ -1,3 +1,6 @@
+2015/11/03 Version 1.2.0
+- opts.cache supports function argument
+
 2015/10/03 Version 1.1.3
 - Add CORS=false to defaults
 
