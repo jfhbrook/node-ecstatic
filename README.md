@@ -105,6 +105,10 @@ If it is a function, it will be executed on every request, and passed the pathna
 
 Turn **off** directory listings with `opts.showDir === false`. Defaults to **true**.
 
+### `opts.showDotfiles`
+
+Exclude dotfiles from directory listings with `opts.showDotfiles === false`. Defaults to **true**.
+
 ### `opts.humanReadable`
 
 If showDir is enabled, add human-readable file sizes. Defaults to **true**.

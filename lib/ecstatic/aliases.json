@@ -1,6 +1,7 @@
 {
   "autoIndex": [ "autoIndex", "autoindex" ],
   "showDir": [ "showDir", "showdir" ],
+  "showDotfiles": ["showDotfiles", "showdotfiles"],
   "humanReadable": [ "humanReadable", "humanreadable", "human-readable" ],
   "si": [ "si", "index" ],
   "handleError": [ "handleError", "handleerror" ],
