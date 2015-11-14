@@ -1,3 +1,6 @@
+2015/11/14 Version 1.3.0
+- opts.showDotFiles allows hiding dot files
+
 2015/11/03 Version 1.2.0
 - opts.cache supports function argument
 
