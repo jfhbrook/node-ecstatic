@@ -1,3 +1,7 @@
+2015/11/15 Version 1.3.1
+- Add recent contributors to CONTRIBUTORS.md
+- Document showDotFiles in main options example
+
 2015/11/14 Version 1.3.0
 - opts.showDotFiles allows hiding dot files
 
