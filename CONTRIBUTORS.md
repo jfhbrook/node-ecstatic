@@ -52,4 +52,5 @@ Listed in no particular order:
 * Zach Bruggerman @remixz <mail@bruggie.com>
 * Mathias Bynens @mathiasbynens
 * Chris Lee @clee <clee@mg8.org>
+* Josh Duff @TehShrike
 * Cam Wiegert @camwiegert <cam@camwiegert.com>
