@@ -67,6 +67,7 @@ var opts = {
              baseDir            : '/',
              cache              : 3600,
              showDir            : true,
+             showDotfiles       : true,
              autoIndex          : false,
              humanReadable      : true,
              headers            : {},
