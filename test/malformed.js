@@ -14,6 +14,7 @@ test('malformed uri', function (t) {
     var r = http.get({
       host: 'localhost',
       port: server.address().port,
+      headers: { Connection: 'close' },
       path: '/%'
     });
     r.on('response', function (res) {
