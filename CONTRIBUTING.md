@@ -16,6 +16,49 @@ discretion.
 
 Glad we cleared that up.
 
+## Windows users
+
+Before you clone ecstatic you unfortunately have to make some changes to git.
+In our test suit we test for certain named folders, that need proper
+encoding to not break links in directory listings. These folder names are
+illegal on Windows and will throw off git. It's a catch-22 because you need
+to make these changes to your local ecstatic git repository, which you can
+not clone.
+
+1) Create and initialize your new repository (`<url>` is your fork):
+
+```
+mkdir node-ecstatic
+cd node-ecstatic
+git init
+git remote add –f origin <url>
+```
+
+2) Enable sparse-checkout:
+
+```
+git config core.sparsecheckout true
+```
+
+3) Configure sparse-checkout by listing your desired and excluded sub-trees
+   in .git/info/sparse-checkout:
+
+```
+echo /*
+echo !test/public/<dir> >> .git/info/sparse-checkout
+echo !test/showdir-search-encoding.js >> .git/info/sparse-checkout
+echo !test/showdir-pathname-encoding.js >> .git\info\sparse-checkout
+```
+
+4) Checkout from the remote:
+
+```
+git pull origin master
+```
+
+You can read all the details about sparse-checkout in the
+[git documentation](https://git-scm.com/docs/git-read-tree#_sparse_checkout).
+
 ## Branching
 
 Before working on your fix/feature/whatever, you should create a new branch to
