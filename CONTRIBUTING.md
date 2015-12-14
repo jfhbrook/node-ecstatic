@@ -31,7 +31,7 @@ Until someone has an epiphany and thinks up of a character which is acceptable
 on multiple platforms and effectively tests this behavior, here's how to get
 around it:
 
-1. Create and initialize your new repository (`<url>` is your fork):
+1) Create and initialize your new repository (`<url>` is your fork):
 
 ```bash
 mkdir node-ecstatic
@@ -40,13 +40,13 @@ git init
 git remote add –f origin <url>
 ```
 
-2. Enable sparse-checkout:
+2) Enable sparse-checkout:
 
 ```bash
 git config core.sparsecheckout true
 ```
 
-3. Configure sparse-checkout by listing your desired and excluded sub-trees
+3) Configure sparse-checkout by listing your desired and excluded sub-trees
    in .git/info/sparse-checkout (paste this into notepad):
 
 ```
@@ -58,7 +58,7 @@ git config core.sparsecheckout true
 
 This configures git to pull everything but the offending directory and tests which depend on it being there.
 
-4. Checkout from the remote:
+4) Checkout from the remote:
 
 ```bash
 git pull origin master
