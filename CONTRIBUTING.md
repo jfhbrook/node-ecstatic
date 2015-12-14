@@ -16,43 +16,51 @@ discretion.
 
 Glad we cleared that up.
 
-## Windows users
+## Windows Users
 
-Before you clone ecstatic you unfortunately have to make some changes to git.
-In our test suit we test for certain named folders, that need proper
-encoding to not break links in directory listings. These folder names are
-illegal on Windows and will throw off git. It's a catch-22 because you need
-to make these changes to your local ecstatic git repository, which you can
-not clone.
+Before you clone ecstatic you unfortunately have to configure git to not pull
+certain files.
 
-1) Create and initialize your new repository (`<url>` is your fork):
+The test suite has a
+[test](https://github.com/jfhbrook/node-ecstatic/blob/master/test/showdir-pathname-encoding.js#L28-L29)
+for proper HTML entities encoding which depends on a character which is
+[illegal in Windows](https://github.com/jfhbrook/node-ecstatic/issues/172).
+This breaks `git clone` in Windows.
 
-```
+Until someone has an epiphany and thinks up of a character which is acceptable
+on multiple platforms and effectively tests this behavior, here's how to get
+around it:
+
+1. Create and initialize your new repository (`<url>` is your fork):
+
+```bash
 mkdir node-ecstatic
 cd node-ecstatic
 git init
 git remote add –f origin <url>
 ```
 
-2) Enable sparse-checkout:
+2. Enable sparse-checkout:
 
-```
+```bash
 git config core.sparsecheckout true
 ```
 
-3) Configure sparse-checkout by listing your desired and excluded sub-trees
-   in .git/info/sparse-checkout:
+3. Configure sparse-checkout by listing your desired and excluded sub-trees
+   in .git/info/sparse-checkout (paste this into notepad):
 
 ```
-echo /*
-echo !test/public/<dir> >> .git/info/sparse-checkout
-echo !test/showdir-search-encoding.js >> .git/info/sparse-checkout
-echo !test/showdir-pathname-encoding.js >> .git\info\sparse-checkout
+/*
+!test/public/<dir>
+!test/showdir-search-encoding.js
+!test/showdir-pathname-encoding.js
 ```
 
-4) Checkout from the remote:
+This configures git to pull everything but the offending directory and tests which depend on it being there.
 
-```
+4. Checkout from the remote:
+
+```bash
 git pull origin master
 ```
 
