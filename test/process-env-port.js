@@ -6,16 +6,16 @@ var test = require('tap').test,
     insanePorts = [1023, 65537, Infinity, 'wow'];
 
 test('sane port', function (t) {
-  startServer('http://0.0.0.0:' + sanePort, sanePort, t);
+  startServer('http://127.0.0.1:' + sanePort, sanePort, t);
 });
 
 test('floating point port', function (t) {
-  startServer('http://0.0.0.0:9090', floatingPointPort, t);
+  startServer('http://127.0.0.1:9090', floatingPointPort, t);
 });
 
 insanePorts.forEach(function (port) {
   test('insane port: ' + port, function (t) {
-    startServer('http://0.0.0.0:8000', port, t);
+    startServer('http://127.0.0.1:8000', port, t);
   })
 });
 
