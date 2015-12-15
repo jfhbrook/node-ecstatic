@@ -29,15 +29,7 @@ test('setting port via cli - default port', function(t) {
   var options = ['.'];
   var ecstatic = startEcstatic(options)
   
-  console.log(t.teardown);
-  
-  t.teardown(function() {
-    ecstatic.kill('SIGTERM');    
-  });
-
-//TODO: remove error handler
-ecstatic.stderr.setEncoding('utf8');
-ecstatic.stderr.on("data", console.log.bind(console, "error:"))
+  tearDown(ecstatic, t);
 
   ecstatic.stdout.on("data", function(data) {
     var expected = port,
@@ -47,10 +39,6 @@ ecstatic.stderr.on("data", console.log.bind(console, "error:"))
   
   checkServerIsRunning(defaultUrl + ':' + port, t);
 });
-function startEcstatic(args, options) {
-  console.log("args", args);
-  return spawn(node, [require.resolve('../lib/ecstatic.js')].concat(args));
-}
 
 test('setting port via cli - custom port', function(t) {
   t.plan(2);
@@ -59,13 +47,7 @@ test('setting port via cli - custom port', function(t) {
   var options = ['.', '--port', port];
   var ecstatic = startEcstatic(options);
 
-//TODO: remove error handler
-ecstatic.stderr.setEncoding('utf8');
-ecstatic.stderr.on("data", console.log.bind(console, "error:"))
-  
-  t.teardown(function() {
-    ecstatic.kill('SIGTERM');    
-  });
+  tearDown(ecstatic, t);
   
   ecstatic.stdout.on('data', function(data) {
     var expected = port,
@@ -76,8 +58,34 @@ ecstatic.stderr.on("data", console.log.bind(console, "error:"))
   checkServerIsRunning(defaultUrl + ':' + port, t);
 });
 
+test('setting mimeTypes via cli', function(t) {
+  t.plan(2);
+  
+  var port = getRandomPort();
+  var options = ['.', '--port', port];
+  var ecstatic = startEcstatic(options);
+  
+  tearDown(ecstatic, t);
+  
+  ecstatic.stdout.on("data", function(data) {
+    t.ok(true, 'test something');
+  });
+  
+  //TODO: remove error handler
+  ecstatic.stderr.setEncoding('utf8');
+  ecstatic.stderr.on("data", console.log.bind(console, "error:"))
+  ecstatic.stdin.on("data", console.log.bind(console, "in:"))
+  
+  checkServerIsRunning(defaultUrl + ':' + port, t);
+});
+
 function getRandomInt (min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function startEcstatic(args, options) {
+  console.log("args", args);
+  return spawn(node, [require.resolve('../lib/ecstatic.js')].concat(args));
 }
 
 function checkServerIsRunning (url, t) {
@@ -90,21 +98,9 @@ function checkServerIsRunning (url, t) {
   })
 }
 
-
-/*
-
-test('setting mimeTypes via cli', function(t) {
-  t.plan(1);
-  
-  var port = 1213;
-  var options = ['.', '--p ' + port];
-  var ecstatic = startEcstatic(options);
-  
-  ecstatic.stdout.on("data", function(data) {
-    t.ok(true, 'test something', true);
-    ecstatic.kill('SIGTERM');
+function tearDown(ps, t) {
+  t.tearDown(function() {
+    console.log("KILL!")
+    ps.kill('SIGTERM');    
   });
-  ecstatic.stderr.setEncoding('utf8');
-  ecstatic.stderr.on("data", console.log.bind(console, "error:"))
-  ecstatic.stdin.on("data", console.log.bind(console, "in:"))
-});*/
+}
