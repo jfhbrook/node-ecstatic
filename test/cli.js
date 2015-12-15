@@ -7,6 +7,7 @@ var test = require('tap').test,
     spawn = require('child_process').spawn,
     node = process.execPath,
     defaultUrl = 'http://localhost',
+    portRegex = /(\d{4,5})/,
     defaultPort = 8000,
     getRandomPort = (function() {
       var usedPorts = [];
@@ -25,7 +26,6 @@ test('setting port via cli - default port', function(t) {
   var port = defaultPort;
   var options = ['.'];
   var ecstatic = startEcstatic(options)
-  var portRegex = /(\d{4})/;
 
 ecstatic.stderr.setEncoding('utf8');
 ecstatic.stderr.on("data", console.log.bind(console, "error:"))
@@ -56,7 +56,6 @@ ecstatic.stderr.on("data", console.log.bind(console, "error:"))
 
   
   ecstatic.stdout.on("data", function(data) {
-    var portRegex = /(\d{4})/;
     var expected = port,
         actual = portRegex.test(data) && portRegex.exec(data)[0]|0;
     t.equal(actual, expected, 'The port number should be ' + port);
