@@ -58,8 +58,8 @@ test('setting mimeTypes via cli - .types file', function(t) {
   t.plan(2);
 
   var port = getRandomPort();
-  var root = path.resolve(__dirname, 'public/');
-  var pathMimetypeFile = path.resolve(__dirname, 'fixtures/custom_mime_type.types');
+  var root = __dirname + '/public/';
+  var pathMimetypeFile = __dirname + '/fixtures/custom_mime_type.types';
   var options = [root, '--port', port, '--mimetypes', pathMimetypeFile];
   var ecstatic = startEcstatic(options);
 
@@ -76,7 +76,7 @@ test('setting mimeTypes via cli - directly', function(t) {
   t.plan(3);
 
   var port = getRandomPort();
-  var root = path.resolve(__dirname, 'public/');
+  var root = __dirname + '/public/';
   var mimeType = ['--mimeTypes', '{ "application/x-my-type": ["opml"] }'];
   var options = [root, '--port', port, '--mimetypes'].concat(mimeType);
   var ecstatic = startEcstatic(options);
