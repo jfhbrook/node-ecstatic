@@ -1,6 +1,6 @@
 "use strict";
 
-/* this test suit is incomplete  2015-12-17 */
+/* this test suit is incomplete  2015-12-18 */
 
 var test = require('tap').test,
     request = require('request'),
@@ -8,7 +8,6 @@ var test = require('tap').test,
     path = require('path'),
     node = process.execPath,
     defaultUrl = 'http://localhost',
-    portRegex = /(\d{4,5})/, //NOTE: might delete
     defaultPort = 8000,
     getRandomPort = (function() {
       var usedPorts = [];
@@ -16,7 +15,7 @@ var test = require('tap').test,
         var port = getRandomInt(1025, 65536);
         if(usedPorts.indexOf(port) > -1)
           return getRandomPort();
-  
+
         usedPorts.push(port);
         return port;
       }
@@ -29,16 +28,13 @@ test('setting port via cli - default port', function(t) {
   var port = defaultPort;
   var options = ['.'];
   var ecstatic = startEcstatic(options)
-  
+
   tearDown(ecstatic, t);
 
-  //NOTE: might delete
   ecstatic.stdout.on("data", function(data) {
-    var expected = port,
-        actual = portRegex.test(data) && portRegex.exec(data)[0]|0;
-    t.equal(actual, expected, 'The default port number should be 8000');
+    t.pass('ecstatic should be started');
   });
-  
+
   checkServerIsRunning(defaultUrl + ':' + port, t);
 });
 
@@ -50,27 +46,25 @@ test('setting port via cli - custom port', function(t) {
   var ecstatic = startEcstatic(options);
 
   tearDown(ecstatic, t);
-  //NOTE: might delete
+
   ecstatic.stdout.on('data', function(data) {
-    var expected = port,
-        actual = portRegex.test(data) && portRegex.exec(data)[0]|0;
-    t.equal(actual, expected, 'The port number should be ' + port);
+    t.pass('ecstatic should be started');
   });
-  
+
   checkServerIsRunning(defaultUrl + ':' + port, t);
 });
 
 test('setting mimeTypes via cli - .types file', function(t) {
   t.plan(2);
-  
+
   var port = getRandomPort();
   var root = path.resolve(__dirname, 'public/');
   var pathMimetypeFile = path.resolve(__dirname, 'fixtures/custom_mime_type.types');
   var options = [root, '--port', port, '--mimetypes', pathMimetypeFile];
   var ecstatic = startEcstatic(options);
-  
+
   tearDown(ecstatic, t);
-  
+
   ecstatic.stdout.on('data', function(data) {
     t.pass('ecstatic should be started');
     checkServerIsRunning(defaultUrl + ':' + port + '/custom_mime_type.opml', t);
@@ -78,20 +72,21 @@ test('setting mimeTypes via cli - .types file', function(t) {
 
 });
 
-test('setting mimeTypes via cli - ', function(t) {
+test('setting mimeTypes via cli - directly', function(t) {
   t.plan(3);
-  
+
   var port = getRandomPort();
   var root = path.resolve(__dirname, 'public/');
   var mimeType = ['--mimeTypes', '{ "application/x-my-type": ["opml"] }'];
   var options = [root, '--port', port, '--mimetypes'].concat(mimeType);
   var ecstatic = startEcstatic(options);
+
   //TODO: remove error handler
-  ecstatic.stderr.pipe(process.stderr);
-  ecstatic.stdout.pipe(process.stderr);
-  
+  /*ecstatic.stderr.pipe(process.stderr);
+  ecstatic.stdout.pipe(process.stderr);*/
+
   tearDown(ecstatic, t);
-  
+
   ecstatic.stdout.on('data', function(data) {
     t.pass('ecstatic should be started');
     checkServerIsRunning(defaultUrl + ':' + port + '/custom_mime_type.opml', t)
@@ -107,7 +102,6 @@ function getRandomInt (min, max) {
 }
 
 function startEcstatic(args, options) {
-  // console.log("args", args);
   return spawn(node, [require.resolve('../lib/ecstatic.js')].concat(args));
 }
 
@@ -120,7 +114,7 @@ function checkServerIsRunning (url, t) {
       p.resolve(res);
     } else {
       t.fail('the server could not be reached @ ' + url);
-      p.resolve();
+      p.resolve(err);
     }
   })
   return p;
@@ -128,7 +122,6 @@ function checkServerIsRunning (url, t) {
 
 function tearDown(ps, t) {
   t.tearDown(function() {
-    // console.log("KILL!")
     ps.kill('SIGTERM');
   });
 }
