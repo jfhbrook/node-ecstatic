@@ -7,7 +7,7 @@ var test = require('tap').test,
     spawn = require('child_process').spawn,
     path = require('path'),
     node = process.execPath,
-    defaultUrl = 'http://localhost',
+    defaultUrl = 'http://127.0.0.1',
     defaultPort = 8000,
     getRandomPort = (function() {
       var usedPorts = [];
@@ -35,7 +35,7 @@ test('setting port via cli - default port', function(t) {
     t.pass('ecstatic should be started');
   });
 
-  checkServerIsRunning(defaultUrl + ':' + port, t);
+  checkServerIsRunning(defaultUrl + ':' + port + '/', t);
 });
 
 test('setting port via cli - custom port', function(t) {
@@ -51,15 +51,15 @@ test('setting port via cli - custom port', function(t) {
     t.pass('ecstatic should be started');
   });
 
-  checkServerIsRunning(defaultUrl + ':' + port, t);
+  checkServerIsRunning(defaultUrl + ':' + port + '/', t);
 });
 
 test('setting mimeTypes via cli - .types file', function(t) {
   t.plan(2);
 
   var port = getRandomPort();
-  var root = __dirname + '/public/';
-  var pathMimetypeFile = __dirname + '/fixtures/custom_mime_type.types';
+  var root = path.resolve(__dirname, 'public/');
+  var pathMimetypeFile = path.resolve(__dirname, 'fixtures/custom_mime_type.types');
   var options = [root, '--port', port, '--mimetypes', pathMimetypeFile];
   var ecstatic = startEcstatic(options);
 
@@ -76,7 +76,7 @@ test('setting mimeTypes via cli - directly', function(t) {
   t.plan(3);
 
   var port = getRandomPort();
-  var root = __dirname + '/public/';
+  var root = path.resolve(__dirname, 'public/');
   var mimeType = ['--mimeTypes', '{ "application/x-my-type": ["opml"] }'];
   var options = [root, '--port', port, '--mimetypes'].concat(mimeType);
   var ecstatic = startEcstatic(options);
