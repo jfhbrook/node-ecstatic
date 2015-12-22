@@ -9,6 +9,8 @@ var test = require('tap').test,
 var root = __dirname + '/public',
     baseDir = 'base';
 
+require('./public/unconfigure_proxies.js');
+
 test('304_not_modified', function (t) {
   var port = Math.floor(Math.random() * ((1<<16) - 1e4) + 1e4),
       file = 'a.txt';

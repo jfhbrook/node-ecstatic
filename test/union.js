@@ -10,6 +10,7 @@ var test = require('tap').test,
 var root = __dirname + '/public',
     baseDir = 'base';
 
+require('./public/unconfigure_proxies.js');
 mkdirp.sync(root + '/emptyDir');
 
 var cases = require('./fixtures/common-cases');

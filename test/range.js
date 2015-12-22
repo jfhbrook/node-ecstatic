@@ -4,6 +4,8 @@ var test = require('tap').test,
     request = require('request'),
     eol = require('eol');
 
+require('./public/unconfigure_proxies.js');
+
 test('range', function (t) {
   t.plan(4);
   var server = http.createServer(ecstatic(__dirname + '/public/subdir'));
