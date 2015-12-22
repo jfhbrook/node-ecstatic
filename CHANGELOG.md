@@ -1,3 +1,8 @@
+2015/12/22 Version 1.4.0
+- Add ability to specify custom mimetypes via a JSON blob (on the CLI)
+- Started test suite around CLI options parsing
+- Workaround for egregious v8 bug around date parsing throwing during modified-since checks
+
 2015/11/15 Version 1.3.1
 - Add recent contributors to CONTRIBUTORS.md
 - Document showDotFiles in main options example
