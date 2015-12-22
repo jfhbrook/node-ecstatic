@@ -49,7 +49,7 @@ git config core.sparsecheckout true
 3) Configure sparse-checkout by listing your desired and excluded sub-trees
    in .git/info/sparse-checkout (paste this into notepad):
 
-```
+```winbatch
 /*
 !test/public/<dir>
 !test/showdir-search-encoding.js

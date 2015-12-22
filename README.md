@@ -64,6 +64,7 @@ Pass ecstatic an options hash, and it will return your middleware!
 ```js
 var opts = {
              root               : __dirname + '/public',
+             port               : 8000,
              baseDir            : '/',
              cache              : 3600,
              showDir            : true,
@@ -87,6 +88,10 @@ options are set to their defaults.
 ### `opts.root`
 
 `opts.root` is the directory you want to serve up.
+
+### `opts.port`
+
+`opts.port` it the port you want ecstatic to listen to.
 
 ### `opts.baseDir`
 
