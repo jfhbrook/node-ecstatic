@@ -22,8 +22,8 @@ var test = require('tap').test,
     }());
 
 
-/* TODO: TURNED OFF PORT TEST BECAUSE THEY FAIL ON TRAVIS AND
-   THE POINT OF PR #178 IS TO TEST SETTING MIMETYPE VIA CLI
+// TODO: Port tests fail on Travis
+/*
 test('setting port via cli - default port', function(t) {
   t.plan(2);
 
@@ -54,7 +54,8 @@ test('setting port via cli - custom port', function(t) {
   });
 
   checkServerIsRunning(defaultUrl + ':' + port, t);
-});*/
+});
+*/
 
 test('setting mimeTypes via cli - .types file', function(t) {
   t.plan(2);
@@ -75,7 +76,7 @@ test('setting mimeTypes via cli - .types file', function(t) {
 });
 
 test('setting mimeTypes via cli - directly', function(t) {
-  t.plan(3);
+  t.plan(4);
 
   var port = getRandomPort();
   var root = path.resolve(__dirname, 'public/');
@@ -91,10 +92,10 @@ test('setting mimeTypes via cli - directly', function(t) {
 
   ecstatic.stdout.on('data', function(data) {
     t.pass('ecstatic should be started');
-    checkServerIsRunning(defaultUrl + ':' + port + '/custom_mime_type.opml', t)
-      .then(function(res) {
-        t.equal(res.headers['content-type'], 'application/x-my-type; charset=utf-8');
-      });
+    checkServerIsRunning(defaultUrl + ':' + port + '/custom_mime_type.opml', t, function(err, res) {
+      t.error(err);
+      t.equal(res.headers['content-type'], 'application/x-my-type; charset=utf-8');
+    });
   });
 
 });
@@ -103,23 +104,23 @@ function getRandomInt (min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function startEcstatic(args, options) {
+function startEcstatic (args, options) {
   return spawn(node, [require.resolve('../lib/ecstatic.js')].concat(args));
 }
 
-function checkServerIsRunning (url, t) {
-  var cb;
-  var p = { then: function(f) { cb = f; }, resolve: function(v) { (cb && cb(v)); }};
+function checkServerIsRunning (url, t, cb) {
+
+  cb = cb || function(){};
+
   request(url, function (err, res, body) {
     if (!err && res.statusCode !== 500) {
       t.pass('a successful request from the server was made');
-      p.resolve(res);
+      cb(null, res);
     } else {
       t.fail('the server could not be reached @ ' + url);
-      p.resolve(err);
+      cb(err);
     }
   })
-  return p;
 }
 
 function tearDown(ps, t) {
