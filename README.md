@@ -2,8 +2,8 @@
 
 ![](http://imgur.com/vhub5.png)
 
-A simple static file server middleware. Use it with a raw http server,
-express/connect, or flatiron/union!
+A simple static file server middleware. Use it with a raw http server or
+express/connect!
 
 # Examples:
 
@@ -17,21 +17,6 @@ var ecstatic = require('ecstatic');
 var app = express();
 app.use(ecstatic({ root: __dirname + '/public' }));
 http.createServer(app).listen(8080);
-
-console.log('Listening on :8080');
-```
-
-## union
-
-``` js
-var union = require('union');
-var ecstatic = require('ecstatic');
-
-union.createServer({
-  before: [
-    ecstatic({ root: __dirname + '/public' }),
-  ]
-}).listen(8080);
 
 console.log('Listening on :8080');
 ```
