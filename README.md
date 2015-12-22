@@ -91,7 +91,7 @@ options are set to their defaults.
 
 ### `opts.port`
 
-`opts.port` it the port you want ecstatic to listen to.
+`opts.port` is the port you want ecstatic to listen to. Defaults to 8000.
 
 ### `opts.baseDir`
 
