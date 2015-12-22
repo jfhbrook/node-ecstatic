@@ -54,3 +54,4 @@ Listed in no particular order:
 * Chris Lee @clee <clee@mg8.org>
 * Josh Duff @TehShrike
 * Cam Wiegert @camwiegert <cam@camwiegert.com>
+* Josh Gillies @joshgillies <github@joshgilli.es>
