@@ -21,9 +21,6 @@ var test = require('tap').test,
       }
     }());
 
-
-// TODO: Port tests fail on Travis
-/*
 test('setting port via cli - default port', function(t) {
   t.plan(2);
 
@@ -35,9 +32,8 @@ test('setting port via cli - default port', function(t) {
 
   ecstatic.stdout.on("data", function(data) {
     t.pass('ecstatic should be started');
+    checkServerIsRunning(defaultUrl + ':' + port, t);
   });
-
-  checkServerIsRunning(defaultUrl + ':' + port, t);
 });
 
 test('setting port via cli - custom port', function(t) {
@@ -51,11 +47,10 @@ test('setting port via cli - custom port', function(t) {
 
   ecstatic.stdout.on('data', function(data) {
     t.pass('ecstatic should be started');
+    checkServerIsRunning(defaultUrl + ':' + port, t);
   });
 
-  checkServerIsRunning(defaultUrl + ':' + port, t);
 });
-*/
 
 test('setting mimeTypes via cli - .types file', function(t) {
   t.plan(2);
