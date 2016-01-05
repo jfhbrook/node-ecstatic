@@ -1,4 +1,5 @@
-var test = require('tap').test,
+var t = require('tap'),
+    test = t.test,
     ecstatic = require('../lib/ecstatic'),
     http = require('http'),
     request = require('request'),
@@ -6,6 +7,17 @@ var test = require('tap').test,
 
 var root = __dirname + '/public',
     baseDir = 'base';
+
+if (process.platform === 'win32') {
+  t.plan(0, 'Windows is allergic to < in path names');
+  return;
+}
+
+var fs = require('fs');
+test('create test directory', function (t) {
+  fs.mkdirSync(root + '/<dir>', '0755');
+  t.end();
+});
 
 test('directory listing with pathname including HTML characters', function (t) {
   var port = Math.floor(Math.random() * ((1<<16) - 1e4) + 1e4);
@@ -31,4 +43,9 @@ test('directory listing with pathname including HTML characters', function (t) {
       t.end();
     });
   });
+});
+
+test('remove test directory', function (t) {
+  fs.rmdirSync(root + '/<dir>', '0755');
+  t.end();
 });
