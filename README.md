@@ -1,4 +1,4 @@
-# Ecstatic [![build status](https://secure.travis-ci.org/jfhbrook/node-ecstatic.png)](http://travis-ci.org/jfhbrook/node-ecstatic)
+# Ecstatic [![build status](https://secure.travis-ci.org/jfhbrook/node-ecstatic.png)](http://travis-ci.org/jfhbrook/node-ecstatic) [![codecov.io](https://codecov.io/github/jfhbrook/node-ecstatic/coverage.svg?branch=master)](https://codecov.io/github/jfhbrook/node-ecstatic?branch=master)
 
 ![](http://imgur.com/vhub5.png)
 
