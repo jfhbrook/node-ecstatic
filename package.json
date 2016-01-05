@@ -10,7 +10,7 @@
   },
   "main": "./lib/ecstatic.js",
   "scripts": {
-    "test": "tap test/*.js"
+    "test": "tap --coverage test/*.js && codecov"
   },
   "bin": "./lib/ecstatic.js",
   "keywords": [
@@ -28,11 +28,12 @@
     "url-join": "0.0.1"
   },
   "devDependencies": {
+    "codecov": "^1.0.1",
     "eol": "^0.2.0",
     "express": "^4.12.3",
     "mkdirp": "^0.5.0",
     "request": "^2.49.0",
-    "tap": "^3.1.1"
+    "tap": "^5.0.0"
   },
   "license": "MIT"
 }
