@@ -16,57 +16,6 @@ discretion.
 
 Glad we cleared that up.
 
-## Windows Users
-
-Before you clone ecstatic you unfortunately have to configure git to not pull
-certain files.
-
-The test suite has a
-[test](https://github.com/jfhbrook/node-ecstatic/blob/master/test/showdir-pathname-encoding.js#L28-L29)
-for proper HTML entities encoding which depends on a character which is
-[illegal in Windows](https://github.com/jfhbrook/node-ecstatic/issues/172).
-This breaks `git clone` in Windows.
-
-Until someone has an epiphany and thinks up of a character which is acceptable
-on multiple platforms and effectively tests this behavior, here's how to get
-around it:
-
-1) Create and initialize your new repository (`<url>` is your fork):
-
-```bash
-mkdir node-ecstatic
-cd node-ecstatic
-git init
-git remote add –f origin <url>
-```
-
-2) Enable sparse-checkout:
-
-```bash
-git config core.sparsecheckout true
-```
-
-3) Configure sparse-checkout by listing your desired and excluded sub-trees
-   in .git/info/sparse-checkout (paste this into notepad):
-
-```winbatch
-/*
-!test/public/<dir>
-!test/showdir-search-encoding.js
-!test/showdir-pathname-encoding.js
-```
-
-This configures git to pull everything but the offending directory and tests which depend on it being there.
-
-4) Checkout from the remote:
-
-```bash
-git pull origin master
-```
-
-You can read all the details about sparse-checkout in the
-[git documentation](https://git-scm.com/docs/git-read-tree#_sparse_checkout).
-
 ## Branching
 
 Before working on your fix/feature/whatever, you should create a new branch to
