@@ -40,6 +40,13 @@ To allow fall through to your custom routes:
 ecstatic({ root: __dirname + '/public', handleError: false })
 ```
 
+### fallback file
+To response with specified file:
+
+```js
+ecstatic({ root: __dirname + '/public', fallbackFile: 'index.html' })
+```
+
 # API:
 
 ## ecstatic(opts);
@@ -63,6 +70,7 @@ var opts = {
              serverHeader       : true,
              contentType        : 'application/octet-stream',
              mimeTypes          : undefined,
+             fallbackFile       : undefined
              handleOptionsMethod: false
            }
 ```
