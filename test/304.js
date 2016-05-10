@@ -24,8 +24,7 @@ test('304_not_modified', function (t) {
   );
 
   server.listen(port, function () {
-    var uri = 'http://localhost:' + port + path.join('/', baseDir, file),
-        now = (new Date()).toString();
+    var uri = 'http://localhost:' + port + path.join('/', baseDir, file);
 
     request.get({
       uri: uri,
@@ -38,7 +37,7 @@ test('304_not_modified', function (t) {
       request.get({
         uri: uri,
         followRedirect: false,
-        headers: { 'if-modified-since': now }
+        headers: { 'if-modified-since': res.headers['last-modified'] }
       }, function (err, res, body) {
         if (err) t.fail(err);
 
