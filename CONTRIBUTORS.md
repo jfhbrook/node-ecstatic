@@ -55,3 +55,4 @@ Listed in no particular order:
 * Josh Duff @TehShrike
 * Cam Wiegert @camwiegert <cam@camwiegert.com>
 * Josh Gillies @joshgillies <github@joshgilli.es>
+* Jesse Tane @jessetane <jesse.tane@gmail.com>
