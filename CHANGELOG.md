@@ -1,3 +1,6 @@
+2015/05/10 Version 1.4.1
+- Compare if-modified-since header against server-generated last-modified header rather than raw mtime
+
 2015/12/22 Version 1.4.0
 - Add ability to specify custom mimetypes via a JSON blob (on the CLI)
 - Started test suite around CLI options parsing
