@@ -105,11 +105,6 @@ module.exports = {
     type: 'text/html',
     body: 'index :)\n'
   },
-  'something-non-existant%00.png': {
-    code: 404,
-    type: 'text/html',
-    body: '<h1>404</h1>\n'
-  },
   'containsSymlink/': {
     code: 404,
     body: '<h1>404</h1>\n'
