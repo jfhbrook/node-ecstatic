@@ -11,7 +11,7 @@
   "main": "./lib/ecstatic.js",
   "scripts": {
     "test": "tap --coverage test/*.js",
-    "posttest": "tap --coverage-report=lcov | codecov"
+    "posttest": "tap --coverage-report=text-lcov | codecov"
   },
   "bin": "./lib/ecstatic.js",
   "keywords": [
