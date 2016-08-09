@@ -56,3 +56,4 @@ Listed in no particular order:
 * Cam Wiegert @camwiegert <cam@camwiegert.com>
 * Josh Gillies @joshgillies <github@joshgilli.es>
 * Jesse Tane @jessetane <jesse.tane@gmail.com>
+* Simon Sturmer @sstur <sstur@me.com>
