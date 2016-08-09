@@ -1,4 +1,8 @@
-lib-cov
+.DS_Store
+
+.nyc_output
+coverage
+
 *.seed
 *.log
 *.csv
