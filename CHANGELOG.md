@@ -1,10 +1,19 @@
+- No longer strip null bytes from uris before parsing. This avoids a regexp dos
+  attack. The stripping was to avoid a bug regarding c++ null terminated
+  strings shenanigans in some versions of node, but it *appears* fixed in LTS
+  versions of node.
+- When both showDir and autoIndex are turned off, do not redirect from /foo to
+  /foo/.
+
 2015/05/10 Version 1.4.1
-- Compare if-modified-since header against server-generated last-modified header rather than raw mtime
+- Compare if-modified-since header against server-generated last-modified
+  header rather than raw mtime
 
 2015/12/22 Version 1.4.0
 - Add ability to specify custom mimetypes via a JSON blob (on the CLI)
 - Started test suite around CLI options parsing
-- Workaround for egregious v8 bug around date parsing throwing during modified-since checks
+- Workaround for egregious v8 bug around date parsing throwing during
+  modified-since checks
 
 2015/11/15 Version 1.3.1
 - Add recent contributors to CONTRIBUTORS.md
