@@ -10,7 +10,8 @@
   },
   "main": "./lib/ecstatic.js",
   "scripts": {
-    "test": "tap --coverage test/*.js && codecov"
+    "test": "tap --coverage test/*.js",
+    "posttest": "tap --coverage-report=lcov | codecov"
   },
   "bin": "./lib/ecstatic.js",
   "keywords": [
