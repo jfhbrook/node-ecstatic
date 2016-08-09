@@ -4,6 +4,7 @@
   versions of node.
 - When both showDir and autoIndex are turned off, do not redirect from /foo to
   /foo/.
+- Add code coverage reports and codecov.io
 
 2015/05/10 Version 1.4.1
 - Compare if-modified-since header against server-generated last-modified
