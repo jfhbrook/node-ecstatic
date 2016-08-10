@@ -1,3 +1,4 @@
+2016/08/10 Version 2.1.0
 - New, prettier showDir pages with icons!
 
 2016/08/09 Version 2.0.0
