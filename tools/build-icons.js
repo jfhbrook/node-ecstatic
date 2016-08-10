@@ -12,4 +12,4 @@ fs.readdirSync(iconDir).forEach(function (filename) {
   icons[tuple[0]] = fs.readFileSync(path.resolve(iconDir, filename), 'base64');
 });
 
-fs.writeFileSync(path.resolve(__dirname, '../lib/ecstatic/autoindex/icons.json'), JSON.stringify(icons, null, 2), 'utf8');
+fs.writeFileSync(path.resolve(__dirname, '../lib/ecstatic/show-dir/icons.json'), JSON.stringify(icons, null, 2), 'utf8');
