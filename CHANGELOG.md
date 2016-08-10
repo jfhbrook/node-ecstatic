@@ -1,3 +1,5 @@
+- New, prettier showDir pages with icons!
+
 2016/08/09 Version 2.0.0
 - No longer strip null bytes from uris before parsing. This avoids a regexp dos
   attack. The stripping was to avoid a bug regarding c++ null terminated
