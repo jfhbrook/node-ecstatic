@@ -57,3 +57,5 @@ Listed in no particular order:
 * Josh Gillies @joshgillies <github@joshgilli.es>
 * Jesse Tane @jessetane <jesse.tane@gmail.com>
 * Simon Sturmer @sstur <sstur@me.com>
+* Drew Harwell @fenwick67
+* Vamsi Krishna Avula @avamsi
