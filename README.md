@@ -44,9 +44,7 @@ ecstatic({ root: __dirname + '/public', handleError: false })
 ## CLI
 
 ```sh
-#!/bin/bash
-
-ecstatic ./public --show-dir --auto-index --port 8080
+ecstatic ./public --port 8080
 ```
 
 # Install:
@@ -109,7 +107,7 @@ serve the current dir. Ecstatic also respects the PORT environment variable.
 `opts.root` is the directory you want to serve up.
 
 ### `opts.port`
-### `--port {port}
+### `--port {port}`
 
 `opts.port` is the port you want ecstatic to listen to. Defaults to 8000. In
 CLI mode, this can be overridden with the `--port` flag or with the PORT

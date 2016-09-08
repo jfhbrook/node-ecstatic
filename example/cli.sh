@@ -1,4 +1,4 @@
 #!/bin/bash
 
-../lib/ecstatic.js ./public --show-dir --auto-index --port 8080
+../lib/ecstatic.js ./public --port 8080
 
