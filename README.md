@@ -109,8 +109,8 @@ serve the current dir. Ecstatic also respects the PORT environment variable.
 ### `opts.port`
 ### `--port {port}`
 
-`opts.port` is the port you want ecstatic to listen to. Defaults to 8000. In
-CLI mode, this can be overridden with the `--port` flag or with the PORT
+In CLI mode, `opts.port` is the port you want ecstatic to listen to. Defaults
+to 8000. This can be overridden with the `--port` flag or with the PORT
 environment variable.
 
 ### `opts.baseDir`
