@@ -256,8 +256,6 @@ $ npm test
 Without outside contributions, ecstatic would wither and die! Before
 contributing, take a quick look at the contributing guidelines in
 [./CONTRIBUTING.md](./CONTRIBUTING.md) . They're relatively painless, I promise.
-For Windows users, it is especially important to read the [./CONTRIBUTING.md](./CONTRIBUTING.md)
-section as you can **not** clone ecstatic without changing some settings in git.
 
 # License:
 
