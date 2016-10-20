@@ -14,6 +14,14 @@
     "posttest": "tap --coverage-report=text-lcov | codecov"
   },
   "bin": "./lib/ecstatic.js",
+  "files": [
+    "LICENSE.txt",
+    "lib/ecstatic.js",
+    "lib/ecstatic/etag.js",
+    "lib/ecstatic/opts.js",
+    "lib/ecstatic/showdir.js",
+    "lib/ecstatic/status-handlers.js"
+  ],
   "keywords": [
     "static",
     "web",
