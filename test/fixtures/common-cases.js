@@ -1,5 +1,6 @@
 var fs = require('fs'),
-    path = require('path');
+    path = require('path'),
+    eol = require('eol');
 
 module.exports = {
   'a.txt' : {
@@ -68,13 +69,8 @@ module.exports = {
   },
   'subdir/' : {
     code : 200,
-    headers: { 'accept-encoding': 'compress, gzip' },
-    body: fs.readFileSync(path.join(__dirname, '../', 'public', 'subdir', 'index.html.gz'), 'utf8')
-  },
-  'subdir/a' : {
-    code : 404,
-    headers: { 'accept-encoding': 'compress, gzip' },
-    body: require('eol').lf(fs.readFileSync(path.join(__dirname, '../', 'public', '404.html.gz'), 'utf8'))
+    type : 'text/html',
+    body : 'index!!!\n'
   },
   '404' : {
     code : 200,
@@ -114,30 +110,45 @@ module.exports = {
     code: 404,
     body: '<h1>404</h1>\n'
   },
-
+  'gzip/': {
+    code : 200,
+    headers : { 'accept-encoding': 'compress, gzip' },
+    type : 'text/html',
+    body : fs.readFileSync(path.join(__dirname, '../', 'public', 'gzip', 'index.html.gz'), 'utf8')
+  },
+  'gzip/a' : {
+    code : 404,
+    headers : { 'accept-encoding': 'compress, gzip' },
+    type : 'text/html',
+    body: eol.lf(fs.readFileSync(path.join(__dirname, '../', 'public', '404.html.gz'), 'utf8'))
+  },
   'gzip/real_ecstatic': {
     code : 200,
     file : 'gzip/real_ecstatic',
-    headers: { 'accept-encoding': 'compress, gzip' },
+    headers : { 'accept-encoding': 'compress, gzip' },
+    type : 'application/octet-stream',
     body: fs.readFileSync(path.join(__dirname, '../', 'public', 'gzip', 'real_ecstatic.gz'), 'utf8')
   },
   'gzip/real_ecstatic.gz': {
     code : 200,
     file : 'gzip/real_ecstatic.gz',
-    headers: { 'accept-encoding': 'compress, gzip' },
+    headers : { 'accept-encoding': 'compress, gzip' },
+    type : 'application/octet-stream',
     body: fs.readFileSync(path.join(__dirname, '../', 'public', 'gzip', 'real_ecstatic.gz'), 'utf8')
   },
   'gzip/fake_ecstatic': {
     code : 200,
-    file: 'gzip/fake_ecstatic',
-    headers: { 'accept-encoding': 'compress, gzip' },
+    file : 'gzip/fake_ecstatic',
+    type : 'application/octet-stream',
+    headers : { 'accept-encoding': 'compress, gzip' },
     body : "ecstatic"
   },
   'gzip/fake_ecstatic.gz': {
     code : 200,
     file : 'gzip/fake_ecstatic.gz',
-    headers: { 'accept-encoding': 'compress, gzip' },
-    body: fs.readFileSync(path.join(__dirname, '../', 'public', 'gzip', 'fake_ecstatic.gz'), 'utf8')
+    type : 'application/octet-stream',
+    headers : { 'accept-encoding': 'compress, gzip' },
+    body : fs.readFileSync(path.join(__dirname, '../', 'public', 'gzip', 'fake_ecstatic.gz'), 'utf8')
   }
 };
 
