@@ -9,7 +9,7 @@ var test = require('tap').test,
 var root = __dirname + '/public',
     baseDir = 'base';
 
-test('304_not_modified', function (t) {
+test('304_not_modified_strong', function (t) {
   var port = Math.floor(Math.random() * ((1<<16) - 1e4) + 1e4),
       file = 'a.txt';
   
@@ -19,7 +19,9 @@ test('304_not_modified', function (t) {
       gzip: true,
       baseDir: baseDir,
       autoIndex: true,
-      showDir: true
+      showDir: true,
+      weakEtags: false,
+      weakCompare: false
     })
   );
 
@@ -61,7 +63,7 @@ test('304_not_modified_weak', function (t) {
       baseDir: baseDir,
       autoIndex: true,
       showDir: true,
-      weakEtags: true,
+      weakCompare: false
     })
   );
 
@@ -103,7 +105,9 @@ test('304_not_modified_strong_compare', function (t) {
       gzip: true,
       baseDir: baseDir,
       autoIndex: true,
-      showDir: true
+      showDir: true,
+      weakEtags: false,
+      weakCompare: false
     })
   );
 
@@ -163,7 +167,7 @@ test('304_not_modified_weak_compare', function (t) {
       baseDir: baseDir,
       autoIndex: true,
       showDir: true,
-      weakCompare: true
+      weakEtags: false
     })
   );
 
