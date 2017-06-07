@@ -1,3 +1,13 @@
+2017/06/06 Version 3.0.0
+- Will now properly serve gzip files when defaulting the extension
+- Will fall back to serving non-gzip files if file with .gz extension is
+  missing the magic bytes
+- Updated he, url-join
+- Updated devDependencies
+- Added .npmrc
+- Added package-lock.json
+- Much improved documentation for the cli component
+
 2016/08/10 Version 2.1.0
 - New, prettier showDir pages with icons!
 
