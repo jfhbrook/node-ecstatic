@@ -1,4 +1,7 @@
-2017/06/06 Version 3.0.0
+2017/06/06 Version 2.2.1
+- Fix version number in CHANGELOG.md
+
+2017/06/06 Version 2.2.0
 - Will now properly serve gzip files when defaulting the extension
 - Will fall back to serving non-gzip files if file with .gz extension is
   missing the magic bytes
