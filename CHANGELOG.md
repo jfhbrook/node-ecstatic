@@ -1,3 +1,5 @@
+- Remove support for 0.12.0
+
 2017/06/06 Version 2.2.1
 - Fix version number in CHANGELOG.md
 
