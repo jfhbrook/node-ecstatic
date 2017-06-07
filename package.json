@@ -29,12 +29,12 @@
     "url-join": "^1.0.0"
   },
   "devDependencies": {
-    "codecov": "^1.0.1",
-    "eol": "^0.2.0",
+    "codecov": "^2.2.0",
+    "eol": "^0.9.0",
     "express": "^4.12.3",
     "mkdirp": "^0.5.0",
     "request": "^2.49.0",
-    "tap": "^5.7.0"
+    "tap": "^10.3.3"
   },
   "license": "MIT"
 }
