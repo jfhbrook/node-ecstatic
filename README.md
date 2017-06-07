@@ -228,7 +228,7 @@ weak etags. Defaults to **true**. See `opts.weakCompare` as well.
 ### `--no-weak-compare`
 
 Turn off weakCompare to disable the weak comparison function for etag
-validation. Defaults to **false**. See
+validation. Defaults to **true**. See
 https://www.ietf.org/rfc/rfc2616.txt Section 13.3.3 for more details.
 
 ### `opts.handleOptionsMethod`
