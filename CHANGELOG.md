@@ -1,3 +1,5 @@
+- Change gzip behavior to default
+- Change weak etags and weak etag comparisons to be on by default
 - Remove support for 0.12.0
 
 2017/06/06 Version 2.2.1
