@@ -1,3 +1,4 @@
+- Lint ./lib/ against airbnb modified to support node 4.x
 - Change gzip behavior to default
 - Change weak etags and weak etag comparisons to be on by default
 - Remove support for 0.12.0
