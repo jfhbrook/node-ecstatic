@@ -74,23 +74,24 @@ In node, pass ecstatic an options hash, and it will return your middleware!
 
 ```js
 var opts = {
-             root               : __dirname + '/public',
-             port               : 8000,
-             baseDir            : '/',
-             cache              : 3600,
-             showDir            : true,
-             showDotfiles       : true,
-             autoIndex          : false,
-             humanReadable      : true,
-             headers            : {},
-             si                 : false,
-             defaultExt         : 'html',
-             gzip               : false,
-             serverHeader       : true,
-             contentType        : 'application/octet-stream',
-             mimeTypes          : undefined,
-             handleOptionsMethod: false
-           }
+  root: __dirname + '/public',
+  baseDir: '/',
+  autoIndex: true,
+  showDir: true,
+  showDotfiles: true,
+  humanReadable: true,
+  si: false,
+  cache: 'max-age=3600',
+  cors: false,
+  gzip: true,
+  defaultExt: 'html',
+  handleError: true,
+  serverHeader: true,
+  contentType: 'application/octet-stream',
+  weakEtags: true,
+  weakCompare: true,
+  handleOptionsMethod: false
+ }
 ```
 
 If `opts` is a string, the string is assigned to the root folder and all other
@@ -182,17 +183,19 @@ to resolve to `./public/a-file.html`, set this to `true`. If you want
 `json`.
 
 ### `opts.gzip`
-### `--gzip`
+### `--no-gzip`
 
-Set `opts.gzip === true` in order to turn on "gzip mode," wherein ecstatic will
-serve `./public/some-file.js.gz` in place of `./public/some-file.js` when the
-gzipped version exists and ecstatic determines that the behavior is appropriate.
+By default, ecstatic will serve `./public/some-file.js.gz` in place of
+`./public/some-file.js` when the gzipped version exists and ecstatic determines
+that the behavior is appropriate. If `./public/some-file.js.gz` is not valid
+gzip, this will fall back to `./public/some-file.js`. You can turn this off
+with `opts.gzip === false`.
 
 ### `opts.serverHeader`
 ### `--no-server-header`
 
-Set `opts.serverHeader` to false in order to turn off setting the `Server` header
-on all responses served by ecstatic.
+Set `opts.serverHeader` to false in order to turn off setting the `Server`
+header on all responses served by ecstatic.
 
 ### `opts.contentType`
 ### `--content-type {type}`
@@ -203,25 +206,30 @@ Defaults to **application/octet-stream**.
 ### `opts.mimeTypes`
 ### `--mime-types {filename}`
 
-Add new or override one or more mime-types. This affects the HTTP Content-Type header.
-Can either be a path to a [`.types`](http://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types) file or an object hash of type(s).
+Add new or override one or more mime-types. This affects the HTTP Content-Type
+header. Can either be a path to a
+[`.types`](http://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types)
+file or an object hash of type(s).
 
     ecstatic({ mimeType: { 'mime-type': ['file_extension', 'file_extension'] } })
 
 ### `opts.handleError`
 
-Turn **off** handleErrors to allow fall-through with `opts.handleError === false`, Defaults to **true**.
+Turn **off** handleErrors to allow fall-through with
+`opts.handleError === false`, Defaults to **true**.
 
 ### `opts.weakEtags`
-### `--weak-etags`
+### `--no-weak-etags`
 
-Set `opts.weakEtags` to true in order to generate weak etags instead of strong etags. Defaults to **false**. See `opts.weakCompare` as well.
+Set `opts.weakEtags` to false in order to generate strong etags instead of
+weak etags. Defaults to **true**. See `opts.weakCompare` as well.
 
 ### `opts.weakCompare`
-### `--weak-compare`
+### `--no-weak-compare`
 
-Turn **on** weakCompare to allow the weak comparison function for etag validation. Defaults to **false**.
-See https://www.ietf.org/rfc/rfc2616.txt Section 13.3.3 for more details.
+Turn off weakCompare to disable the weak comparison function for etag
+validation. Defaults to **true**. See
+https://www.ietf.org/rfc/rfc2616.txt Section 13.3.3 for more details.
 
 ### `opts.handleOptionsMethod`
 ### `--handle-options-method`

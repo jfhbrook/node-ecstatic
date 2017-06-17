@@ -6,12 +6,12 @@
   "si": false,
   "cache": "max-age=3600",
   "cors": false,
-  "gzip": false,
+  "gzip": true,
   "defaultExt": ".html",
   "handleError": true,
   "serverHeader": true,
   "contentType": "application/octet-stream",
-  "weakEtags": false,
-  "weakCompare": false,
+  "weakEtags": true,
+  "weakCompare": true,
   "handleOptionsMethod": false
 }
