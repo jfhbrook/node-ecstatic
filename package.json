@@ -10,8 +10,8 @@
   },
   "main": "./lib/ecstatic.js",
   "scripts": {
-    "fix": "eslint --fix ./lib/",
-    "pretest": "eslint ./lib/",
+    "fix": "eslint --fix ./lib/ ./example/",
+    "pretest": "eslint ./lib/ ./example/",
     "test": "tap --coverage test/*.js",
     "posttest": "tap --coverage-report=text-lcov | codecov"
   },

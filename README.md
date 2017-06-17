@@ -10,12 +10,19 @@ express/connect or on the CLI!
 ## express 4.x
 
 ``` js
-var http = require('http');
-var express = require('express');
-var ecstatic = require('ecstatic');
+'use strict';
 
-var app = express();
-app.use(ecstatic({ root: __dirname + '/public' }));
+const express = require('express');
+const ecstatic = require('../lib/ecstatic');
+const http = require('http');
+
+const app = express();
+
+app.use(ecstatic({
+  root: `${__dirname}/public`,
+  showdir: true,
+}));
+
 http.createServer(app).listen(8080);
 
 console.log('Listening on :8080');
@@ -24,12 +31,17 @@ console.log('Listening on :8080');
 ## stock http server
 
 ``` js
-var http = require('http');
-var ecstatic = require('ecstatic');
+'use strict';
 
-http.createServer(
-  ecstatic({ root: __dirname + '/public' })
-).listen(8080);
+const http = require('http');
+
+const ecstatic = require('../lib/ecstatic')({
+  root: `${__dirname}/public`,
+  showDir: true,
+  autoIndex: true,
+});
+
+http.createServer(ecstatic).listen(8080);
 
 console.log('Listening on :8080');
 ```
@@ -73,8 +85,8 @@ reference it directly with `./node_modules/.bin/ecstatic`.
 In node, pass ecstatic an options hash, and it will return your middleware!
 
 ```js
-var opts = {
-  root: __dirname + '/public',
+const opts = {
+  root: path.join(__dirname, 'public`),
   baseDir: '/',
   autoIndex: true,
   showDir: true,
@@ -90,8 +102,8 @@ var opts = {
   contentType: 'application/octet-stream',
   weakEtags: true,
   weakCompare: true,
-  handleOptionsMethod: false
- }
+  handleOptionsMethod: false,
+}
 ```
 
 If `opts` is a string, the string is assigned to the root folder and all other
