@@ -1,7 +1,10 @@
-- Lint ./lib/ against airbnb modified to support node 4.x
+- Lint ./lib/ ./example and ./test  against airbnb modified to support node 4.x
+  and a few quirky hard-to-fix idioms
 - Change gzip behavior to default
 - Change weak etags and weak etag comparisons to be on by default
 - Remove support for 0.12.0
+- Remove union examples and test harnesses (support should have been removed
+  long ago)
 
 2017/06/06 Version 2.2.1
 - Fix version number in CHANGELOG.md
