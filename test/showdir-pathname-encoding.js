@@ -1,42 +1,46 @@
-var t = require('tap'),
-    test = t.test,
-    ecstatic = require('../lib/ecstatic'),
-    http = require('http'),
-    request = require('request'),
-    path = require('path');
+'use strict';
 
-var root = __dirname + '/public',
-    baseDir = 'base';
+const tap = require('tap');
+const ecstatic = require('../lib/ecstatic');
+const http = require('http');
+const request = require('request');
+const path = require('path');
+
+const test = tap.test;
+
+const root = `${__dirname}/public`;
+const baseDir = 'base';
 
 if (process.platform === 'win32') {
-  t.plan(0, 'Windows is allergic to < in path names');
+  tap.plan(0, 'Windows is allergic to < in path names');
   return;
 }
 
-var fs = require('fs');
-test('create test directory', function (t) {
-  fs.mkdirSync(root + '/<dir>', '0755');
+const fs = require('fs');
+
+test('create test directory', (t) => {
+  fs.mkdirSync(`${root}/<dir>`, '0755');
   t.end();
 });
 
-test('directory listing with pathname including HTML characters', function (t) {
-  var port = Math.floor(Math.random() * ((1<<16) - 1e4) + 1e4);
+test('directory listing with pathname including HTML characters', (t) => {
+  const port = Math.floor((Math.random() * ((1 << 16) - 1e4)) + 1e4);
 
-  var uri = 'http://localhost:' + port + path.join('/', baseDir, '/%3Cdir%3E');
+  const uri = `http://localhost:${port}${path.join('/', baseDir, '/%3Cdir%3E')}`;
 
-  var server = http.createServer(
+  const server = http.createServer(
     ecstatic({
-      root: root,
-      baseDir: baseDir,
+      root,
+      baseDir,
       showDir: true,
-      autoIndex: false
-    })
+      autoIndex: false,
+    }),
   );
 
-  server.listen(port, function () {
+  server.listen(port, () => {
     request.get({
-      uri: uri
-    }, function(err, res, body) {
+      uri,
+    }, (err, res, body) => {
       t.notMatch(body, /<dir>/, 'We didn\'t find the unencoded pathname');
       t.match(body, /&#x3C;dir&#x3E;/, 'We found the encoded pathname');
       server.close();
@@ -45,7 +49,7 @@ test('directory listing with pathname including HTML characters', function (t) {
   });
 });
 
-test('remove test directory', function (t) {
-  fs.rmdirSync(root + '/<dir>', '0755');
+test('remove test directory', (t) => {
+  fs.rmdirSync(`${root}/<dir>`, '0755');
   t.end();
 });

@@ -1,18 +1,20 @@
-var test = require('tap').test,
-    ecstatic = require('../lib/ecstatic'),
-    http = require('http'),
-    request = require('request');
+'use strict';
 
-test('malformed uri', function (t) {
-  var server = http.createServer(ecstatic(__dirname));
-  
+const test = require('tap').test;
+const ecstatic = require('../lib/ecstatic');
+const http = require('http');
+const request = require('request');
+
+test('malformed uri', (t) => {
+  const server = http.createServer(ecstatic(__dirname));
+
   t.plan(2);
-  
-  server.listen(0, function () {
-    request.get('http://localhost:' + server.address().port + '/%', function (err, res, body) {
+
+  server.listen(0, () => {
+    request.get(`http://localhost:${server.address().port}/%`, (err, res) => {
       t.ifError(err);
       t.equal(res.statusCode, 400);
-      server.close(function() { t.end(); });
+      server.close(() => { t.end(); });
     });
   });
 });

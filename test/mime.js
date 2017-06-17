@@ -1,7 +1,9 @@
-var test = require('tap').test,
-    mime = require('mime');
+'use strict';
 
-test('mime package lookup', function(t) {
+const test = require('tap').test;
+const mime = require('mime');
+
+test('mime package lookup', (t) => {
   t.plan(4);
 
   t.equal(mime.lookup('/path/to/file.txt'), 'text/plain');
@@ -12,18 +14,18 @@ test('mime package lookup', function(t) {
   t.end();
 });
 
-test('custom definition of mime-type with the mime package', function(t) {
+test('custom definition of mime-type with the mime package', (t) => {
   t.plan(1);
 
   mime.define({
-    'application/xml': ['opml']
+    'application/xml': ['opml'],
   });
   t.equal(mime.lookup('.opml'), 'application/xml');
 
   t.end();
 });
 
-test('custom definition of mime-type with a .types file', function(t) {
+test('custom definition of mime-type with a .types file', (t) => {
   t.plan(2);
 
   try {
@@ -35,7 +37,7 @@ test('custom definition of mime-type with a .types file', function(t) {
 
   t.equal(mime.lookup('.opml'), 'application/foo'); // see public/custom_mime_type.types
 
-  t.throws( mime.load.bind(mime, 'public/this_file_does_not_exist.types') );
+  t.throws(mime.load.bind(mime, 'public/this_file_does_not_exist.types'));
 
   t.end();
 });
