@@ -11,6 +11,11 @@
     }
   },
   "rules": {
-    "strict": [2, "global"]
+    "strict": [ 2, "global" ],
+    "comma-dangle": [ 2, {
+      "arrays": "only-multiline",
+      "objects": "only-multiline",
+      "functions": "never"
+    }]
   }
 }

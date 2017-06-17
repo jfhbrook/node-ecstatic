@@ -19,7 +19,7 @@ test('headers object', (t) => {
       },
       autoIndex: true,
       defaultExt: 'html',
-    }),
+    })
   );
 
   server.listen(() => {
@@ -47,7 +47,7 @@ test('header string', (t) => {
       header: 'beep: boop', // for command-line --header 'beep: boop'
       autoIndex: true,
       defaultExt: 'html',
-    }),
+    })
   );
 
   server.listen(() => {
@@ -77,7 +77,7 @@ test('header array', (t) => {
       ],
       autoIndex: true,
       defaultExt: 'html',
-    }),
+    })
   );
 
   server.listen(() => {
@@ -106,7 +106,7 @@ test('H array', (t) => {
       ],
       autoIndex: true,
       defaultExt: 'html',
-    }),
+    })
   );
 
   server.listen(() => {

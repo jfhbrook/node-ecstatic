@@ -12,7 +12,7 @@ test('should not add trailing slash when showDir and autoIndex are off', (t) => 
       root: `${__dirname}/public`,
       autoIndex: false,
       showDir: false,
-    }),
+    })
   );
   t.on('end', () => { server.close(); });
   server.listen(0, () => {

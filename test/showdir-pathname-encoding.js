@@ -34,7 +34,7 @@ test('directory listing with pathname including HTML characters', (t) => {
       baseDir,
       showDir: true,
       autoIndex: false,
-    }),
+    })
   );
 
   server.listen(port, () => {

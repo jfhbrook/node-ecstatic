@@ -19,7 +19,7 @@ test('url encoding in href', (t) => {
       baseDir,
       showDir: true,
       autoIndex: false,
-    }),
+    })
   );
 
   server.listen(port, () => {

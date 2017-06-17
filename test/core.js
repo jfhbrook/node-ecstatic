@@ -28,7 +28,7 @@ test('core', (t) => {
       showDir: true,
       defaultExt: 'html',
       handleError: true,
-    }),
+    })
   );
 
   server.listen(port, () => {
@@ -51,7 +51,7 @@ test('core', (t) => {
         if (r.type !== undefined) {
           t.equal(
             res.headers['content-type'].split(';')[0], r.type,
-            `content-type for \`${file}\``,
+            `content-type for \`${file}\``
           );
         }
 

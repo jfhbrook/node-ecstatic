@@ -16,7 +16,7 @@ test('throws when custom contentType .types file does not exist', (t) => {
     setup.bind(null, {
       root: `${__dirname}/public/`,
       mimeTypes: 'this_file_does_not_exist.types',
-    }),
+    })
   );
 });
 

@@ -22,7 +22,7 @@ test('304_not_modified_strong', (t) => {
       showDir: true,
       weakEtags: false,
       weakCompare: false,
-    }),
+    })
   );
 
   server.listen(port, () => {
@@ -68,7 +68,7 @@ test('304_not_modified_weak', (t) => {
       autoIndex: true,
       showDir: true,
       weakCompare: false,
-    }),
+    })
   );
 
   server.listen(port, () => {
@@ -114,7 +114,7 @@ test('304_not_modified_strong_compare', (t) => {
       showDir: true,
       weakEtags: false,
       weakCompare: false,
-    }),
+    })
   );
 
   server.listen(port, () => {
@@ -181,7 +181,7 @@ test('304_not_modified_weak_compare', (t) => {
       autoIndex: true,
       showDir: true,
       weakEtags: false,
-    }),
+    })
   );
 
   server.listen(port, () => {

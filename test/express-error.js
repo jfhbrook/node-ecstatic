@@ -55,7 +55,7 @@ test('express', (t) => {
         if (r.type !== undefined) {
           t.equal(
             res.headers['content-type'].split(';')[0], r.type,
-            `content-type for \`${file}\``,
+            `content-type for \`${file}\``
           );
         }
 

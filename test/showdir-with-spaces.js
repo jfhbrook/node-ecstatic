@@ -19,7 +19,7 @@ test('directory listing when directory name contains spaces', (t) => {
       baseDir,
       showDir: true,
       autoIndex: false,
-    }),
+    })
   );
 
   server.listen(port, () => {

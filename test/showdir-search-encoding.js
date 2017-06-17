@@ -19,7 +19,7 @@ test('directory listing with query string specified', (t) => {
       baseDir,
       showDir: true,
       autoIndex: false,
-    }),
+    })
   );
 
   server.listen(port, () => {
