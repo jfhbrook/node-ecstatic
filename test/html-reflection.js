@@ -1,19 +1,21 @@
-var test = require('tap').test,
-    ecstatic = require('../'),
-    http = require('http'),
-    request = require('request');
+'use strict';
 
-test('html reflection prevented', function (t) {
-  var server = http.createServer(ecstatic(__dirname + '/public/containsSymlink'));
+const test = require('tap').test;
+const ecstatic = require('../');
+const http = require('http');
+const request = require('request');
 
-  server.listen(0, function () {
-    var port = server.address().port;
-    var attack = '<script>alert(\'xss\')</script>';
-    request.get('http://localhost:' + port + '/more-problematic/' + attack, function (err, res, body) {
-      if (body.indexOf('<script>') != -1) {
+test('html reflection prevented', (t) => {
+  const server = http.createServer(ecstatic(`${__dirname}/public/containsSymlink`));
+
+  server.listen(0, () => {
+    const port = server.address().port;
+    const attack = '<script>alert(\'xss\')</script>';
+    request.get(`http://localhost:${port}/more-problematic/${attack}`, (err, res, body) => {
+      if (body.indexOf('<script>') !== -1) {
         t.fail('Unescaped HTML reflected.');
       }
-      server.close(function() { t.end(); });
+      server.close(() => { t.end(); });
     });
   });
 });

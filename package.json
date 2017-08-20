@@ -10,6 +10,8 @@
   },
   "main": "./lib/ecstatic.js",
   "scripts": {
+    "fix": "eslint --fix ./lib/ ./example/ ./test",
+    "pretest": "eslint ./lib/ ./example/ ./test",
     "test": "tap --coverage test/*.js",
     "posttest": "tap --coverage-report=text-lcov | codecov"
   },
@@ -31,6 +33,9 @@
   "devDependencies": {
     "codecov": "^2.2.0",
     "eol": "^0.9.0",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-plugin-import": "^2.3.0",
     "express": "^4.12.3",
     "mkdirp": "^0.5.0",
     "request": "^2.49.0",

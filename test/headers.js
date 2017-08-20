@@ -1,121 +1,124 @@
-var test = require('tap').test,
-    ecstatic = require('../lib/ecstatic'),
-    http = require('http'),
-    request = require('request');
+'use strict';
 
-var root = __dirname + '/public',
-    baseDir = 'base';
+const test = require('tap').test;
+const ecstatic = require('../lib/ecstatic');
+const http = require('http');
+const request = require('request');
 
-test('headers object', function (t) {
+const root = `${__dirname}/public`;
+
+test('headers object', (t) => {
   t.plan(4);
 
-  var server = http.createServer(
+  const server = http.createServer(
     ecstatic({
-      root: root,
+      root,
       headers: {
         Wow: 'sweet',
-        Cool: 'beans'
+        Cool: 'beans',
       },
       autoIndex: true,
-      defaultExt: 'html'
+      defaultExt: 'html',
     })
   );
 
-  server.listen(function () {
-    var port = server.address().port,
-        uri = 'http://localhost:' + port + '/subdir';
-    request.get({ uri: uri }, function (err, res, body) {
+  server.listen(() => {
+    const port = server.address().port;
+    const uri = `http://localhost:${port}/subdir`;
+
+    request.get({ uri }, (err, res) => {
       t.ifError(err);
-      t.equal(res.statusCode, 200)
-      t.equal(res.headers.wow, 'sweet')
-      t.equal(res.headers.cool, 'beans')
+      t.equal(res.statusCode, 200);
+      t.equal(res.headers.wow, 'sweet');
+      t.equal(res.headers.cool, 'beans');
     });
   });
-  t.once('end', function () {
+  t.once('end', () => {
     server.close();
   });
 });
 
-test('header string', function (t) {
+test('header string', (t) => {
   t.plan(3);
 
-  var server = http.createServer(
+  const server = http.createServer(
     ecstatic({
-      root: root,
+      root,
       header: 'beep: boop', // for command-line --header 'beep: boop'
       autoIndex: true,
-      defaultExt: 'html'
+      defaultExt: 'html',
     })
   );
 
-  server.listen(function () {
-    var port = server.address().port,
-        uri = 'http://localhost:' + port + '/subdir';
-    request.get({ uri: uri }, function (err, res, body) {
+  server.listen(() => {
+    const port = server.address().port;
+    const uri = `http://localhost:${port}/subdir`;
+
+    request.get({ uri }, (err, res) => {
       t.ifError(err);
-      t.equal(res.statusCode, 200)
-      t.equal(res.headers.beep, 'boop')
+      t.equal(res.statusCode, 200);
+      t.equal(res.headers.beep, 'boop');
     });
   });
-  t.once('end', function () {
+  t.once('end', () => {
     server.close();
   });
 });
 
-test('header array', function (t) {
+test('header array', (t) => {
   t.plan(3);
 
-  var server = http.createServer(
+  const server = http.createServer(
     ecstatic({
-      root: root,
+      root,
       header: [
         'beep: boop', // --header 'beep: boop'
-        'what: ever' // --header 'what: ever'
+        'what: ever', // --header 'what: ever'
       ],
       autoIndex: true,
-      defaultExt: 'html'
+      defaultExt: 'html',
     })
   );
 
-  server.listen(function () {
-    var port = server.address().port,
-        uri = 'http://localhost:' + port + '/subdir';
-    request.get({ uri: uri }, function (err, res, body) {
+  server.listen(() => {
+    const port = server.address().port;
+    const uri = `http://localhost:${port}/subdir`;
+    request.get({ uri }, (err, res) => {
       t.ifError(err);
-      t.equal(res.statusCode, 200)
-      t.equal(res.headers.beep, 'boop')
+      t.equal(res.statusCode, 200);
+      t.equal(res.headers.beep, 'boop');
     });
   });
-  t.once('end', function () {
+  t.once('end', () => {
     server.close();
   });
 });
 
-test('H array', function (t) {
+test('H array', (t) => {
   t.plan(3);
 
-  var server = http.createServer(
+  const server = http.createServer(
     ecstatic({
-      root: root,
+      root,
       H: [
         'beep: boop', // -H 'beep: boop'
-        'what: ever' // -H 'what: ever'
+        'what: ever', // -H 'what: ever'
       ],
       autoIndex: true,
-      defaultExt: 'html'
+      defaultExt: 'html',
     })
   );
 
-  server.listen(function () {
-    var port = server.address().port,
-        uri = 'http://localhost:' + port + '/subdir';
-    request.get({ uri: uri }, function (err, res, body) {
+  server.listen(() => {
+    const port = server.address().port;
+    const uri = `http://localhost:${port}/subdir`;
+    request.get({ uri }, (err, res) => {
       t.ifError(err);
-      t.equal(res.statusCode, 200)
-      t.equal(res.headers.beep, 'boop')
+      t.equal(res.statusCode, 200);
+      t.equal(res.headers.beep, 'boop');
     });
   });
-  t.once('end', function () {
+  t.once('end', () => {
     server.close();
   });
 });

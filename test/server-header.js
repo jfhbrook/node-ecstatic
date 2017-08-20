@@ -1,30 +1,38 @@
-var test = require('tap').test,
-    ecstatic = require('../'),
-    http = require('http'),
-    request = require('request');
+'use strict';
 
-test('serverHeader should exist', function (t) {
+const test = require('tap').test;
+const ecstatic = require('../');
+const http = require('http');
+const request = require('request');
+
+test('serverHeader should exist', (t) => {
   t.plan(2);
-  var server = http.createServer(ecstatic(__dirname + '/public/subdir'));
-  t.on('end', function () { server.close() })
-  server.listen(0, function () {
-    var port = server.address().port;
-    request.get('http://localhost:' + port, function (err, res, body) {
+
+  const server = http.createServer(ecstatic(`${__dirname}/public/subdir`));
+
+  t.on('end', () => { server.close(); });
+
+  server.listen(0, () => {
+    const port = server.address().port;
+    request.get(`http://localhost:${port}`, (err, res) => {
       t.ifError(err);
-      t.equal(res.headers.server, 'ecstatic-' + ecstatic.version);
+      t.equal(res.headers.server, `ecstatic-${ecstatic.version}`);
     });
   });
 });
 
-test('serverHeader should not exist', function (t) {
+test('serverHeader should not exist', (t) => {
   t.plan(2);
-  var server = http.createServer(ecstatic(__dirname + '/public/subdir', {
-    serverHeader: false
+
+  const server = http.createServer(ecstatic(`${__dirname}/public/subdir`, {
+    serverHeader: false,
   }));
-  t.on('end', function () { server.close() })
-  server.listen(0, function () {
-    var port = server.address().port;
-    request.get('http://localhost:' + port, function (err, res, body) {
+
+  t.on('end', () => { server.close(); });
+
+  server.listen(0, () => {
+    const port = server.address().port;
+    request.get(`http://localhost:${port}`, (err, res) => {
       t.ifError(err);
       t.equal(res.headers.server, undefined);
     });

@@ -1,0 +1,21 @@
+{
+  "extends": "airbnb-base",
+  "plugins": [
+    "import"
+  ],
+  "parserOptions": {
+    "sourceType": "script",
+    "impliedStrict": false,
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": false
+    }
+  },
+  "rules": {
+    "strict": [ 2, "global" ],
+    "comma-dangle": [ 2, {
+      "arrays": "only-multiline",
+      "objects": "only-multiline",
+      "functions": "never"
+    }]
+  }
+}

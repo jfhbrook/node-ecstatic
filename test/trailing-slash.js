@@ -1,21 +1,23 @@
-var test = require('tap').test,
-    ecstatic = require('../'),
-    http = require('http'),
-    request = require('request');
+'use strict';
 
-test('should not add trailing slash when showDir and autoIndex are off', function (t) {
+const test = require('tap').test;
+const ecstatic = require('../');
+const http = require('http');
+const request = require('request');
+
+test('should not add trailing slash when showDir and autoIndex are off', (t) => {
   t.plan(3);
-  var server = http.createServer(
+  const server = http.createServer(
     ecstatic({
-      root: __dirname + '/public',
+      root: `${__dirname}/public`,
       autoIndex: false,
-      showDir: false
+      showDir: false,
     })
   );
-  t.on('end', function () { server.close() })
-  server.listen(0, function () {
-    var port = server.address().port;
-    request.get('http://localhost:' + port + '/subdir', function (err, res, body) {
+  t.on('end', () => { server.close(); });
+  server.listen(0, () => {
+    const port = server.address().port;
+    request.get(`http://localhost:${port}/subdir`, (err, res) => {
       t.ifError(err);
       t.equal(res.statusCode, 404);
       t.equal(res.body, 'File not found. :(');
