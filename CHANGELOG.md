@@ -5,6 +5,7 @@
 - Remove support for 0.12.0
 - Remove union examples and test harnesses (support should have been removed
   long ago)
+- Fix icon styles in directory listing for small screens
 
 2017/06/06 Version 2.2.1
 - Fix version number in CHANGELOG.md
