@@ -86,7 +86,7 @@ In node, pass ecstatic an options hash, and it will return your middleware!
 
 ```js
 const opts = {
-  root: path.join(__dirname, 'public`),
+  root: path.join(__dirname, 'public'),
   baseDir: '/',
   autoIndex: true,
   showDir: true,
