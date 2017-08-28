@@ -4,8 +4,11 @@ const test = require('tap').test;
 const mime = require('mime');
 
 test('mime package lookup', (t) => {
-  t.plan(4);
+  t.plan(7);
 
+  t.equal(mime.lookup('/path/to/file.css'), 'text/css');
+  t.equal(mime.lookup('/path/to/file.js'), 'application/javascript');
+  t.equal(mime.lookup('/path/to/file.mjs'), 'application/javascript');
   t.equal(mime.lookup('/path/to/file.txt'), 'text/plain');
   t.equal(mime.lookup('file.txt'), 'text/plain');
   t.equal(mime.lookup('.TXT'), 'text/plain');
