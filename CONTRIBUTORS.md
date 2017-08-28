@@ -61,3 +61,4 @@ Listed in no particular order:
 * Vamsi Krishna Avula @avamsi
 * @wood1986
 * Mahdi Hasheminejad @mahdi-ninja
+* Bradley Farias @bmeck <bradley.meck@gmail.com>

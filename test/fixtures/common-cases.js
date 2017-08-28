@@ -135,7 +135,7 @@ module.exports = {
     code: 200,
     file: 'gzip/real_ecstatic.gz',
     headers: { 'accept-encoding': 'compress, gzip' },
-    type: 'application/octet-stream',
+    type: 'application/gzip',
     body: fs.readFileSync(path.join(__dirname, '../', 'public', 'gzip', 'real_ecstatic.gz'), 'utf8'),
   },
   'gzip/fake_ecstatic': {
@@ -148,7 +148,7 @@ module.exports = {
   'gzip/fake_ecstatic.gz': {
     code: 200,
     file: 'gzip/fake_ecstatic.gz',
-    type: 'application/octet-stream',
+    type: 'application/gzip',
     headers: { 'accept-encoding': 'compress, gzip' },
     body: fs.readFileSync(path.join(__dirname, '../', 'public', 'gzip', 'fake_ecstatic.gz'), 'utf8'),
   },
