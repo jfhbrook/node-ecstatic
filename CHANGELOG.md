@@ -6,6 +6,7 @@
 - Remove union examples and test harnesses (support should have been removed
   long ago)
 - Fix icon styles in directory listing for small screens
+- Update mime to ^v1.4.0 - This changes gzip responses to always have application/gzip as their content-type
 
 2017/06/06 Version 2.2.1
 - Fix version number in CHANGELOG.md
