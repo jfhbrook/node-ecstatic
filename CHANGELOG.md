@@ -1,3 +1,4 @@
+2017/08/28 Version 3.0.0
 - Lint ./lib/ ./example and ./test  against airbnb modified to support node 4.x
   and a few quirky hard-to-fix idioms
 - Change gzip behavior to default
