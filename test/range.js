@@ -110,3 +110,23 @@ test('partial range', (t) => {
     });
   });
 });
+
+test('include last-modified, etag and cache-control headers', (t) => {
+  t.plan(4);
+  const server = http.createServer(ecstatic(`${__dirname}/public/subdir`));
+  t.on('end', () => { server.close(); });
+
+  server.listen(0, () => {
+    const port = server.address().port;
+    const opts = {
+      uri: `http://localhost:${port}/e.html`,
+      headers: { range: '3-5' },
+    };
+    request.get(opts, (err, res) => {
+      t.ifError(err);
+      t.ok(res.headers['cache-control']);
+      t.ok(res.headers['last-modified']);
+      t.ok(res.headers.etag);
+    });
+  });
+});
