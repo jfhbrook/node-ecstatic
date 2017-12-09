@@ -1,3 +1,5 @@
+2017/12/09 Version 3.1.0
+- Minor tweaks/fixes to directory view
 - Add a mess of dotfiles to .npmignore
 
 2017/08/28 Version 3.0.0
