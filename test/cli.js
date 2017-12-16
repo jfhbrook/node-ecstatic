@@ -2,7 +2,7 @@
 
 /* this test suit is incomplete  2015-12-18 */
 
-const test = require('tap').tap;
+const test = require('tap').test;
 const request = require('request');
 const spawn = require('child_process').spawn;
 const path = require('path');
@@ -126,7 +126,7 @@ test('setting mimeTypes via cli - directly', (t) => {
 });
 
 test('setting logging via cli', (t) => {
-  t.plan(4);
+  t.plan(7);
 
   const port = getRandomPort();
   const root = path.resolve(__dirname, 'public/');
@@ -138,11 +138,20 @@ test('setting logging via cli', (t) => {
   ecstatic.stdout.once('data', () => {
     t.pass('ecstatic should be started');
 
+    // recording snapshot is done by: TAP_SNAPSHOT=1 node_modules/.bin/tap test/cli.js
+
     ecstatic.stdout.once('data', (data) => {
       t.matchSnapshot(removeVariableOutputFromEcstatic(data.toString()), 'output');
     });
-    checkServerIsRunning(`${defaultUrl}:${port}/subdir/index.html`, t, (err) => {
-      t.error(err);
+    checkServerIsRunning(`${defaultUrl}:${port}/subdir/index.html`, t, (err1) => {
+      t.error(err1);
+
+      ecstatic.stdout.once('data', (data) => {
+        t.matchSnapshot(removeVariableOutputFromEcstatic(data.toString()), 'output');
+      });
+      checkServerIsRunning(`${defaultUrl}:${port}/%E0%A4%A`, t, (err2) => {
+        t.error(err2);
+      });
     });
   });
 });
