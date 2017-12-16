@@ -5,7 +5,7 @@
  * Make sure to inspect the output below.  Do not ignore changes!
  */
 'use strict'
-exports[`test/cli.js TAP setting loggin via cli > output 1`] = `
-ecstatic serving /Users/nappdev/projects/node-ecstatic/test/public http://0.0.0.0:{port}
-125.125.125.125 - dsmith [10/Oct/1999:21:15:05 +0500] "GET /index.html HTTP/1.0" 200 1043
+exports[`test/cli.js TAP setting logging via cli > output 1`] = `
+localhost:{port} - - [{date:time timezone}] "GET /subdir/index.html" 200 -
+
 `

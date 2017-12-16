@@ -259,7 +259,7 @@ Defaults to **false**.
 ## `opts.logging`
 ### `--logging` or `-l`
 
-Turn on logging to stdout. Defaults to **false**. Useful for seeing which requests ecstatic is getting and for log reports. E.g. `ecstatic . -l > ../logs/ecstatic.log`
+Turn on logging to stdout. Defaults to **false**. Useful for seeing which requests ecstatic is getting and for log reports. E.g. `ecstatic . -l > ../logs/ecstatic.log`. The format follows [NCSA Common](http://publib.boulder.ibm.com/tividd/td/ITWSA/ITWSA_info45/en_US/HTML/guide/c-logs.html#common).
 
 ## middleware(req, res, next);
 

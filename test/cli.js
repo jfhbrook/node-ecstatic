@@ -53,7 +53,8 @@ const getRandomPort = (() => {
 })();
 
 function removeVariableOutputFromEcstatic(output) {
-  return output.replace(/at http:\/\/0.0.0.0:\d{4,5}/, 'http://0.0.0.0:{port}');
+  return output.replace(/localhost:\d{4,5}/, 'localhost:{port}')
+    .replace(/\[\d{2}\/\w{3}\/\d{4}:\d{2}:\d{2}:\d{2}\s(\+|-)\d{4}\]/, '[{date:time timezone}]');
 }
 
 test('setting port via cli - default port', (t) => {
@@ -124,8 +125,8 @@ test('setting mimeTypes via cli - directly', (t) => {
   });
 });
 
-test('setting loggin via cli', (t) => {
-  // t.plan(2);
+test('setting logging via cli', (t) => {
+  t.plan(4);
 
   const port = getRandomPort();
   const root = path.resolve(__dirname, 'public/');
@@ -134,14 +135,14 @@ test('setting loggin via cli', (t) => {
 
   tearDown(ecstatic, t);
 
-  ecstatic.stdout.on('data', (data) => {
+  ecstatic.stdout.once('data', () => {
     t.pass('ecstatic should be started');
-    checkServerIsRunning(`${defaultUrl}:${port}/subdir/index.html`, t, (err) => {
-      if (err) throw err;
 
+    ecstatic.stdout.once('data', (data) => {
       t.matchSnapshot(removeVariableOutputFromEcstatic(data.toString()), 'output');
-
-      t.done();
+    });
+    checkServerIsRunning(`${defaultUrl}:${port}/subdir/index.html`, t, (err) => {
+      t.error(err);
     });
   });
 });
