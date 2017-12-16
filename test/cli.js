@@ -52,7 +52,7 @@ const getRandomPort = (() => {
   };
 })();
 
-function removeVariableOutputFromEcstatic (output) {
+function removeVariableOutputFromEcstatic(output) {
   return output.replace(/at http:\/\/0.0.0.0:\d{4,5}/, 'http://0.0.0.0:{port}');
 }
 
