@@ -12,4 +12,5 @@ install:
   - npm install -gD codecov
 script:
   - npm test
-  - codecov
+after_success:
+    - bash <(curl -s https://codecov.io/bash)
