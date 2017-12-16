@@ -12,7 +12,7 @@
   "scripts": {
     "fix": "eslint --fix ./lib/ ./example/ ./test",
     "pretest": "eslint ./lib/ ./example/ ./test",
-    "test": "tap --coverage test/*.js",
+    "test": "tap --jobs-auto --coverage test/*.js",
     "posttest": "tap --coverage-report=clover"
   },
   "bin": "./lib/ecstatic.js",
