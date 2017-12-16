@@ -11,4 +11,5 @@ install:
   - npm update
   - npm install -gD codecov
 script:
+  - npm test
   - codecov
