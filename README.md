@@ -103,6 +103,7 @@ const opts = {
   weakEtags: true,
   weakCompare: true,
   handleOptionsMethod: false,
+  logging: false
 }
 ```
 
@@ -254,6 +255,11 @@ Set handleOptionsMethod to true in order to respond to 'OPTIONS' calls with any 
 This is a **convenience** setting which turns on `handleOptionsMethod` and sets the headers **Access-Control-Allow-Origin: \*** and **Access-Control-Allow-Headers: Authorization, Content-Type, If-Match, If-Modified-Since, If-None-Match, If-Unmodified-Since**. This *should* be enough to quickly make cross-origin resource sharing work between development APIs. More advanced usage can come either from overriding these headers with the headers argument, or by using the `handleOptionsMethod` flag and then setting headers "manually." Alternately, just do it in your app using separate middlewares/abstractions.
 
 Defaults to **false**.
+
+## `opts.logging`
+### `--logging` or `-l`
+
+Turn on logging to stdout. Defaults to **false**. Useful for seeing which requests ecstatic is getting and for log reports. E.g. `ecstatic . -l > ../logs/ecstatic.log`. The format follows [NCSA Common](http://publib.boulder.ibm.com/tividd/td/ITWSA/ITWSA_info45/en_US/HTML/guide/c-logs.html#common).
 
 ## middleware(req, res, next);
 

@@ -52,6 +52,11 @@ const getRandomPort = (() => {
   };
 })();
 
+function removeVariableOutputFromEcstatic(output) {
+  return output.replace(/localhost:\d{4,5}/, 'localhost:{port}')
+    .replace(/\[\d{2}\/\w{3}\/\d{4}:\d{2}:\d{2}:\d{2}\s(\+|-)?\d{4}\]/, '[{date:time timezone}]');
+}
+
 test('setting port via cli - default port', (t) => {
   t.plan(2);
 
@@ -116,6 +121,37 @@ test('setting mimeTypes via cli - directly', (t) => {
     checkServerIsRunning(`${defaultUrl}:${port}/custom_mime_type.opml`, t, (err, res) => {
       t.error(err);
       t.equal(res.headers['content-type'], 'application/x-my-type; charset=utf-8');
+    });
+  });
+});
+
+test('setting logging via cli', (t) => {
+  t.plan(7);
+
+  const port = getRandomPort();
+  const root = path.resolve(__dirname, 'public/');
+  const options = [root, '--port', port, '--log'];
+  const ecstatic = startEcstatic(options);
+
+  tearDown(ecstatic, t);
+
+  ecstatic.stdout.once('data', () => {
+    t.pass('ecstatic should be started');
+
+    // recording snapshot is done by: TAP_SNAPSHOT=1 node_modules/.bin/tap test/cli.js
+
+    ecstatic.stdout.once('data', (data) => {
+      t.matchSnapshot(removeVariableOutputFromEcstatic(data.toString()), 'output');
+    });
+    checkServerIsRunning(`${defaultUrl}:${port}/subdir/index.html`, t, (err1) => {
+      t.error(err1);
+
+      ecstatic.stdout.once('data', (data) => {
+        t.matchSnapshot(removeVariableOutputFromEcstatic(data.toString()), 'output');
+      });
+      checkServerIsRunning(`${defaultUrl}:${port}/%E0%A4%A`, t, (err2) => {
+        t.error(err2);
+      });
     });
   });
 });
