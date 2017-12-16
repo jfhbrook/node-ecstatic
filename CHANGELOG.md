@@ -1,3 +1,4 @@
+2017/12/16 Version 3.1.1
 - Requires version of node-mime that patches regexp dos vulnerability
 
 2017/12/09 Version 3.1.0
