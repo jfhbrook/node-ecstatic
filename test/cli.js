@@ -2,9 +2,9 @@
 
 /* this test suit is incomplete  2015-12-18 */
 
-const test = require('tap').test;
+const { test } = require('tap');
 const request = require('request');
-const spawn = require('child_process').spawn;
+const { spawn } = require('child_process');
 const path = require('path');
 
 const node = process.execPath;
@@ -51,6 +51,10 @@ const getRandomPort = (() => {
     return port;
   };
 })();
+
+function removeVariableOutputFromEcstatic (output) {
+  return output.replace(/at http:\/\/0.0.0.0:\d{4,5}/, 'http://0.0.0.0:{port}');
+}
 
 test('setting port via cli - default port', (t) => {
   t.plan(2);
@@ -116,6 +120,28 @@ test('setting mimeTypes via cli - directly', (t) => {
     checkServerIsRunning(`${defaultUrl}:${port}/custom_mime_type.opml`, t, (err, res) => {
       t.error(err);
       t.equal(res.headers['content-type'], 'application/x-my-type; charset=utf-8');
+    });
+  });
+});
+
+test('setting loggin via cli', (t) => {
+  // t.plan(2);
+
+  const port = getRandomPort();
+  const root = path.resolve(__dirname, 'public/');
+  const options = [root, '--port', port, '--log'];
+  const ecstatic = startEcstatic(options);
+
+  tearDown(ecstatic, t);
+
+  ecstatic.stdout.on('data', (data) => {
+    t.pass('ecstatic should be started');
+    checkServerIsRunning(`${defaultUrl}:${port}/subdir/index.html`, t, (err) => {
+      if (err) throw err;
+
+      t.matchSnapshot(removeVariableOutputFromEcstatic(data.toString()), 'output');
+
+      t.done();
     });
   });
 });
