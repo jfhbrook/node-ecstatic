@@ -31,7 +31,7 @@
     "url-join": "^2.0.2"
   },
   "devDependencies": {
-    "codecov": "^2.3.1",
+    "codecov": "^3.0.0",
     "eol": "^0.9.1",
     "eslint": "^3.19.0",
     "eslint-config-airbnb-base": "^11.3.2",
