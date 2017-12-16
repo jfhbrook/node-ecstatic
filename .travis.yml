@@ -9,3 +9,6 @@ node_js:
 install:
   - npm install
   - npm update
+  - npm install -gD codecov
+script:
+  - codecov
