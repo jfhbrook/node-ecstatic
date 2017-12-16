@@ -9,3 +9,8 @@ exports[`test/cli.js TAP setting logging via cli > output 1`] = `
 localhost:{port} - - [{date:time timezone}] "GET /subdir/index.html" 200 -
 
 `
+
+exports[`test/cli.js TAP setting logging via cli > output 2`] = `
+localhost:{port} - - [{date:time timezone}] "GET /%E0%A4%A" 400 -
+
+`
