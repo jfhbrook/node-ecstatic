@@ -26,7 +26,7 @@
   ],
   "dependencies": {
     "he": "^1.1.1",
-    "mime": "^1.4.0",
+    "mime": "^1.4.1",
     "minimist": "^1.1.0",
     "url-join": "^2.0.2"
   },

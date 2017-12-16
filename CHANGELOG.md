@@ -1,3 +1,5 @@
+- Requires version of node-mime that patches regexp dos vulnerability
+
 2017/12/09 Version 3.1.0
 - Minor tweaks/fixes to directory view
 - Add a mess of dotfiles to .npmignore
