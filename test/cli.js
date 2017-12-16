@@ -2,9 +2,9 @@
 
 /* this test suit is incomplete  2015-12-18 */
 
-const { test } = require('tap');
+const test = require('tap').tap;
 const request = require('request');
-const { spawn } = require('child_process');
+const spawn = require('child_process').spawn;
 const path = require('path');
 
 const node = process.execPath;
