@@ -12,8 +12,8 @@
   "scripts": {
     "fix": "eslint --fix ./lib/ ./example/ ./test",
     "pretest": "eslint ./lib/ ./example/ ./test",
-    "test": "tap --coverage test/*.js",
-    "posttest": "tap --coverage-report=text-lcov | codecov"
+    "test": "tap --jobs-auto --coverage test/*.js",
+    "posttest": "tap --coverage-report=clover"
   },
   "bin": "./lib/ecstatic.js",
   "keywords": [
@@ -31,8 +31,7 @@
     "url-join": "^2.0.2"
   },
   "devDependencies": {
-    "codecov": "^2.2.0",
-    "eol": "^0.9.0",
+    "eol": "^0.9.1",
     "eslint": "^3.19.0",
     "eslint-config-airbnb-base": "^11.2.0",
     "eslint-plugin-import": "^2.3.0",
