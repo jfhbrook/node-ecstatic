@@ -92,7 +92,7 @@ const opts = {
   showDir: true,
   showDotfiles: true,
   humanReadable: true,
-  hidePermissions: true,
+  hidePermissions: false,
   si: false,
   cache: 'max-age=3600',
   cors: false,
