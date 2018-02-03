@@ -1,3 +1,6 @@
+2018/02/03 Version 3.2.0
+- Add hidePermissions flag to hide file permissions from directory listings
+
 2017/12/16 Version 3.1.1
 - Requires version of node-mime that patches regexp dos vulnerability
 
