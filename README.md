@@ -225,9 +225,7 @@ Defaults to **application/octet-stream**.
 ### `--mime-types {filename}`
 
 Add new or override one or more mime-types. This affects the HTTP Content-Type
-header. Can either be a path to a
-[`.types`](http://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types)
-file or an object hash of type(s).
+header. Must be an object hash of type(s).
 
     ecstatic({ mimeType: { 'mime-type': ['file_extension', 'file_extension'] } })
 
