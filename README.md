@@ -92,7 +92,7 @@ const opts = {
   showDir: true,
   showDotfiles: true,
   humanReadable: true,
-  selectDisplay:"ipsn",
+  selectDisplay:"icon|permissions|filesize|filename",
   si: false,
   cache: 'max-age=3600',
   cors: false,
