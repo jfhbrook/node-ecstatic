@@ -64,3 +64,4 @@ Listed in no particular order:
 * Bradley Farias @bmeck <bradley.meck@gmail.com>
 * David Refoua @DRSDavidSoft <david@refoua.me>
 * @mmmm1998 <warquark@gmail.com>
+* Bright Lee @benevbright <benevbright@gmail.com>

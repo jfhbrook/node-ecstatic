@@ -159,6 +159,11 @@ Exclude dotfiles from directory listings with `opts.showDotfiles === false`. Def
 If showDir is enabled, add human-readable file sizes. Defaults to **true**.
 Aliases are `humanreadable` and `human-readable`.
 
+### `opts.selectDisplay`
+### `--selectDisplay` {WhatToDisplay}
+
+If you set selectDisplay with **'icon|permissions|filesize|filename'**, you can choose what to display and how order them.
+
 ### `opts.headers`
 ### `--H {HeaderA: valA} [--H {HeaderB: valB}]`
 
