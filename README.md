@@ -92,7 +92,7 @@ const opts = {
   showDir: true,
   showDotfiles: true,
   humanReadable: true,
-  hidePermissions: false,
+  selectDisplay:"icon|permissions|filesize|filename",
   si: false,
   cache: 'max-age=3600',
   cors: false,
@@ -159,10 +159,10 @@ Exclude dotfiles from directory listings with `opts.showDotfiles === false`. Def
 If showDir is enabled, add human-readable file sizes. Defaults to **true**.
 Aliases are `humanreadable` and `human-readable`.
 
-### `opts.hidePermissions`
-### `--hide-permissions`
-If hidePermissions is enabled, file permissions will not be displayed. Defaults to **false**.
-Aliases are `hidepermissions` and `hide-permissions`.
+### `opts.selectDisplay`
+### `--selectDisplay` {WhatToDisplay}
+
+If you set selectDisplay with **'icon|permissions|filesize|filename'**, you can choose what to display and how order them.
 
 ### `opts.headers`
 ### `--H {HeaderA: valA} [--H {HeaderB: valB}]`
