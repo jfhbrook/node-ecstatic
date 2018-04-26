@@ -1,4 +1,5 @@
 - Update package.json project description
+- Move tools folder to scripts folder
 
 2018/02/03 Version 3.2.0
 - Add hidePermissions flag to hide file permissions from directory listings
