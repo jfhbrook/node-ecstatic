@@ -1,5 +1,6 @@
 - Update package.json project description
 - Move tools folder to scripts folder
+- Linting now passes on windows if git converts newlines to CRLFs
 
 2018/02/03 Version 3.2.0
 - Add hidePermissions flag to hide file permissions from directory listings

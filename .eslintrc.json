@@ -16,6 +16,7 @@
       "arrays": "only-multiline",
       "objects": "only-multiline",
       "functions": "never"
-    }]
+    }],
+    "linebreak-style": [ 0 ]
   }
 }
