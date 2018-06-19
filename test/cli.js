@@ -115,7 +115,7 @@ test('setting mimeTypes via cli - directly', (t) => {
     t.pass('ecstatic should be started');
     checkServerIsRunning(`${defaultUrl}:${port}/custom_mime_type.opml`, t, (err, res) => {
       t.error(err);
-      t.equal(res.headers['content-type'], 'application/x-my-type; charset=utf-8');
+      t.equal(res.headers['content-type'], 'application/x-my-type');
     });
   });
 });
