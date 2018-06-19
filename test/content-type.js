@@ -24,7 +24,7 @@ test('default default contentType', (t) => {
     request.get(`http://localhost:${port}/f_f`, (err, res) => {
       t.ifError(err);
       t.equal(res.statusCode, 200);
-      t.equal(res.headers['content-type'], 'text/plain; charset=utf8');
+      t.equal(res.headers['content-type'], 'text/plain');
       server.close(() => { t.end(); });
     });
   });

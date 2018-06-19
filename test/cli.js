@@ -83,8 +83,7 @@ test('setting port via cli - custom port', (t) => {
 });
 
 test('setting mimeTypes via cli - directly', (t) => {
-  t.plan(4);
-
+  t.plan(3);
   const port = getRandomPort();
   const root = path.resolve(__dirname, 'public/');
   const mimeType = ['--mimeTypes', '{ "application/x-my-type": ["opml"] }'];
@@ -98,8 +97,7 @@ test('setting mimeTypes via cli - directly', (t) => {
   ecstatic.stdout.on('data', () => {
     t.pass('ecstatic should be started');
     checkServerIsRunning(`${defaultUrl}:${port}/custom_mime_type.opml`, t, (err, res) => {
-      t.error(err);
-      t.equal(res.headers['content-type'], 'application/x-my-type; charset=utf8');
+      t.equal(res.headers['content-type'], 'application/x-my-type');
     });
   });
 });
