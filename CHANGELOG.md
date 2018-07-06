@@ -1,3 +1,5 @@
+- Updated tap and package-lock.json
+
 2018/07/06 Version 3.2.1
 - Update package.json project description
 - Move tools folder to scripts folder
