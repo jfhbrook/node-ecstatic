@@ -1,7 +1,9 @@
+2018/07/06 Version 3.2.1
 - Update package.json project description
 - Move tools folder to scripts folder
 - Linting now passes on windows if git converts newlines to CRLFs
 - No longer return a 416 when input range header has extra untrimmed whitespace
+- Remove extra double quotes in ETAGs
 
 2018/02/03 Version 3.2.0
 - Add hidePermissions flag to hide file permissions from directory listings
