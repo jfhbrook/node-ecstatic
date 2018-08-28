@@ -66,3 +66,4 @@ Listed in no particular order:
 * @mmmm1998 <warquark@gmail.com>
 * Victor Didenko @victordidenko
 * Zong Jhe Wu @s25g5d4
+* Jade Michael Thornton @thornjad <jade@jmthorton.net>

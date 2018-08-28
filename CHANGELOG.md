@@ -1,3 +1,5 @@
+2018/08/28 Version 3.2.2
+- Patchfix for improved accuracy when checking to see if gzip responses are allowed
 - Updated tap and package-lock.json
 
 2018/07/06 Version 3.2.1
