@@ -97,6 +97,7 @@ const opts = {
   cache: 'max-age=3600',
   cors: false,
   gzip: true,
+  brotli: false,
   defaultExt: 'html',
   handleError: true,
   serverHeader: true,
@@ -208,6 +209,16 @@ By default, ecstatic will serve `./public/some-file.js.gz` in place of
 that the behavior is appropriate. If `./public/some-file.js.gz` is not valid
 gzip, this will fall back to `./public/some-file.js`. You can turn this off
 with `opts.gzip === false`.
+
+### `opts.brotli`
+### `--brotli`
+
+Serve `./public/some-file.js.br` in place of `./public/some-file.js` when the 
+[brotli encoded](https://github.com/google/brotli) version exists and ecstatic 
+determines that the behavior is appropriate. If the request does not contain 
+`br` in the HTTP `accept-encoding` header, ecstatic will instead attempt to 
+serve a gzipped version (if `opts.gzip` is `true`), or fall back to 
+`./public.some-file.js`. Defaults to **false**.
 
 ### `opts.serverHeader`
 ### `--no-server-header`
