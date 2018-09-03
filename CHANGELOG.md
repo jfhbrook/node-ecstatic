@@ -1,3 +1,7 @@
+2018/09/01 Version 3.3.0
+- Updated dependencies
+- Added support for brotli encoding in addition to existing gzip support
+
 2018/08/28 Version 3.2.2
 - Patchfix for improved accuracy when checking to see if gzip responses are allowed
 - Updated tap and package-lock.json
