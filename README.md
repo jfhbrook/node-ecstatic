@@ -240,7 +240,7 @@ header. Can either be a path to a
 [`.types`](http://svn.apache.org/repos/asf/httpd/httpd/trunk/docs/conf/mime.types)
 file or an object hash of type(s).
 
-    ecstatic({ mimeType: { 'mime-type': ['file_extension', 'file_extension'] } })
+    ecstatic({ mimeTypes: { 'mime-type': ['file_extension', 'file_extension'] } })
 
 ### `opts.handleError`
 
