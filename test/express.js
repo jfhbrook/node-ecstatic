@@ -10,7 +10,7 @@ const path = require('path');
 const eol = require('eol');
 
 const root = `${__dirname}/public`;
-const baseDir = 'base';
+const baseDir = '/base';
 
 mkdirp.sync(`${root}/emptyDir`);
 
@@ -22,10 +22,9 @@ test('express', (t) => {
 
   const app = express();
 
-  app.use(ecstatic({
+  app.use(baseDir, ecstatic({
     root,
     gzip: true,
-    baseDir,
     autoIndex: true,
     showDir: true,
     defaultExt: 'html',

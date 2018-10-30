@@ -2,6 +2,7 @@
 
 const test = require('tap').test;
 const ecstatic = require('../lib/ecstatic');
+const express = require('express');
 const http = require('http');
 const request = require('request');
 const mkdirp = require('mkdirp');
@@ -9,7 +10,7 @@ const path = require('path');
 const eol = require('eol');
 
 const root = `${__dirname}/public`;
-const baseDir = 'base';
+const baseDir = '/base';
 
 mkdirp.sync(`${root}/emptyDir`);
 
@@ -20,15 +21,14 @@ test('core', (t) => {
   const port = Math.floor((Math.random() * ((1 << 16) - 1e4)) + 1e4);
 
   const server = http.createServer(
-    ecstatic({
+    express().use(baseDir, ecstatic({
       root,
       gzip: true,
-      baseDir,
       autoIndex: true,
       showDir: true,
       defaultExt: 'html',
       handleError: true,
-    })
+    }))
   );
 
   server.listen(port, () => {
