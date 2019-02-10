@@ -1,3 +1,5 @@
+- Drop testing/support for nodes 4 and 5
+
 2019/02/10 Version 3.3.1
 - Publish via linux to hopefully fix #238
 
