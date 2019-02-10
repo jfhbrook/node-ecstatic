@@ -1,3 +1,6 @@
+2019/02/10 Version 3.3.1
+- Publish via linux to hopefully fix #238
+
 2018/09/01 Version 3.3.0
 - Updated dependencies
 - Added support for brotli encoding in addition to existing gzip support
