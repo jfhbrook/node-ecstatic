@@ -87,7 +87,6 @@ In node, pass ecstatic an options hash, and it will return your middleware!
 ```js
 const opts = {
   root: path.join(__dirname, 'public'),
-  baseDir: '/',
   autoIndex: true,
   showDir: true,
   showDotfiles: true,
@@ -127,14 +126,6 @@ serve the current dir. Ecstatic also respects the PORT environment variable.
 In CLI mode, `opts.port` is the port you want ecstatic to listen to. Defaults
 to 8000. This can be overridden with the `--port` flag or with the PORT
 environment variable.
-
-### `opts.baseDir`
-### `--baseDir {dir}`
-
-`opts.baseDir` is `/` by default, but can be changed to allow your static files
-to be served off a specific route. For example, if `opts.baseDir === "blog"`
-and `opts.root = "./public"`, requests for `localhost:8080/blog/index.html` will
-resolve to `./public/index.html`.
 
 ### `opts.cache`
 ### `--cache {value}`

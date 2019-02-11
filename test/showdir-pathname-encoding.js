@@ -2,6 +2,7 @@
 
 const tap = require('tap');
 const ecstatic = require('../lib/ecstatic');
+const express = require('express');
 const http = require('http');
 const request = require('request');
 const path = require('path');
@@ -9,7 +10,7 @@ const path = require('path');
 const test = tap.test;
 
 const root = `${__dirname}/public`;
-const baseDir = 'base';
+const baseDir = '/base';
 
 if (process.platform === 'win32') {
   tap.plan(0, 'Windows is allergic to < in path names');
@@ -29,12 +30,11 @@ test('directory listing with pathname including HTML characters', (t) => {
   const uri = `http://localhost:${port}${path.join('/', baseDir, '/%3Cdir%3E')}`;
 
   const server = http.createServer(
-    ecstatic({
+    express().use(baseDir, ecstatic({
       root,
-      baseDir,
       showDir: true,
       autoIndex: false,
-    })
+    }))
   );
 
   server.listen(port, () => {
