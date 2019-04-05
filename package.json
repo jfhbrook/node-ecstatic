@@ -15,7 +15,7 @@
     "test": "tap --jobs-auto --coverage test/*.js",
     "posttest": "tap --coverage-report=clover"
   },
-  "bin": "./lib/ecstatic.js",
+  "bin": "./lib/bin.js",
   "keywords": [
     "static",
     "web",
