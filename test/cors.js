@@ -3,9 +3,10 @@
 const test = require('tap').test;
 const ecstatic = require('../lib/ecstatic');
 const http = require('http');
+const path = require('path');
 const request = require('request');
 
-const root = `${__dirname}/public`;
+const root = path.join(__dirname, 'public');
 
 test('cors defaults to false', (t) => {
   t.plan(4);
