@@ -61,11 +61,11 @@ module.exports = {
     location: 'subdir/?foo=bar',
   },
   // test for url-encoded paths
-  '%E4%B8%AD%E6%96%87': {  // '/中文'
+  '%E4%B8%AD%E6%96%87': { // '/中文'
     code: 302,
     location: '%E4%B8%AD%E6%96%87/',
   },
-  '%E4%B8%AD%E6%96%87?%E5%A4%AB=%E5%B7%B4': {  // '中文?夫=巴'
+  '%E4%B8%AD%E6%96%87?%E5%A4%AB=%E5%B7%B4': { // '中文?夫=巴'
     code: 302,
     location: '%E4%B8%AD%E6%96%87/?%E5%A4%AB=%E5%B7%B4',
   },
