@@ -1,3 +1,4 @@
+2019/04/05 Version 4.0.0
 - Drop testing/support for nodes 4 and 5, test nodes 9, 10 and 11
 - Fix parsing of CORS options
 - Upgrade mime module to v2, use charset module for charset detection
