@@ -25,7 +25,7 @@ function checkServerIsRunning(url, ps, t) {
 
 function startServer(url, port, t) {
   t.plan(2);
-  const ecstatic = spawn(process.execPath, [`${__dirname}/../lib/ecstatic.js`], {
+  const ecstatic = spawn(process.execPath, [`${__dirname}/../lib/bin.js`], {
     env: {
       PORT: String(port),
     },

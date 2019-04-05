@@ -16,7 +16,7 @@ function getRandomInt(min, max) {
 }
 
 function startEcstatic(args) {
-  return spawn(node, [require.resolve('../lib/ecstatic.js')].concat(args));
+  return spawn(node, [require.resolve('../lib/bin.js')].concat(args));
 }
 
 function checkServerIsRunning(url, t, _cb) {
