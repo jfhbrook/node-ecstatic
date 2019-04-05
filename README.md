@@ -242,6 +242,13 @@ works on the command line.
 
     ecstatic({ mimeTypes: { 'some/mimetype': ['file_extension', 'file_extension'] } })
 
+It's important to note that any changes to mime handling are **global**, since
+the `mime` module appears to be poorly behaved outside of a global singleton
+context. For clarity you may prefer to call `require('ecstatic').mime.define`
+or `require('ecstatic').setCustomGetType` directly and skip using this option,
+particularly in cases where you're using multiple instances of ecstatic's
+middleware. **You've been warned!**
+
 ### `opts.handleError`
 
 Turn **off** handleErrors to allow fall-through with
@@ -279,6 +286,44 @@ This works more or less as you'd expect.
 ### ecstatic.showDir(folder);
 
 This returns another middleware which will attempt to show a directory view. Turning on auto-indexing is roughly equivalent to adding this middleware after an ecstatic middleware with autoindexing disabled.
+
+### ecstatic.mime.define(mappings);
+
+This defines new mappings for the mime singleton, as specified in the main
+docs for the ecstatic middleware. Calling this directly should make global
+mutation more clear than setting the options when instantiating the middleware,
+and is recommended if you're using more than one middlware instance.
+
+### ecstatic.mime.setCustomGetType(fn);
+
+This sets a global custom function for getting the mime type for a filename.
+If this function returns a falsey value, getType will fall back to the mime
+module's handling. Calling this directly should make global mutation more clear
+than setting the options when instantiating the middleware, and is recommended
+if you're using more than one middleware instance.
+
+### ecstatic.mime.getType(filename, defaultValue);
+
+This will return the mimetype for a filename, first using any function supplied
+with `ecstatic.mime.setCustomGetType`, then trying `require('mime').getType`,
+then falling back to defaultValue. Generally you don't want to use this
+directly.
+
+### ecstatic.mime.setCustomLookupCharset(fn);
+
+This sets a global custom function for getting the charset for a mime type.
+If this function returns a falsey value, lookupCharset will fall back on the
+charset module's handling. Calling this directly should make global mutation
+more clear than setting the options when instantiating the middleware, and is
+recommended if you're using more than one middleware instance.
+
+### ecstatic.mime.lookupCharset(mimeType);
+
+This will look up the charset for the supplied mime type, first using any
+function supplied with `ecstatic.mime.setCustomLookupCharset`, then trying
+`require('charset')(mimeType)`, then falling back to "utf8". Generally you
+don't want to use this directly.
+
 
 # Tests:
 
