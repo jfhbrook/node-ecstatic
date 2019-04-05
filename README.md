@@ -236,9 +236,11 @@ Defaults to **application/octet-stream**.
 ### `--mime-types {filename}`
 
 Add new or override one or more mime-types. This affects the HTTP Content-Type
-header. Must be an object hash of type(s).
+header. May be either an object hash of type(s), *or* a function
+`(file, defaultValue) => 'some/mimetype'`. Naturally, only the object hash
+works on the command line.
 
-    ecstatic({ mimeTypes: { 'mime-type': ['file_extension', 'file_extension'] } })
+    ecstatic({ mimeTypes: { 'some/mimetype': ['file_extension', 'file_extension'] } })
 
 ### `opts.handleError`
 

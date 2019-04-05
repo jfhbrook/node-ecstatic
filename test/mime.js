@@ -27,3 +27,11 @@ test('custom definition of mime-type', (t) => {
 
   t.end();
 });
+
+test('custom mime-type lookup function', (t) => {
+  t.plan(1);
+
+  mime.setCustomGetType(() => 'application/pony');
+
+  t.equal(mime.getType('whatever'), 'application/pony');
+});
