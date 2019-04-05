@@ -321,7 +321,7 @@ recommended if you're using more than one middleware instance.
 
 This will look up the charset for the supplied mime type, first using any
 function supplied with `ecstatic.mime.setCustomLookupCharset`, then trying
-`require('charset')(mimeType)`, then falling back to "utf8". Generally you
+`require('charset')(mimeType)`. Generally you
 don't want to use this directly.
 
 
