@@ -82,30 +82,13 @@ test('setting port via cli - custom port', (t) => {
   });
 });
 
-test('setting mimeTypes via cli - .types file', (t) => {
-  t.plan(2);
-
-  const port = getRandomPort();
-  const root = path.resolve(__dirname, 'public/');
-  const pathMimetypeFile = path.resolve(__dirname, 'fixtures/custom_mime_type.types');
-  const options = [root, '--port', port, '--mimetypes', pathMimetypeFile];
-  const ecstatic = startEcstatic(options);
-
-  tearDown(ecstatic, t);
-
-  ecstatic.stdout.on('data', () => {
-    t.pass('ecstatic should be started');
-    checkServerIsRunning(`${defaultUrl}:${port}/custom_mime_type.opml`, t);
-  });
-});
-
 test('setting mimeTypes via cli - directly', (t) => {
-  t.plan(4);
-
+  t.plan(3);
   const port = getRandomPort();
   const root = path.resolve(__dirname, 'public/');
   const mimeType = ['--mimeTypes', '{ "application/x-my-type": ["opml"] }'];
-  const options = [root, '--port', port, '--mimetypes'].concat(mimeType);
+  const options = [root, '--port', port].concat(mimeType);
+
   const ecstatic = startEcstatic(options);
 
   // TODO: remove error handler
@@ -114,8 +97,7 @@ test('setting mimeTypes via cli - directly', (t) => {
   ecstatic.stdout.on('data', () => {
     t.pass('ecstatic should be started');
     checkServerIsRunning(`${defaultUrl}:${port}/custom_mime_type.opml`, t, (err, res) => {
-      t.error(err);
-      t.equal(res.headers['content-type'], 'application/x-my-type; charset=utf-8');
+      t.equal(res.headers['content-type'], 'application/x-my-type');
     });
   });
 });

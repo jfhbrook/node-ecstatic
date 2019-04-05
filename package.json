@@ -25,8 +25,9 @@
     "middleware"
   ],
   "dependencies": {
+    "charset": "^1.0.1",
     "he": "^1.1.1",
-    "mime": "^1.6.0",
+    "mime": "^2.4.1",
     "minimist": "^1.1.0",
     "url-join": "^2.0.5"
   },

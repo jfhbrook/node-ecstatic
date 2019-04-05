@@ -1,5 +1,11 @@
 - Drop testing/support for nodes 4 and 5
 - Fix parsing of CORS options
+- Upgrade mime module to v2, use charset module for charset detection
+- Remove ability to set mime types with a .types file
+- Add ability to override mime type and charset lookup with globally-set
+  functions
+- Removes default charset of utf8 - if you need this, try using a custom
+  charset lookup function
 
 2019/02/10 Version 3.3.1
 - Publish via linux to hopefully fix #238
