@@ -6,6 +6,8 @@
   functions
 - Removes default charset of utf8 - if you need this, try using a custom
   charset lookup function
+- Move bin behavior from inside ./lib/ecstatic.js into ./lib/bin.js - see issue
+  #226 for more information
 - Update modules and fix linting
 
 2019/02/10 Version 3.3.1
