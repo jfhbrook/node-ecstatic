@@ -17,6 +17,11 @@ test('mime package lookup', (t) => {
   t.end();
 });
 
+test('charset lookup', (t) => {
+  t.plan(1);
+  t.equal(mime.lookupCharset('application/wasm'), null);
+});
+
 test('custom definition of mime-type', (t) => {
   t.plan(1);
 
