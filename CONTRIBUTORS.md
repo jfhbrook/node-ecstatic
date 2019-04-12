@@ -68,3 +68,4 @@ Listed in no particular order:
 * Zong Jhe Wu @s25g5d4
 * Jade Michael Thornton @thornjad <jade@jmthorton.net>
 * @BigBlueHat
+* Robert Nagy @ronag <ronagy@icloud.com>
