@@ -2,7 +2,7 @@
   "author": "Joshua Holbrook <josh@nodejitsu.com> (http://jesusabdullah.net)",
   "name": "ecstatic",
   "description": "A simple static file server middleware",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "homepage": "https://github.com/jfhbrook/node-ecstatic",
   "repository": {
     "type": "git",
