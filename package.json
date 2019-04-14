@@ -29,6 +29,7 @@
     "he": "^1.1.1",
     "mime": "^2.4.1",
     "minimist": "^1.1.0",
+    "on-finished": "^2.3.0",
     "url-join": "^4.0.0"
   },
   "devDependencies": {
