@@ -1,3 +1,7 @@
+2019/04/14 Version 4.0.2
+- Add dependency for is-finished library
+- Fixes for edge cases around closed/finished streams
+
 2019/04/12 Version 4.0.1
 - Fix file descriptor leak from upstream response closing
 
