@@ -121,6 +121,13 @@ serve the current dir. Ecstatic also respects the PORT environment variable.
 
 `opts.root` is the directory you want to serve up.
 
+### `opts.host`
+### `--host {host}`
+
+In CLI mode, `opts.host` is the host you want ecstatic to listen to. Defaults
+to 0.0.0.0. This can be overridden with the `--host` flag or with the HOST
+environment variable.
+
 ### `opts.port`
 ### `--port {port}`
 
