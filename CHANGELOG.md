@@ -1,3 +1,6 @@
+2019/04/15 Version 4.1.0
+- Add ability to set the host in cli mode
+
 2019/04/14 Version 4.0.2
 - Add dependency for is-finished library
 - Fixes for edge cases around closed/finished streams
