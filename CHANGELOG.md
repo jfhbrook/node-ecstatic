@@ -1,3 +1,6 @@
+2019/04/20 Version 4.1.1
+- Respect handleError for 400 and 500 errors
+
 2019/04/15 Version 4.1.0
 - Add ability to set the host in cli mode
 
