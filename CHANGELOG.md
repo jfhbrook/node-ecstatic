@@ -1,3 +1,6 @@
+2019/04/27 Version 4.1.2
+- Redirects bugfix
+
 2019/04/20 Version 4.1.1
 - Respect handleError for 400 and 500 errors
 
