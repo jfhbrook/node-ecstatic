@@ -1,3 +1,6 @@
+2019/05/02 Version 3.3.2
+- Backport Open Redirect vulnerability fix
+
 2019/02/10 Version 3.3.1
 - Publish via linux to hopefully fix #238
 
